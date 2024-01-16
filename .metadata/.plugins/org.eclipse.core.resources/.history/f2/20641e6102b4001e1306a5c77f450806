@@ -1,0 +1,44 @@
+package com.sistemacontrolepeso;
+
+import java.util.Date;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import com.sistemacontrolepeso.api.controller.PessoaController;
+import com.sistemacontrolepeso.domain.model.Pessoa;
+
+@TestInstance(Lifecycle.PER_CLASS)
+public class PessoaControllerTest extends SistemaControlePesoApplicationTests {
+
+	private MockMvc mockMvc;
+	
+	@Autowired
+	private PessoaController pessoaController;
+	
+	@BeforeAll
+	public void setUp() {
+		this.mockMvc = MockMvcBuilders.standaloneSetup(pessoaController).build();
+	}
+	
+	@Test
+	public void deveRetornarStatus201_QuandocadastrarPessoa() {
+		
+	}
+	
+	void prepararDados() {
+		Pessoa pessoa = new Pessoa();
+		pessoa.setNome("Alexandre");
+		pessoa.setAltura(1.70);
+		pessoa.setEmail("alevaristofig@gmail.com");
+		pessoa.setEndereco("Rua Anhanguera, 109 - Santa Tereza, 31.015.090, Belo Horizonte MG");
+		pessoa.setData(new Date());
+		pessoaRepository.save(pessoa);
+		
+	}
+}

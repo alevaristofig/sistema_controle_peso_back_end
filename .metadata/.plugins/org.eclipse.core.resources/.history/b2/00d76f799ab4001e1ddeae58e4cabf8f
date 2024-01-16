@@ -1,0 +1,5 @@
+package com.sistemacontrolepeso.core.modelMapper;
+
+public class ModelMapperConfig {
+
+}

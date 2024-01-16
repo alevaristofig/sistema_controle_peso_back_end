@@ -1,0 +1,21 @@
+package com.sistemacontrolepeso;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+
+import com.sistemacontrolepeso.api.controller.PessoaController;
+
+public class PessoaControllerTest extends SistemaControlePesoApplicationTests {
+
+	private MockMvc mockMvc;
+	
+	@Autowired
+	private PessoaController pessoaController;
+	
+	@BeforeAll
+	public void setUp() {
+		this.mockMvc = MockMvcBuilders.standaloneSetup(pessoaController).build();
+	}
+}
