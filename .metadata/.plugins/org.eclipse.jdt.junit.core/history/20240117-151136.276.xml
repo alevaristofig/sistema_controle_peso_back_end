@@ -1,9 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="PessoaControllerTest" project="SistemaControlePeso" tests="2" started="2" failures="1" errors="0" ignored="0">
-  <testsuite name="com.sistemacontrolepeso.PessoaControllerTest" time="1.172" displayname="PessoaControllerTest" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.PessoaControllerTest]">
-    <testcase name="contextLoads" classname="com.sistemacontrolepeso.PessoaControllerTest" time="0.418" displayname="contextLoads()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.PessoaControllerTest]/[method:contextLoads()]"/>
-    <testcase name="deveRetornarStatus201_QuandocadastrarPessoa" classname="com.sistemacontrolepeso.PessoaControllerTest" time="0.754" displayname="deveRetornarStatus201_QuandocadastrarPessoa()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.PessoaControllerTest]/[method:deveRetornarStatus201_QuandocadastrarPessoa()]">
+<?xml version="1.0" encoding="UTF-8"?><testrun name="CadastroPessoaIT" project="SistemaControlePeso" tests="4" started="4" failures="1" errors="0" ignored="0">
+  <testsuite name="com.sistemacontrolepeso.CadastroPessoaIT" time="2.107" displayname="CadastroPessoaIT" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPessoaIT]">
+    <testcase name="contextLoads" classname="com.sistemacontrolepeso.CadastroPessoaIT" time="0.664" displayname="contextLoads()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPessoaIT]/[method:contextLoads()]"/>
+    <testcase name="deveConter1Pessoas_QuandoConsultarPessoasComId" classname="com.sistemacontrolepeso.CadastroPessoaIT" time="1.237" displayname="deveConter1Pessoas_QuandoConsultarPessoasComId()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPessoaIT]/[method:deveConter1Pessoas_QuandoConsultarPessoasComId()]">
       <failure>java.lang.AssertionError: 1 expectation failed.
-Expected status code &lt;201&gt; but was &lt;404&gt;.
+JSON path nome doesn't match.
+Expected: Alexandre
+  Actual: null
 &#13;
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)&#13;
 	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)&#13;
@@ -32,19 +34,21 @@ Expected status code &lt;201&gt; but was &lt;404&gt;.
 	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallCurrent(CallSiteArray.java:49)&#13;
 	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:171)&#13;
 	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:185)&#13;
-	at io.restassured.internal.ResponseSpecificationImpl.statusCode(ResponseSpecificationImpl.groovy:135)&#13;
-	at io.restassured.specification.ResponseSpecification$statusCode$0.callCurrent(Unknown Source)&#13;
+	at io.restassured.internal.ResponseSpecificationImpl.body(ResponseSpecificationImpl.groovy:270)&#13;
+	at io.restassured.specification.ResponseSpecification$body$0.callCurrent(Unknown Source)&#13;
 	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallCurrent(CallSiteArray.java:49)&#13;
 	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:171)&#13;
-	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:185)&#13;
-	at io.restassured.internal.ResponseSpecificationImpl.statusCode(ResponseSpecificationImpl.groovy:143)&#13;
-	at io.restassured.internal.ValidatableResponseOptionsImpl.statusCode(ValidatableResponseOptionsImpl.java:89)&#13;
-	at com.sistemacontrolepeso.PessoaControllerTest.deveRetornarStatus201_QuandocadastrarPessoa(PessoaControllerTest.java:57)&#13;
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:212)&#13;
+	at io.restassured.internal.ResponseSpecificationImpl.body(ResponseSpecificationImpl.groovy:117)&#13;
+	at io.restassured.internal.ValidatableResponseOptionsImpl.body(ValidatableResponseOptionsImpl.java:244)&#13;
+	at com.sistemacontrolepeso.CadastroPessoaIT.deveConter1Pessoas_QuandoConsultarPessoasComId(CadastroPessoaIT.java:83)&#13;
 	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
 &#13;
 </failure>
     </testcase>
+    <testcase name="deveRetornarStatus201_QuandoCadastrarPessoa" classname="com.sistemacontrolepeso.CadastroPessoaIT" time="0.131" displayname="deveRetornarStatus201_QuandoCadastrarPessoa()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPessoaIT]/[method:deveRetornarStatus201_QuandoCadastrarPessoa()]"/>
+    <testcase name="deveConter2Pessoas_QuandoConsultarPessoas" classname="com.sistemacontrolepeso.CadastroPessoaIT" time="0.073" displayname="deveConter2Pessoas_QuandoConsultarPessoas()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPessoaIT]/[method:deveConter2Pessoas_QuandoConsultarPessoas()]"/>
   </testsuite>
 </testrun>
