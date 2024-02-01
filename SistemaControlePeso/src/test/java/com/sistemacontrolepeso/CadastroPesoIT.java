@@ -74,6 +74,5 @@ public class CadastroPesoIT extends SistemaControlePesoApplicationTests {
 		
 		pesoService.salvar(peso);
 		
-		//System.out.println(pessoaSalva.getId());
 	}
 }

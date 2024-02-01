@@ -1,0 +1,5 @@
+package com.sistemacontrolepeso.api.assembler;
+
+public class PesoModelAssembler {
+
+}
