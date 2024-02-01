@@ -1,11 +1,14 @@
 package com.sistemacontrolepeso.domain.model;
 
 import java.util.Date;
+import java.util.List;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import lombok.EqualsAndHashCode;
@@ -33,4 +36,7 @@ public class Pessoa {
 	
 	@Temporal(TemporalType.DATE)
 	private Date data;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "pessoa")	
+	private List<Peso> peso;
 }

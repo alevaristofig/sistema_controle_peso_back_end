@@ -1,7 +1,0 @@
-spring.datasource.url=jdbc:mariadb://localhost/sistemapeso?createDatabaseIfNotExist=true&serverTimezone=UTC
-spring.datasource.username=root
-spring.datasource.password=siestemapeso
-
-spring.jpa.show-sql=true
-spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MariaDBDialect
-spring.jpa.hibernate.ddl-auto=create

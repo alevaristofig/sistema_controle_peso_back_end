@@ -47,7 +47,8 @@ public class CadastroPessoaIT extends SistemaControlePesoApplicationTests {
 		RestAssured.basePath = "/pessoas";
 		
 		deletarDados();	
-		prepararDados();		
+		prepararDados();
+		atualizarDados();
 	}	
 	
 	@Test
@@ -69,7 +70,7 @@ public class CadastroPessoaIT extends SistemaControlePesoApplicationTests {
 		.when()
 			.get()
 		.then()
-			.body("", Matchers.hasSize(1));
+			.body("", Matchers.hasSize(2));
 	}
 	
 	@Test
@@ -81,7 +82,18 @@ public class CadastroPessoaIT extends SistemaControlePesoApplicationTests {
 			.get("/{pessoaId}")
 		.then()
 			.statusCode(HttpStatus.OK.value())
-			.body("nome", equalTo("Alexandre"));
+			.body("nome", equalTo("Alexandre Figueiredo"));
+	}
+	
+	@Test
+	public void deveRetornarStatus200_QuandoAtualizarUmaPessoa() {
+		given()
+			.accept(ContentType.JSON)
+			.pathParam("pessoaId", 1)
+		.when()
+			.put("/{pessoaId}")
+		.then()
+			.statusCode(HttpStatus.OK.value());
 	}
 	
 	void prepararDados() {
@@ -100,8 +112,20 @@ public class CadastroPessoaIT extends SistemaControlePesoApplicationTests {
 		pessoa2.setData(new Date());
 		
 		pessoaService.salvar(pessoa);
-		pessoaService.salvar(pessoa2);
+		pessoaService.salvar(pessoa2);		
 		
+	}
+	
+	void atualizarDados() {
+		Pessoa pessoa = pessoaService.buscarOuFalhar(1L);
+		
+		pessoa.setNome("Alexandre Figueiredo");
+		pessoa.setAltura(1.70);
+		pessoa.setEmail("alevaristofig@gmail.com");
+		pessoa.setEndereco("Rua Anhanguera, 109 - Santa Tereza, 31.015.090, Belo Horizonte MG");		
+		pessoa.setData(new Date());
+		
+		pessoaService.salvar(pessoa);
 	}
 	
 	void deletarDados() {

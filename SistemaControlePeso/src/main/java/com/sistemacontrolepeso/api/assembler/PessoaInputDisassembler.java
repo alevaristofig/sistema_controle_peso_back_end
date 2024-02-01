@@ -16,4 +16,8 @@ public class PessoaInputDisassembler {
 	public Pessoa toDomainObject(PessoaInput pessoaInput) {
 		return modelMapper.map(pessoaInput, Pessoa.class);
 	}
+	
+	public void copytoDomain(PessoaInput pessoaInput, Pessoa pessoa) {
+		modelMapper.map(pessoaInput, pessoa);
+	}
 }

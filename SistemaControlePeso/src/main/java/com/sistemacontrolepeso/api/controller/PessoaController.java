@@ -5,9 +5,12 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -21,8 +24,9 @@ import com.sistemacontrolepeso.domain.model.Pessoa;
 import com.sistemacontrolepeso.domain.repository.PessoaRepository;
 import com.sistemacontrolepeso.domain.service.CadastroPessoaService;
 
+@CrossOrigin(origins = "*")
 @RestController
-@RequestMapping("/pessoas")
+@RequestMapping(value = "/pessoas", produces = MediaType.APPLICATION_JSON_VALUE)
 public class PessoaController {
 	
 	@Autowired
@@ -57,6 +61,18 @@ public class PessoaController {
 		Pessoa pessoa = pessoaInputDisassembler.toDomainObject(pessoaInput);
 		
 		pessoa.setData(new Date());
+		
+		pessoa = cadastroPessoaService.salvar(pessoa);
+		
+		return pessoaModelAssembler.toModel(pessoa);
+	}
+	
+	@PutMapping("/{pessoaId}")
+	@ResponseStatus(HttpStatus.OK)
+	public PessoaModel atualizar(@PathVariable Long pessoaId, @RequestBody PessoaInput pessoaInput) {
+		Pessoa pessoa = cadastroPessoaService.buscarOuFalhar(pessoaId);
+		
+		pessoaInputDisassembler.copytoDomain(pessoaInput, pessoa);
 		
 		pessoa = cadastroPessoaService.salvar(pessoa);
 		

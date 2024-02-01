@@ -1,0 +1,27 @@
+package com.sistemacontrolepeso;
+
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.server.LocalServerPort;
+
+import io.restassured.RestAssured;
+
+@TestInstance(Lifecycle.PER_CLASS)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+public class CadastroPesoIT extends SistemaControlePesoApplicationTests {
+
+	@LocalServerPort
+	private int port;
+	
+	public void setUp() {
+		RestAssured.port = port;
+		RestAssured.basePath = "/peso";
+	}
+	
+	@Test
+	public void deveRetornarStatus201_QuandoCadastrarPeso() {
+		
+	}
+}

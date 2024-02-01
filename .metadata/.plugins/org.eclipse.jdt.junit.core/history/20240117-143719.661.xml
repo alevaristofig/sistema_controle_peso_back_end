@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="CadastroPessoaIT" project="SistemaControlePeso" tests="3" started="3" failures="0" errors="0" ignored="0">
-  <testsuite name="com.sistemacontrolepeso.CadastroPessoaIT" time="1.618" displayname="CadastroPessoaIT" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPessoaIT]">
-    <testcase name="contextLoads" classname="com.sistemacontrolepeso.CadastroPessoaIT" time="0.7" displayname="contextLoads()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPessoaIT]/[method:contextLoads()]"/>
-    <testcase name="deveRetornarStatus201_QuandoCadastrarPessoa" classname="com.sistemacontrolepeso.CadastroPessoaIT" time="0.744" displayname="deveRetornarStatus201_QuandoCadastrarPessoa()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPessoaIT]/[method:deveRetornarStatus201_QuandoCadastrarPessoa()]"/>
-    <testcase name="deveConter2Pessoas_QuandoConsultarPessoas" classname="com.sistemacontrolepeso.CadastroPessoaIT" time="0.174" displayname="deveConter2Pessoas_QuandoConsultarPessoas()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPessoaIT]/[method:deveConter2Pessoas_QuandoConsultarPessoas()]"/>
-  </testsuite>
-</testrun>
