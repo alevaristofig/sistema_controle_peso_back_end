@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="CadastroPesoIT" project="SistemaControlePeso" tests="4" started="4" failures="0" errors="0" ignored="0">
-  <testsuite name="com.sistemacontrolepeso.CadastroPesoIT" time="1.97" displayname="CadastroPesoIT" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPesoIT]">
-    <testcase name="contextLoads" classname="com.sistemacontrolepeso.CadastroPesoIT" time="0.439" displayname="contextLoads()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPesoIT]/[method:contextLoads()]"/>
-    <testcase name="deveRetornarStatus201_QuandoCadastrarPeso" classname="com.sistemacontrolepeso.CadastroPesoIT" time="0.817" displayname="deveRetornarStatus201_QuandoCadastrarPeso()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPesoIT]/[method:deveRetornarStatus201_QuandoCadastrarPeso()]"/>
-    <testcase name="deveConter1Peso_QuandoConsultarPesoComId" classname="com.sistemacontrolepeso.CadastroPesoIT" time="0.602" displayname="deveConter1Peso_QuandoConsultarPesoComId()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPesoIT]/[method:deveConter1Peso_QuandoConsultarPesoComId()]"/>
-    <testcase name="deverRetornar2Peso_QuandoListarPesos" classname="com.sistemacontrolepeso.CadastroPesoIT" time="0.112" displayname="deverRetornar2Peso_QuandoListarPesos()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPesoIT]/[method:deverRetornar2Peso_QuandoListarPesos()]"/>
-  </testsuite>
-</testrun>

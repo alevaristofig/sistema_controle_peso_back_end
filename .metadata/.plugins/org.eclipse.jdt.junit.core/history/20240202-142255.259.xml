@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="CadastroPesoIT" project="SistemaControlePeso" tests="6" started="0" failures="0" errors="1" ignored="0">
+  <testsuite name="com.sistemacontrolepeso.CadastroPesoIT" incomplete="true" displayname="CadastroPesoIT" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPesoIT]">
+    <error>com.sistemacontrolepeso.domain.exception.PesoNaoEncontradoException: Não existe um cadastro de peso com o código 2&#13;
+	at com.sistemacontrolepeso.domain.service.CadastroPesoService.lambda$0(CadastroPesoService.java:25)&#13;
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)&#13;
+	at com.sistemacontrolepeso.domain.service.CadastroPesoService.buscarOuFalhar(CadastroPesoService.java:25)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:352)&#13;
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:713)&#13;
+	at com.sistemacontrolepeso.domain.service.CadastroPesoService$$SpringCGLIB$$0.buscarOuFalhar(&lt;generated&gt;)&#13;
+	at com.sistemacontrolepeso.CadastroPesoIT.deletarDados(CadastroPesoIT.java:150)&#13;
+	at com.sistemacontrolepeso.CadastroPesoIT.setUp(CadastroPesoIT.java:56)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    <testcase name="contextLoads" classname="com.sistemacontrolepeso.CadastroPesoIT" incomplete="true" displayname="contextLoads()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPesoIT]/[method:contextLoads()]"/>
+    <testcase name="deveRetornarStatus201_QuandoCadastrarPeso" classname="com.sistemacontrolepeso.CadastroPesoIT" incomplete="true" displayname="deveRetornarStatus201_QuandoCadastrarPeso()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPesoIT]/[method:deveRetornarStatus201_QuandoCadastrarPeso()]"/>
+    <testcase name="deveConter1Peso_QuandoConsultarPesoComId" classname="com.sistemacontrolepeso.CadastroPesoIT" incomplete="true" displayname="deveConter1Peso_QuandoConsultarPesoComId()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPesoIT]/[method:deveConter1Peso_QuandoConsultarPesoComId()]"/>
+    <testcase name="deveRetornarStatus200_QuandoAtualizarUmPeso" classname="com.sistemacontrolepeso.CadastroPesoIT" incomplete="true" displayname="deveRetornarStatus200_QuandoAtualizarUmPeso()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPesoIT]/[method:deveRetornarStatus200_QuandoAtualizarUmPeso()]"/>
+    <testcase name="deverRetornar2Peso_QuandoListarPesos" classname="com.sistemacontrolepeso.CadastroPesoIT" incomplete="true" displayname="deverRetornar2Peso_QuandoListarPesos()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPesoIT]/[method:deverRetornar2Peso_QuandoListarPesos()]"/>
+    <testcase name="deveRetornarStatus204_QuandoDeletarUmPeso" classname="com.sistemacontrolepeso.CadastroPesoIT" incomplete="true" displayname="deveRetornarStatus204_QuandoDeletarUmPeso()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPesoIT]/[method:deveRetornarStatus204_QuandoDeletarUmPeso()]"/>
+  </testsuite>
+</testrun>

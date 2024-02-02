@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="CadastroPesoIT" project="SistemaControlePeso" tests="6" started="6" failures="0" errors="1" ignored="0">
+  <testsuite name="com.sistemacontrolepeso.CadastroPesoIT" time="1.836" displayname="CadastroPesoIT" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPesoIT]">
+    <testcase name="contextLoads" classname="com.sistemacontrolepeso.CadastroPesoIT" time="0.446" displayname="contextLoads()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPesoIT]/[method:contextLoads()]"/>
+    <testcase name="deveRetornarStatus201_QuandoCadastrarPeso" classname="com.sistemacontrolepeso.CadastroPesoIT" time="0.723" displayname="deveRetornarStatus201_QuandoCadastrarPeso()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPesoIT]/[method:deveRetornarStatus201_QuandoCadastrarPeso()]"/>
+    <testcase name="deveConter1Peso_QuandoConsultarPesoComId" classname="com.sistemacontrolepeso.CadastroPesoIT" time="0.502" displayname="deveConter1Peso_QuandoConsultarPesoComId()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPesoIT]/[method:deveConter1Peso_QuandoConsultarPesoComId()]"/>
+    <testcase name="deveRetornarStatus200_QuandoAtualizarUmPeso" classname="com.sistemacontrolepeso.CadastroPesoIT" time="0.029" displayname="deveRetornarStatus200_QuandoAtualizarUmPeso()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPesoIT]/[method:deveRetornarStatus200_QuandoAtualizarUmPeso()]"/>
+    <testcase name="deverRetornar2Peso_QuandoListarPesos" classname="com.sistemacontrolepeso.CadastroPesoIT" time="0.105" displayname="deverRetornar2Peso_QuandoListarPesos()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPesoIT]/[method:deverRetornar2Peso_QuandoListarPesos()]"/>
+    <testcase name="deveRetornarStatus204_QuandoDeletarUmPeso" classname="com.sistemacontrolepeso.CadastroPesoIT" time="0.029" displayname="deveRetornarStatus204_QuandoDeletarUmPeso()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroPesoIT]/[method:deveRetornarStatus204_QuandoDeletarUmPeso()]">
+      <error>java.lang.IllegalArgumentException: Invalid number of path parameters. Expected 1, was 0. Undefined path parameters are: pesoId.&#13;
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)&#13;
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)&#13;
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)&#13;
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)&#13;
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)&#13;
+	at org.codehaus.groovy.reflection.CachedConstructor.invoke(CachedConstructor.java:73)&#13;
+	at org.codehaus.groovy.reflection.CachedConstructor.doConstructorInvoke(CachedConstructor.java:60)&#13;
+	at org.codehaus.groovy.runtime.callsite.ConstructorSite$ConstructorSiteNoUnwrap.callConstructor(ConstructorSite.java:86)&#13;
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallConstructor(CallSiteArray.java:57)&#13;
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:263)&#13;
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callConstructor(AbstractCallSite.java:277)&#13;
+	at io.restassured.internal.RequestSpecificationImpl.assertCorrectNumberOfPathParams(RequestSpecificationImpl.groovy:1277)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)&#13;
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)&#13;
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)&#13;
+	at groovy.lang.MetaClassImpl.doInvokeMethod(MetaClassImpl.java:1334)&#13;
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1089)&#13;
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1008)&#13;
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:791)&#13;
+	at io.restassured.internal.RequestSpecificationImpl.invokeMethod(RequestSpecificationImpl.groovy)&#13;
+	at org.codehaus.groovy.runtime.callsite.PogoInterceptableSite.call(PogoInterceptableSite.java:46)&#13;
+	at org.codehaus.groovy.runtime.callsite.PogoInterceptableSite.callCurrent(PogoInterceptableSite.java:57)&#13;
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:176)&#13;
+	at io.restassured.internal.RequestSpecificationImpl.sendRequest(RequestSpecificationImpl.groovy:1161)&#13;
+	at io.restassured.internal.RequestSpecificationImpl.this$2$sendRequest(RequestSpecificationImpl.groovy)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)&#13;
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)&#13;
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)&#13;
+	at groovy.lang.MetaClassImpl.doInvokeMethod(MetaClassImpl.java:1334)&#13;
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1089)&#13;
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1008)&#13;
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:791)&#13;
+	at io.restassured.internal.RequestSpecificationImpl.invokeMethod(RequestSpecificationImpl.groovy)&#13;
+	at org.codehaus.groovy.runtime.callsite.PogoInterceptableSite.call(PogoInterceptableSite.java:46)&#13;
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.call(AbstractCallSite.java:166)&#13;
+	at io.restassured.internal.filter.SendRequestFilter.filter(SendRequestFilter.groovy:30)&#13;
+	at io.restassured.filter.Filter$filter.call(Unknown Source)&#13;
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:45)&#13;
+	at io.restassured.filter.Filter$filter$0.call(Unknown Source)&#13;
+	at io.restassured.internal.filter.FilterContextImpl.next(FilterContextImpl.groovy:72)&#13;
+	at io.restassured.filter.time.TimingFilter.filter(TimingFilter.java:56)&#13;
+	at io.restassured.filter.Filter$filter$0.call(Unknown Source)&#13;
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:45)&#13;
+	at io.restassured.filter.Filter$filter.call(Unknown Source)&#13;
+	at io.restassured.internal.filter.FilterContextImpl.next(FilterContextImpl.groovy:72)&#13;
+	at io.restassured.filter.FilterContext$next.call(Unknown Source)&#13;
+	at io.restassured.internal.filter.CsrfFilter.filter(CsrfFilter.groovy:70)&#13;
+	at io.restassured.filter.Filter$filter.call(Unknown Source)&#13;
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCall(CallSiteArray.java:45)&#13;
+	at io.restassured.filter.Filter$filter.call(Unknown Source)&#13;
+	at io.restassured.internal.filter.FilterContextImpl.next(FilterContextImpl.groovy:72)&#13;
+	at io.restassured.filter.FilterContext$next.call(Unknown Source)&#13;
+	at io.restassured.internal.RequestSpecificationImpl.applyPathParamsAndSendRequest(RequestSpecificationImpl.groovy:1704)&#13;
+	at io.restassured.internal.RequestSpecificationImpl.this$2$applyPathParamsAndSendRequest(RequestSpecificationImpl.groovy)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)&#13;
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)&#13;
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)&#13;
+	at groovy.lang.MetaClassImpl.doInvokeMethod(MetaClassImpl.java:1334)&#13;
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1089)&#13;
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1008)&#13;
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:791)&#13;
+	at io.restassured.internal.RequestSpecificationImpl.invokeMethod(RequestSpecificationImpl.groovy)&#13;
+	at org.codehaus.groovy.runtime.callsite.PogoInterceptableSite.call(PogoInterceptableSite.java:46)&#13;
+	at org.codehaus.groovy.runtime.callsite.PogoInterceptableSite.callCurrent(PogoInterceptableSite.java:57)&#13;
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:203)&#13;
+	at io.restassured.internal.RequestSpecificationImpl.applyPathParamsAndSendRequest(RequestSpecificationImpl.groovy:1710)&#13;
+	at io.restassured.internal.RequestSpecificationImpl.this$2$applyPathParamsAndSendRequest(RequestSpecificationImpl.groovy)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)&#13;
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at org.codehaus.groovy.reflection.CachedMethod.invoke(CachedMethod.java:343)&#13;
+	at groovy.lang.MetaMethod.doMethodInvoke(MetaMethod.java:328)&#13;
+	at groovy.lang.MetaClassImpl.doInvokeMethod(MetaClassImpl.java:1334)&#13;
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1089)&#13;
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:1008)&#13;
+	at groovy.lang.MetaClassImpl.invokeMethod(MetaClassImpl.java:791)&#13;
+	at io.restassured.internal.RequestSpecificationImpl.invokeMethod(RequestSpecificationImpl.groovy)&#13;
+	at org.codehaus.groovy.runtime.callsite.PogoInterceptableSite.call(PogoInterceptableSite.java:46)&#13;
+	at org.codehaus.groovy.runtime.callsite.PogoInterceptableSite.callCurrent(PogoInterceptableSite.java:57)&#13;
+	at org.codehaus.groovy.runtime.callsite.CallSiteArray.defaultCallCurrent(CallSiteArray.java:49)&#13;
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:171)&#13;
+	at org.codehaus.groovy.runtime.callsite.AbstractCallSite.callCurrent(AbstractCallSite.java:203)&#13;
+	at io.restassured.internal.RequestSpecificationImpl.delete(RequestSpecificationImpl.groovy:184)&#13;
+	at io.restassured.internal.RequestSpecificationImpl.delete(RequestSpecificationImpl.groovy)&#13;
+	at com.sistemacontrolepeso.CadastroPesoIT.deveRetornarStatus204_QuandoDeletarUmPeso(CadastroPesoIT.java:113)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+</testrun>

@@ -1,0 +1,155 @@
+package com.sistemacontrolepeso;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.equalTo;
+
+import java.util.Date;
+
+import org.hamcrest.Matchers;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.http.HttpStatus;
+import org.springframework.util.ResourceUtils;
+
+import com.sistemacontrolepeso.domain.model.Peso;
+import com.sistemacontrolepeso.domain.model.Pessoa;
+import com.sistemacontrolepeso.domain.repository.PesoRepository;
+import com.sistemacontrolepeso.domain.service.CadastroPesoService;
+import com.sistemacontrolepeso.domain.service.CadastroPessoaService;
+
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+
+@TestInstance(Lifecycle.PER_CLASS)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+public class CadastroPesoIT extends SistemaControlePesoApplicationTests {
+
+	@LocalServerPort
+	private int port;
+	
+	@Autowired
+	private CadastroPessoaService pessoaService;
+	
+	@Autowired
+	private CadastroPesoService pesoService;
+	
+	@Autowired
+	private PesoRepository pesoRepository;
+	
+	private String jsonPesoAtualizar;
+	
+	@BeforeEach
+	public void setUp() {
+		RestAssured.port = port;
+		RestAssured.basePath = "/peso";
+		
+		jsonPesoAtualizar = com.sistemacontrolepeso.util.ResourceUtils.getContentFromResource(
+				"/json/peso_atualizar.json");
+		
+		prepararDados();
+		atualizarDados();
+		deletarDados();
+	}
+	
+	@Test
+	public void deveRetornarStatus201_QuandoCadastrarPeso() {
+		given()
+			.body("{ \"pessoa_id\": \"1\" }")
+			.contentType(ContentType.JSON)
+			.accept(ContentType.JSON)
+		.when()
+			.post()
+		.then()
+			.statusCode(HttpStatus.CREATED.value());
+	}
+	
+	@Test
+	public void deverRetornar2Peso_QuandoListarPesos() {
+		given()
+			.accept(ContentType.JSON)
+		.when()
+			.get()
+		.then()
+			.body("", Matchers.hasSize(2));
+	}
+	
+	@Test
+	public void deveConter1Peso_QuandoConsultarPesoComId() {
+		given()
+			.accept(ContentType.JSON)
+			.pathParam("pesoId", 1L)
+		.when()
+			.get("/{pesoId}")
+		.then()
+			.statusCode(HttpStatus.OK.value())
+			.body("id", equalTo(1));
+	}
+	
+	@Test
+	public void deveRetornarStatus200_QuandoAtualizarUmPeso() {
+		given()
+			.body(jsonPesoAtualizar)
+			.contentType(ContentType.JSON)
+			.accept(ContentType.JSON)
+			.pathParam("pesoId", 1L)
+		.when()
+			.put("/{pesoId}")
+		.then()
+			.statusCode(HttpStatus.OK.value());
+	}
+	
+	@Test
+	public void deveRetornarStatus204_QuandoDeletarUmPeso() {
+		given()
+			.accept(ContentType.JSON)
+			.pathParam("pesoId", 3L)
+		.when()
+			.delete("/{pesoId}")
+		.then()
+			.statusCode(HttpStatus.NO_CONTENT.value());
+			
+	}
+
+	
+	void prepararDados() {
+		Pessoa pessoa = new Pessoa();
+		pessoa.setNome("Alexandre");
+		pessoa.setAltura(1.70);
+		pessoa.setEmail("alevaristofig@gmail.com");
+		pessoa.setEndereco("Rua Anhanguera, 109 - Santa Tereza, 31.015.090, Belo Horizonte MG");
+		pessoa.setData(new Date());
+		
+		pessoaService.salvar(pessoa);
+		
+		Pessoa pessoaSalva = pessoaService.buscarOuFalhar(1L);
+		
+		Peso peso = new Peso();
+		peso.setPessoa(pessoaSalva);
+		peso.setValor(100.5);
+		peso.setImc(30);
+		peso.setData(new Date());
+		
+		pesoService.salvar(peso);		
+	}
+	
+	void atualizarDados() {
+		Peso peso = pesoService.buscarOuFalhar(1L);
+		
+		peso.setValor(99.5);
+		peso.setImc(28);
+		
+		pesoService.salvar(peso);
+	}
+	
+	void deletarDados() {
+		Peso peso = pesoService.buscarOuFalhar(1L);
+		
+		pesoRepository.delete(peso);
+	}
+}

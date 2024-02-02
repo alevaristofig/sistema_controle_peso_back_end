@@ -18,6 +18,7 @@ import org.springframework.util.ResourceUtils;
 
 import com.sistemacontrolepeso.domain.model.Peso;
 import com.sistemacontrolepeso.domain.model.Pessoa;
+import com.sistemacontrolepeso.domain.repository.PesoRepository;
 import com.sistemacontrolepeso.domain.service.CadastroPesoService;
 import com.sistemacontrolepeso.domain.service.CadastroPessoaService;
 
@@ -36,6 +37,9 @@ public class CadastroPesoIT extends SistemaControlePesoApplicationTests {
 	
 	@Autowired
 	private CadastroPesoService pesoService;
+	
+	@Autowired
+	private PesoRepository pesoRepository;
 	
 	private String jsonPesoAtualizar;
 	
@@ -97,6 +101,19 @@ public class CadastroPesoIT extends SistemaControlePesoApplicationTests {
 		.then()
 			.statusCode(HttpStatus.OK.value());
 	}
+	
+	@Test
+	public void deveRetornarStatus204_QuandoDeletarUmPeso() {
+		//deletarDados();		
+		given()
+			.accept(ContentType.JSON)
+			.pathParam("pesoId", 2L)
+		.when()
+			.delete("/{pesoId}")
+		.then()
+			.statusCode(HttpStatus.NO_CONTENT.value());
+			
+	}
 
 	
 	void prepararDados() {
@@ -127,5 +144,11 @@ public class CadastroPesoIT extends SistemaControlePesoApplicationTests {
 		peso.setImc(28);
 		
 		pesoService.salvar(peso);
+	}
+	
+	void deletarDados() {
+		Peso peso = pesoService.buscarOuFalhar(2L);
+		
+		pesoRepository.delete(peso);
 	}
 }
