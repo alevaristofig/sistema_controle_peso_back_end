@@ -23,6 +23,7 @@ import com.sistemacontrolepeso.api.controller.PessoaController;
 import com.sistemacontrolepeso.domain.model.Pessoa;
 import com.sistemacontrolepeso.domain.repository.PessoaRepository;
 import com.sistemacontrolepeso.domain.service.CadastroPessoaService;
+import com.sistemacontrolepeso.util.ResourceUtils;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
@@ -40,11 +41,15 @@ public class CadastroPessoaIT extends SistemaControlePesoApplicationTests {
 	@Autowired
 	private PessoaRepository pessoaRepository;
 	
+	private String pessoa_atualizar;
+	
 	@BeforeAll
 	//@BeforeEach
 	public void setUp() {		
 		RestAssured.port = port;
 		RestAssured.basePath = "/pessoas";
+		
+		pessoa_atualizar = ResourceUtils.getContentFromResource("/json/pessoa_atualizar.json");
 		
 		deletarDados();	
 		prepararDados();
@@ -70,7 +75,7 @@ public class CadastroPessoaIT extends SistemaControlePesoApplicationTests {
 		.when()
 			.get()
 		.then()
-			.body("", Matchers.hasSize(2));
+			.body("", Matchers.hasSize(3));
 	}
 	
 	@Test
@@ -88,8 +93,10 @@ public class CadastroPessoaIT extends SistemaControlePesoApplicationTests {
 	@Test
 	public void deveRetornarStatus200_QuandoAtualizarUmaPessoa() {
 		given()
+			.body(pessoa_atualizar)
+			.contentType(ContentType.JSON)
 			.accept(ContentType.JSON)
-			.pathParam("pessoaId", 1)
+			.pathParam("pessoaId", 1L)
 		.when()
 			.put("/{pessoaId}")
 		.then()

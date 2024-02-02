@@ -1,9 +1,11 @@
 package com.sistemacontrolepeso;
 
 import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.equalTo;
 
 import java.util.Date;
 
+import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
@@ -12,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
+import org.springframework.util.ResourceUtils;
 
 import com.sistemacontrolepeso.domain.model.Peso;
 import com.sistemacontrolepeso.domain.model.Pessoa;
@@ -34,18 +37,24 @@ public class CadastroPesoIT extends SistemaControlePesoApplicationTests {
 	@Autowired
 	private CadastroPesoService pesoService;
 	
+	private String jsonPesoAtualizar;
+	
 	@BeforeAll
 	public void setUp() {
 		RestAssured.port = port;
 		RestAssured.basePath = "/peso";
 		
+		jsonPesoAtualizar = com.sistemacontrolepeso.util.ResourceUtils.getContentFromResource(
+				"/json/peso_atualizar.json");
+		
 		prepararDados();
+		atualizarDados();
 	}
 	
 	@Test
 	public void deveRetornarStatus201_QuandoCadastrarPeso() {
 		given()
-			.body("{ \"pessoa\": \"1\" }")
+			.body("{ \"pessoa_id\": \"1\" }")
 			.contentType(ContentType.JSON)
 			.accept(ContentType.JSON)
 		.when()
@@ -53,6 +62,42 @@ public class CadastroPesoIT extends SistemaControlePesoApplicationTests {
 		.then()
 			.statusCode(HttpStatus.CREATED.value());
 	}
+	
+	@Test
+	public void deverRetornar2Peso_QuandoListarPesos() {
+		given()
+			.accept(ContentType.JSON)
+		.when()
+			.get()
+		.then()
+			.body("", Matchers.hasSize(2));
+	}
+	
+	@Test
+	public void deveConter1Peso_QuandoConsultarPesoComId() {
+		given()
+			.accept(ContentType.JSON)
+			.pathParam("pesoId", 1L)
+		.when()
+			.get("/{pesoId}")
+		.then()
+			.statusCode(HttpStatus.OK.value())
+			.body("id", equalTo(1));
+	}
+	
+	@Test
+	public void deveRetornarStatus200_QuandoAtualizarUmPeso() {
+		given()
+			.body(jsonPesoAtualizar)
+			.contentType(ContentType.JSON)
+			.accept(ContentType.JSON)
+			.pathParam("pesoId", 1L)
+		.when()
+			.put("/{pesoId}")
+		.then()
+			.statusCode(HttpStatus.OK.value());
+	}
+
 	
 	void prepararDados() {
 		Pessoa pessoa = new Pessoa();
@@ -72,7 +117,15 @@ public class CadastroPesoIT extends SistemaControlePesoApplicationTests {
 		peso.setImc(30);
 		peso.setData(new Date());
 		
-		pesoService.salvar(peso);
+		pesoService.salvar(peso);		
+	}
+	
+	void atualizarDados() {
+		Peso peso = pesoService.buscarOuFalhar(1L);
 		
+		peso.setValor(99.5);
+		peso.setImc(28);
+		
+		pesoService.salvar(peso);
 	}
 }
