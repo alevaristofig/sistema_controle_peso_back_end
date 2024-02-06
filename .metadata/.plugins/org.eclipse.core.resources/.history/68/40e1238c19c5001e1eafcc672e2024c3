@@ -61,6 +61,8 @@ public class PesoController {
 	public PesoModel salvar(@RequestBody PesoInput pesoInput) {
 		Peso peso = pesoInputDisassembler.toDomainObject(pesoInput);
 		
+		peso.setData(new Date());
+		
 		peso = cadastroPesoService.salvar(peso);
 		
 		return pesoModelAssembler.toModel(peso);
@@ -69,7 +71,7 @@ public class PesoController {
 	@PutMapping("/{pesoId}")
 	public PesoModel atualizar(@PathVariable Long pesoId, @RequestBody PesoInput pesoInput) {
 		Peso peso = cadastroPesoService.buscarOuFalhar(pesoId);
-		System.out.println(pesoInput.getData());
+		
 		pesoInputDisassembler.copyToDomain(pesoInput, peso);
 		
 		peso = cadastroPesoService.salvar(peso);
