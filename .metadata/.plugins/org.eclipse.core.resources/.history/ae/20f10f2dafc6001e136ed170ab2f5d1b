@@ -20,5 +20,5 @@ public class PesoModel {
 	
 	private Date data;
 	
-	private PessoaModel pessoa;
+	private PessoaIdInput pessoa;
 }

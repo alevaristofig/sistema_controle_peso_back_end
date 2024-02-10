@@ -2,7 +2,6 @@ package com.sistemacontrolepeso.api.model;
 
 import java.util.Date;
 
-import com.sistemacontrolepeso.api.model.input.PessoaIdInput;
 import com.sistemacontrolepeso.domain.model.Pessoa;
 
 import lombok.Getter;
@@ -19,6 +18,4 @@ public class PesoModel {
 	private double imc;
 	
 	private Date data;
-	
-	private PessoaModel pessoa;
 }
