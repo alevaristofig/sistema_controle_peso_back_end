@@ -3,6 +3,7 @@ package com.sistemacontrolepeso;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import org.hamcrest.Matchers;
@@ -132,7 +133,7 @@ public class CadastroPesoIT extends SistemaControlePesoApplicationTests {
 		peso.setPessoa(pessoaSalva);
 		peso.setValor(100.5);
 		peso.setImc(30);
-		peso.setData(new Date());
+		peso.setData(LocalDateTime.now());
 		
 		pesoService.salvar(peso);		
 	}

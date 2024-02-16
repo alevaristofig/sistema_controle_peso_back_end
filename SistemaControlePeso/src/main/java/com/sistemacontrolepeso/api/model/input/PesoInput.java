@@ -1,5 +1,6 @@
 package com.sistemacontrolepeso.api.model.input;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 import lombok.Getter;
@@ -13,7 +14,7 @@ public class PesoInput {
 	
 	private double imc;
 	
-	private Date data;
+	private LocalDateTime data;
 	
 	private PessoaIdInput pessoa;
 }
