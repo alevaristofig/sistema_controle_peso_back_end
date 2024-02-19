@@ -104,8 +104,7 @@ public class CadastroPesoIT extends SistemaControlePesoApplicationTests {
 	}
 	
 	@Test
-	public void deveRetornarStatus204_QuandoDeletarUmPeso() {
-		//deletarDados();		
+	public void deveRetornarStatus204_QuandoDeletarUmPeso() {		
 		given()
 			.accept(ContentType.JSON)
 			.pathParam("pesoId", 2L)

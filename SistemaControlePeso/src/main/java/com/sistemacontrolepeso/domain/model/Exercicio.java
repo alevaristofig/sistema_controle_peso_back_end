@@ -35,6 +35,6 @@ public class Exercicio {
 	private LocalDateTime dataCadastro;
 	
 	@CreationTimestamp
-	@Column(columnDefinition = "datetime")
+	@Column(nullable = true, columnDefinition = "datetime")
 	private LocalDateTime dataAtualizar;
 }
