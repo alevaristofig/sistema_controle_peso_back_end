@@ -58,7 +58,7 @@ public class ExercicioController {
 	@PutMapping("/{exercicioId}")
 	@ResponseStatus(HttpStatus.OK)
 	public ExercicioModel atualizar(@PathVariable Long exercicioId, @RequestBody ExercicioInput exercicioInput) {
-		System.out.println("entrou put controller");
+		System.out.println(exercicioInput.getDataAtualizar());
 		Exercicio exercicio = cadastroExercicioService.buscarOuFalhar(exercicioId);
 		
 		exercicioInputDisassembler.copytoDomain(exercicioInput, exercicio);
@@ -71,6 +71,7 @@ public class ExercicioController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public ExercicioModel salvar(@RequestBody ExercicioInput exercicioInput) {
+		System.out.println("entrou");
 		Exercicio exercicio = exercicioInputDisassembler.toDomainObject(exercicioInput);
 		
 		cadastroExercicioService.salvar(exercicio);

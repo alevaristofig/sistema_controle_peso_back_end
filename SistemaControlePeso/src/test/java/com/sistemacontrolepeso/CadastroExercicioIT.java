@@ -53,7 +53,7 @@ public class CadastroExercicioIT extends SistemaControlePesoApplicationTests {
 		databaseCleaner.clearTables();
 		prepararDados();
 		atualizarDados();
-		deletarExercicio();
+		//deletarExercicio();
 	}
 	
 	@Test
