@@ -1,10 +1,12 @@
 package com.sistemacontrolepeso.api.controller;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -24,6 +26,7 @@ import com.sistemacontrolepeso.domain.model.Peso;
 import com.sistemacontrolepeso.domain.repository.ExercicioRepository;
 import com.sistemacontrolepeso.domain.service.CadastroExercicioService;
 
+@CrossOrigin(originPatterns = "*")
 @RestController
 @RequestMapping(value = "/exercicio", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ExercicioController {
@@ -49,7 +52,7 @@ public class ExercicioController {
 	
 	@GetMapping("/{exercicioId}")
 	public ExercicioModel buscar(@PathVariable Long exercicioId) {
-		System.out.println("entrou get controller");
+		
 		Exercicio exercicio = cadastroExercicioService.buscarOuFalhar(exercicioId);
 		
 		return exercicioModelAssembler.toModel(exercicio);
@@ -58,7 +61,9 @@ public class ExercicioController {
 	@PutMapping("/{exercicioId}")
 	@ResponseStatus(HttpStatus.OK)
 	public ExercicioModel atualizar(@PathVariable Long exercicioId, @RequestBody ExercicioInput exercicioInput) {
-		System.out.println(exercicioInput.getDataAtualizar());
+		
+		exercicioInput.setDataAtualizar(LocalDateTime.now());
+		
 		Exercicio exercicio = cadastroExercicioService.buscarOuFalhar(exercicioId);
 		
 		exercicioInputDisassembler.copytoDomain(exercicioInput, exercicio);
@@ -71,8 +76,11 @@ public class ExercicioController {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public ExercicioModel salvar(@RequestBody ExercicioInput exercicioInput) {
-		System.out.println("entrou");
+		
 		Exercicio exercicio = exercicioInputDisassembler.toDomainObject(exercicioInput);
+		
+		exercicio.setDataCadastro(LocalDateTime.now());
+		exercicio.setDataAtualizar(null);
 		
 		cadastroExercicioService.salvar(exercicio);
 		
