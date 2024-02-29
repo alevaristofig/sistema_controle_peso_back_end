@@ -9,29 +9,38 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.EmbeddedId;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
-@NoArgsConstructor
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Getter
 @Setter
 public class PessoaExercicio {
 
-	@JsonIgnore
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@EqualsAndHashCode.Include
-	@EmbeddedId
-	private PessoaExercicioPK id = new PessoaExercicioPK();
+	private Long id;
+	
+	private char treino;
 	
 	@CreationTimestamp
 	@Column(columnDefinition = "datetime")
-	private LocalDateTime dataAtualizar;
+	private LocalDateTime data;
 	
-	public PessoaExercicio(Pessoa pessoa, Exercicio exercicio) {
-		id.setPessoa(pessoa);
-		id.setExercicio(exercicio);		
-	}
+	@ManyToOne
+	@JoinColumn(name = "pessoa_id")
+	private Pessoa pessoa;
+	
+	@ManyToOne
+	@JoinColumn(name = "exercicio_id")
+	private Exercicio exercicio;
 }
