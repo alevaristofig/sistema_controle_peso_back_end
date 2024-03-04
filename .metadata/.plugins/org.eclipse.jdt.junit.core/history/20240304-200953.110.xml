@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="CadastroAlimentosIT" project="SistemaControlePeso" tests="2" started="2" failures="0" errors="0" ignored="0">
+  <testsuite name="com.sistemacontrolepeso.CadastroAlimentosIT" time="1.411" displayname="CadastroAlimentosIT" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroAlimentosIT]">
+    <testcase name="contextLoads" classname="com.sistemacontrolepeso.CadastroAlimentosIT" time="0.705" displayname="contextLoads()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroAlimentosIT]/[method:contextLoads()]"/>
+    <testcase name="deveRetornarStatus201_QuandoCadastrarAlimento" classname="com.sistemacontrolepeso.CadastroAlimentosIT" time="0.706" displayname="deveRetornarStatus201_QuandoCadastrarAlimento()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroAlimentosIT]/[method:deveRetornarStatus201_QuandoCadastrarAlimento()]"/>
+  </testsuite>
+</testrun>

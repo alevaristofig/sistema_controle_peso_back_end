@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="CadastroAlimentosIT" project="SistemaControlePeso" tests="2" started="2" failures="0" errors="1" ignored="0">
+  <testsuite name="com.sistemacontrolepeso.CadastroAlimentosIT" time="1.4" displayname="CadastroAlimentosIT" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroAlimentosIT]">
+    <testcase name="deveRetornarStatus201_QuandoCadastrarAlimento" classname="com.sistemacontrolepeso.CadastroAlimentosIT" time="1.377" displayname="deveRetornarStatus201_QuandoCadastrarAlimento()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroAlimentosIT]/[method:deveRetornarStatus201_QuandoCadastrarAlimento()]"/>
+    <testcase name="deveRetornar2Alimento_QuandoListarAlimentos" classname="com.sistemacontrolepeso.CadastroAlimentosIT" time="0.022" displayname="deveRetornar2Alimento_QuandoListarAlimentos()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroAlimentosIT]/[method:deveRetornar2Alimento_QuandoListarAlimentos()]">
+      <error>com.sistemacontrolepeso.domain.exception.AlimentoNaoEncontradoException: Não existe um cadastro de alimento com o código 1&#13;
+	at com.sistemacontrolepeso.domain.service.CadastroAlimentoService.lambda$0(CadastroAlimentoService.java:25)&#13;
+	at java.base/java.util.Optional.orElseThrow(Optional.java:403)&#13;
+	at com.sistemacontrolepeso.domain.service.CadastroAlimentoService.buscarOuFalhar(CadastroAlimentoService.java:25)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)&#13;
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)&#13;
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:352)&#13;
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:713)&#13;
+	at com.sistemacontrolepeso.domain.service.CadastroAlimentoService$$SpringCGLIB$$0.buscarOuFalhar(&lt;generated&gt;)&#13;
+	at com.sistemacontrolepeso.CadastroAlimentosIT.atualizarDados(CadastroAlimentosIT.java:132)&#13;
+	at com.sistemacontrolepeso.CadastroAlimentosIT.setUp(CadastroAlimentosIT.java:52)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+</testrun>

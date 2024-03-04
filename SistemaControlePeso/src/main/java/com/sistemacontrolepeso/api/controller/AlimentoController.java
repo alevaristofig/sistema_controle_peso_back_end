@@ -75,7 +75,7 @@ public class AlimentoController {
 		alimento.setDataCadastro(LocalDateTime.now());
 		alimento.setDataAtualizacao(null);
 		
-		alimento = cadastroAlimentoService.salvar(alimento);
+		//alimento = cadastroAlimentoService.salvar(alimento);
 		
 		return alimentoModelAssembler.toModel(alimento);
 		

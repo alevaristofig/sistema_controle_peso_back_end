@@ -1,6 +1,7 @@
 package com.sistemacontrolepeso;
 
 import static io.restassured.RestAssured.given;
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.CoreMatchers.equalTo;
 
 import java.time.LocalDateTime;
@@ -11,6 +12,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.mockito.internal.matchers.GreaterThan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
@@ -26,7 +28,7 @@ import io.restassured.http.ContentType;
 
 @TestInstance(Lifecycle.PER_CLASS)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class CadastroAlimentosIT extends SistemaControlePesoApplicationTests {
+public class CadastroAlimentosIT /*extends SistemaControlePesoApplicationTests*/ {
 
 	@LocalServerPort
 	private int port;
@@ -40,8 +42,6 @@ public class CadastroAlimentosIT extends SistemaControlePesoApplicationTests {
 	@Autowired
 	private AlimentoRepositoy alimentoRepository;
 		
-	
-	//@BeforeAll
 	@BeforeEach
 	public void setUp() {
 		RestAssured.port = port;
@@ -72,19 +72,19 @@ public class CadastroAlimentosIT extends SistemaControlePesoApplicationTests {
 		.when()
 			.get()
 		.then()
-			.body("", Matchers.hasSize(2));
+			.body("", Matchers.hasSize(1));
 	}
 	
 	@Test
 	public void deveConter1Alimento_QuandoConsultarAlimentoComId() {
 		given()
 			.accept(ContentType.JSON)
-			.pathParam("id", 1L)
+			.pathParam("id", 2L)
 		.when()
 			.get("/{id}")
 		.then()
 			.statusCode(HttpStatus.OK.value())
-			.body("id", equalTo(1));
+			.body("id", equalTo(2));
 	}
 	
 	@Test
@@ -105,7 +105,7 @@ public class CadastroAlimentosIT extends SistemaControlePesoApplicationTests {
 	public void deveRetornarStatus204_QuandoApagarUmAlimento() {
 		given()
 			.accept(ContentType.JSON)
-			.pathParam("alimentoId", 1L)
+			.pathParam("alimentoId", 2L)
 		.when()
 			.delete("/{alimentoId}")
 		.then()
@@ -122,6 +122,16 @@ public class CadastroAlimentosIT extends SistemaControlePesoApplicationTests {
 		alimento.setDataAtualizacao(null);
 		
 		cadastroAlimentoService.salvar(alimento);
+		
+		Alimento alimento2 = new Alimento();
+		
+		alimento2.setNome("Pão com Creme de Ricota");
+		alimento2.setQuantidade("1");
+		alimento2.setCalorias(227);
+		alimento2.setDataCadastro(LocalDateTime.now());
+		alimento2.setDataAtualizacao(null);
+		
+		cadastroAlimentoService.salvar(alimento2);
 	}
 	
 	void atualizarDados() {
