@@ -1,0 +1,63 @@
+package com.sistemacontrolepeso;
+
+import static io.restassured.RestAssured.given;
+
+import java.time.LocalDateTime;
+
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.http.HttpStatus;
+
+import com.sistemacontrolepeso.domain.model.Alimento;
+import com.sistemacontrolepeso.domain.service.CadastroAlimentoService;
+
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+
+@TestInstance(Lifecycle.PER_CLASS)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+public class CadastroAlimentosIT extends SistemaControlePesoApplicationTests {
+
+	@LocalServerPort
+	private int port;
+	
+	@Autowired
+	private CadastroAlimentoService cadastroAlimentoService;
+	
+	@BeforeAll
+	public void setUp() {
+		RestAssured.port = port;
+		RestAssured.basePath = "/alimentos";
+		
+		prepararDados();
+	}
+	
+	@Test
+	public void deveRetornarStatus201_QuandoCadastrarAlimento() {
+		given()
+		.body("{ \"id\": \"1\" }")
+			.contentType(ContentType.JSON)
+			.accept(ContentType.JSON)
+		.when()
+			.post()
+		.then()
+			.statusCode(HttpStatus.CREATED.value());
+	}
+	
+	void prepararDados() {
+		Alimento alimento = new Alimento();
+		
+		alimento.setNome("Café com Leite");
+		alimento.setQuantidade("200ml");
+		alimento.setCalorias(90L);
+		alimento.setDataCadastro(LocalDateTime.now());
+		alimento.setDataAtualizacao(null);
+		
+		cadastroAlimentoService.salvar(alimento);
+	}
+}
