@@ -1,5 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?><testrun name="CadastroAlimentosIT" project="SistemaControlePeso" tests="1" started="1" failures="0" errors="0" ignored="0">
-  <testsuite name="com.sistemacontrolepeso.CadastroAlimentosIT" time="1.417" displayname="CadastroAlimentosIT" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroAlimentosIT]">
-    <testcase name="deveRetornarStatus201_QuandoCadastrarAlimento" classname="com.sistemacontrolepeso.CadastroAlimentosIT" time="1.417" displayname="deveRetornarStatus201_QuandoCadastrarAlimento()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroAlimentosIT]/[method:deveRetornarStatus201_QuandoCadastrarAlimento()]"/>
-  </testsuite>
-</testrun>

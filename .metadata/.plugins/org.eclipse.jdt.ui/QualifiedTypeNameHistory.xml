@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.sistemacontrolepeso.domain.repository.PessoaExercicio"/>
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.CadastroPessoaExercicio"/>
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.api.model.input.PessoaIdInput"/>
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.api.model.input.ExercicioIdInput"/>
@@ -60,4 +59,5 @@
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ResponseStatus"/>
     <fullyQualifiedTypeName name="org.junit.jupiter.api.BeforeEach"/>
+    <fullyQualifiedTypeName name="org.mockito.internal.matchers.GreaterThan"/>
 </qualifiedTypeNameHistroy>
