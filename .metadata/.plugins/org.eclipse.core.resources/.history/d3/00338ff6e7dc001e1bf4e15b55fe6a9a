@@ -1,5 +1,5 @@
 package com.sistemacontrolepeso.domain.model;
 
-public class Alimento {
+public class Dieta {
 
 }

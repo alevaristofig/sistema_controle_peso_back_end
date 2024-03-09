@@ -1,0 +1,5 @@
+package com.sistemacontrolepeso.domain.repository;
+
+public interface DietaRepository {
+
+}

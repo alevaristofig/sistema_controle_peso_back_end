@@ -4,7 +4,8 @@ import static io.restassured.RestAssured.given;
 
 import java.time.LocalDateTime;
 
-import org.junit.jupiter.api.BeforeAll;
+import org.hamcrest.Matchers;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.junit.jupiter.api.TestInstance.Lifecycle;
@@ -13,32 +14,32 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 
-import com.sistemacontrolepeso.domain.model.Alimento;
-import com.sistemacontrolepeso.domain.service.CadastroAlimentoService;
+import com.sistemacontrolepeso.domain.model.Dieta;
+import com.sistemacontrolepeso.domain.service.CadastroDietaService;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 
 @TestInstance(Lifecycle.PER_CLASS)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class CadastroAlimentosIT extends SistemaControlePesoApplicationTests {
+public class CadastroDietaIT {
 
 	@LocalServerPort
 	private int port;
 	
 	@Autowired
-	private CadastroAlimentoService cadastroAlimentoService;
+	private CadastroDietaService cadastroDieta;
 	
-	@BeforeAll
+	@BeforeEach
 	public void setUp() {
 		RestAssured.port = port;
-		RestAssured.basePath = "/alimentos";
+		RestAssured.basePath = "/dietas";
 	}
 	
 	@Test
-	public void deveRetornarStatus201_QuandoCadastrarAlimento() {
+	public void deveRetornarStatus201_QuandoCadastrarDieta() {
 		given()
-		.body("{ \"id\": \"1\" }")
+		.body("{ \"nome\": \"Café da Manhã\" }")
 			.contentType(ContentType.JSON)
 			.accept(ContentType.JSON)
 		.when()
@@ -47,15 +48,28 @@ public class CadastroAlimentosIT extends SistemaControlePesoApplicationTests {
 			.statusCode(HttpStatus.CREATED.value());
 	}
 	
-	void prepararDados() {
-		Alimento alimento = new Alimento();
-		
-		alimento.setNome("Café com Leite");
-		alimento.setQuantidade("200ml");
-		alimento.setCalorias(90L);
-		alimento.setDataCadastro(LocalDateTime.now());
-		alimento.setDataAtualizacao(null);
-		
-		cadastroAlimentoService.salvar(alimento);
+	@Test
+	public void deveRetornar2Dietas_QuandoListarDietas() {
+		given()
+			.accept(ContentType.JSON)
+		.when()
+			.get()
+		.then()
+			.body("", Matchers.hasSize(2));
 	}
+	
+	void prepararDados() {
+		Dieta dieta = new Dieta();
+		
+		dieta.setNome("Café da Manhã");
+		dieta.setDataCadastro(LocalDateTime.now());
+		
+		Dieta dieta2 = new Dieta();
+		
+		dieta2.setNome("Almoço");
+		dieta2.setDataCadastro(LocalDateTime.now());
+		
+		cadastroDieta.salvar(dieta2);
+	}
+	
 }

@@ -1,0 +1,98 @@
+package com.sistemacontrolepeso;
+
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.equalTo;
+
+import java.time.LocalDateTime;
+
+import org.hamcrest.Matchers;
+import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.http.HttpStatus;
+
+import com.sistemacontrolepeso.domain.model.Dieta;
+import com.sistemacontrolepeso.domain.service.CadastroDietaService;
+import com.sistemacontrolepeso.util.DatabaseCleaner;
+
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+
+@TestInstance(Lifecycle.PER_CLASS)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+public class CadastroDietaIT {
+
+	@LocalServerPort
+	private int port;
+	
+	@Autowired
+	private CadastroDietaService cadastroDieta;
+	
+	@Autowired
+	private DatabaseCleaner databaseCleaner;
+	
+	@BeforeEach
+	//@BeforeAll
+	public void setUp() {
+		RestAssured.port = port;
+		RestAssured.basePath = "/dietas";
+		
+		databaseCleaner.clearTables();
+		prepararDados();
+	}
+	
+	@Test
+	public void deveRetornarStatus201_QuandoCadastrarDieta() {
+		given()
+		.body("{ \"nome\": \"Café da Manhã\" }")
+			.contentType(ContentType.JSON)
+			.accept(ContentType.JSON)
+		.when()
+			.post()
+		.then()
+			.statusCode(HttpStatus.CREATED.value());
+	}
+	
+	@Test
+	public void deveRetornar2Dietas_QuandoListarDietas() {
+		given()
+			.accept(ContentType.JSON)
+		.when()
+			.get()
+		.then()
+			.body("", Matchers.hasSize(2));
+	}
+	
+	@Test
+	public void deveConter1Dieta_QuandoConsultarDietaComId() {
+		given()
+			.accept(ContentType.JSON)
+			.pathParam("id", 1L)
+		.when()
+			.get("/{id}")
+		.then()
+			.statusCode(HttpStatus.OK.value())
+			.body("id", equalTo(1));
+	}
+	
+	void prepararDados() {
+		Dieta dieta = new Dieta();
+		
+		dieta.setNome("Café da Manhã");
+		dieta.setDataCadastro(LocalDateTime.now());
+		
+		Dieta dieta2 = new Dieta();
+		
+		dieta2.setNome("Almoço");
+		dieta2.setDataCadastro(LocalDateTime.now());
+		
+		cadastroDieta.salvar(dieta);
+		cadastroDieta.salvar(dieta2);
+	}
+	
+}

@@ -147,7 +147,9 @@ public class CadastroAlimentosIT /*extends SistemaControlePesoApplicationTests*/
 	}
 	
 	void apagarDados() {
-		Alimento alimento = cadastroAlimentoService.buscarOuFalhar(1L);
+		//Alimento alimento = cadastroAlimentoService.buscarOuFalhar(1L);
+		Alimento alimento = new Alimento();
+		alimento.setId(2L);
 		
 		alimentoRepository.delete(alimento);
 	}

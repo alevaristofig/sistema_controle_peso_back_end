@@ -17,7 +17,7 @@ import lombok.Setter;
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Getter
 @Setter
-public class Alimento {
+public class Dieta {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,9 +26,11 @@ public class Alimento {
 	
 	private String nome;
 	
-	private double calorias;
+	@CreationTimestamp
+	@Column(nullable = false, columnDefinition = "datetime")
+	private LocalDateTime dataCadastro;
 	
 	@CreationTimestamp
 	@Column(nullable = true, columnDefinition = "datetime")
-	private LocalDateTime data;
+	private LocalDateTime dataAtualizacao;
 }
