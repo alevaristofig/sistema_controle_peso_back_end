@@ -1,0 +1,25 @@
+package com.sistemacontrolepeso;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.server.LocalServerPort;
+
+import io.restassured.RestAssured;
+
+@TestInstance(Lifecycle.PER_CLASS)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+public class CadastroAlimentoDieta {
+
+	@LocalServerPort
+	private int port;
+	
+	@BeforeEach
+	public void setUp() {
+		RestAssured.port = port;
+		RestAssured.basePath = "/alimentodieta";
+	}
+	
+	
+}

@@ -1,0 +1,41 @@
+package com.sistemacontrolepeso;
+
+import static io.restassured.RestAssured.given;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+import org.junit.jupiter.api.TestInstance.Lifecycle;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.http.HttpStatus;
+
+import io.restassured.RestAssured;
+import io.restassured.http.ContentType;
+
+@TestInstance(Lifecycle.PER_CLASS)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+public class CadastroAlimentoDieta {
+
+	@LocalServerPort
+	private int port;
+	
+	@BeforeEach
+	public void setUp() {
+		RestAssured.port = port;
+		RestAssured.basePath = "/alimentodieta";
+	}
+	
+	@Test
+	public void deverRetornarStatus204_QuandoCadastrarAlimentosParaDieta() {
+		given()
+			.body("{ \"id\": \"1\" }")
+			.accept(ContentType.JSON)
+			.contentType(ContentType.JSON)
+		.when()
+			.post()
+		.then()
+			.statusCode(HttpStatus.CREATED.value());
+			
+	}
+}
