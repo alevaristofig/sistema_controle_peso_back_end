@@ -35,7 +35,7 @@ public class AlimentoDietaController {
 		dieta.setId(alimentoDietaInput.getDietaId().getId());
 		
 		Alimento alimento = new Alimento();
-		alimento.setId(alimentoDietaInput.getAlimentoId().getId());
+		alimento.setId(alimentoDietaInput.getDietaId().getId());
 		
 		AlimentoDieta alimentoDieta = new AlimentoDieta();
 		alimentoDieta.setDieta(dieta);
