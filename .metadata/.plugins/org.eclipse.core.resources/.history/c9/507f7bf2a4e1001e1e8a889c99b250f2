@@ -1,0 +1,14 @@
+package com.sistemacontrolepeso.domain.repository;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import com.sistemacontrolepeso.domain.model.AlimentoDieta;
+import com.sistemacontrolepeso.domain.model.Dieta;
+
+public interface AlimentoDietaRepository extends JpaRepository<AlimentoDieta, Long> {
+
+	@Query("from AlimentoDieta where dieta = :dieta")
+	AlimentoDieta buscarAlimentoDietaId(@Param("dieta") Dieta dieta);
+}

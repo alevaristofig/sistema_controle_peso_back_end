@@ -3,6 +3,8 @@ package com.sistemacontrolepeso.domain.model;
 import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -38,7 +40,8 @@ public class AlimentoDieta {
 	@JoinColumn(name = "alimento_id")
 	private Alimento alimento;
 	
-	@ManyToOne
+	@ManyToOne()
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "dieta_id")
 	private Dieta dieta;
 }
