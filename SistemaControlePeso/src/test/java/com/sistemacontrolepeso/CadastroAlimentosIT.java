@@ -28,7 +28,7 @@ import io.restassured.http.ContentType;
 
 @TestInstance(Lifecycle.PER_CLASS)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class CadastroAlimentosIT /*extends SistemaControlePesoApplicationTests*/ {
+public class CadastroAlimentosIT {
 
 	@LocalServerPort
 	private int port;

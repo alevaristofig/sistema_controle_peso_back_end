@@ -39,4 +39,8 @@ public class Pessoa {
 	@Temporal(TemporalType.DATE)
 	private Date data;
 	
+	@OneToMany
+	@JoinColumn(name = "pessoa_id")
+	private List<HistoricoMedico> historicoMedico;
+	
 }

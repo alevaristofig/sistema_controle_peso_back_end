@@ -1,5 +1,0 @@
-package com.sistemacontrolepeso.api.model.input;
-
-public class AlimentoDieta {
-
-}

@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="CadastroHistoricoMedicoIT" project="SistemaControlePeso" tests="4" started="4" failures="0" errors="4" ignored="0">
+  <testsuite name="com.sistemacontrolepeso.CadastroHistoricoMedicoIT" time="1.272" displayname="CadastroHistoricoMedicoIT" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroHistoricoMedicoIT]">
+    <testcase name="deveConter1HistoricoMedico_QuandoConsultarHistoricoMedicoComId" classname="com.sistemacontrolepeso.CadastroHistoricoMedicoIT" time="0.884" displayname="deveConter1HistoricoMedico_QuandoConsultarHistoricoMedicoComId()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroHistoricoMedicoIT]/[method:deveConter1HistoricoMedico_QuandoConsultarHistoricoMedicoComId()]">
+      <error>java.lang.Error: Unresolved compilation problem: 
+	historicoMedicoRepository cannot be resolved
+&#13;
+	at com.sistemacontrolepeso.CadastroHistoricoMedicoIT.deletarDados(CadastroHistoricoMedicoIT.java:171)&#13;
+	at com.sistemacontrolepeso.CadastroHistoricoMedicoIT.setUp(CadastroHistoricoMedicoIT.java:60)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="deveRetornarStatus201_QuandoCadastrarHistoricoMedico" classname="com.sistemacontrolepeso.CadastroHistoricoMedicoIT" time="0.131" displayname="deveRetornarStatus201_QuandoCadastrarHistoricoMedico()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroHistoricoMedicoIT]/[method:deveRetornarStatus201_QuandoCadastrarHistoricoMedico()]">
+      <error>java.lang.Error: Unresolved compilation problem: 
+	historicoMedicoRepository cannot be resolved
+&#13;
+	at com.sistemacontrolepeso.CadastroHistoricoMedicoIT.deletarDados(CadastroHistoricoMedicoIT.java:171)&#13;
+	at com.sistemacontrolepeso.CadastroHistoricoMedicoIT.setUp(CadastroHistoricoMedicoIT.java:60)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="deveRetornarStatus200_QuandoAtualiazarUmHistoricoMedico" classname="com.sistemacontrolepeso.CadastroHistoricoMedicoIT" time="0.127" displayname="deveRetornarStatus200_QuandoAtualiazarUmHistoricoMedico()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroHistoricoMedicoIT]/[method:deveRetornarStatus200_QuandoAtualiazarUmHistoricoMedico()]">
+      <error>java.lang.Error: Unresolved compilation problem: 
+	historicoMedicoRepository cannot be resolved
+&#13;
+	at com.sistemacontrolepeso.CadastroHistoricoMedicoIT.deletarDados(CadastroHistoricoMedicoIT.java:171)&#13;
+	at com.sistemacontrolepeso.CadastroHistoricoMedicoIT.setUp(CadastroHistoricoMedicoIT.java:60)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+    <testcase name="deveRetornarStatus204_QuandoApagarHistoricoMedico" classname="com.sistemacontrolepeso.CadastroHistoricoMedicoIT" time="0.129" displayname="deveRetornarStatus204_QuandoApagarHistoricoMedico()" uniqueid="[engine:junit-jupiter]/[class:com.sistemacontrolepeso.CadastroHistoricoMedicoIT]/[method:deveRetornarStatus204_QuandoApagarHistoricoMedico()]">
+      <error>java.lang.Error: Unresolved compilation problem: 
+	historicoMedicoRepository cannot be resolved
+&#13;
+	at com.sistemacontrolepeso.CadastroHistoricoMedicoIT.deletarDados(CadastroHistoricoMedicoIT.java:171)&#13;
+	at com.sistemacontrolepeso.CadastroHistoricoMedicoIT.setUp(CadastroHistoricoMedicoIT.java:60)&#13;
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)&#13;
+&#13;
+</error>
+    </testcase>
+  </testsuite>
+</testrun>
