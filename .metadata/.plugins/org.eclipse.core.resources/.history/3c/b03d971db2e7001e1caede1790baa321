@@ -76,6 +76,7 @@ public class HistoricoMedicoController {
 		
 		historicoMedicoInputDisassembler.copytoDomain(historicoMedicoInput, historicoMedico);
 		historicoMedico.setDataAtualizacao(LocalDateTime.now());
+		historicoMedico.setDataCadastro(LocalDateTime.now());
 		
 		historicoMedico = cadastroHistoricoMedicoService.salvar(historicoMedico);
 		

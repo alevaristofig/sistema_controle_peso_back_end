@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -26,7 +25,6 @@ import com.sistemacontrolepeso.domain.model.HistoricoMedico;
 import com.sistemacontrolepeso.domain.repository.HistoricoMedicoRepository;
 import com.sistemacontrolepeso.domain.service.CadastroHistoricoMedicoService;
 
-@CrossOrigin(originPatterns = "*")
 @RestController
 @RequestMapping(value = "/historicomedico", produces = MediaType.APPLICATION_JSON_VALUE)
 public class HistoricoMedicoController {
@@ -76,6 +74,7 @@ public class HistoricoMedicoController {
 		
 		historicoMedicoInputDisassembler.copytoDomain(historicoMedicoInput, historicoMedico);
 		historicoMedico.setDataAtualizacao(LocalDateTime.now());
+		historicoMedico.setDataCadastro(LocalDateTime.now());
 		
 		historicoMedico = cadastroHistoricoMedicoService.salvar(historicoMedico);
 		

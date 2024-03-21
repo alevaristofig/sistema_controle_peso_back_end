@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="jakarta.persistence.JoinTable"/>
-    <fullyQualifiedTypeName name="jakarta.persistence.CascadeType"/>
-    <fullyQualifiedTypeName name="org.hibernate.annotations.OnDelete"/>
-    <fullyQualifiedTypeName name="org.hibernate.annotations.OnDeleteAction"/>
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.api.model.input.AlimentoIdInput"/>
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.api.model.input.DietaIdInput"/>
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.domain.exception.DietaNaoEncontradoException"/>
@@ -35,7 +31,6 @@
     <fullyQualifiedTypeName name="org.springframework.http.MediaType"/>
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.domain.service.CadastroHistoricoMedicoService"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ResponseStatus"/>
     <fullyQualifiedTypeName name="org.springframework.http.HttpStatus"/>
     <fullyQualifiedTypeName name="lombok.Getter"/>
     <fullyQualifiedTypeName name="lombok.Setter"/>
@@ -50,14 +45,19 @@
     <fullyQualifiedTypeName name="io.restassured.path.json.JsonPath"/>
     <fullyQualifiedTypeName name="org.junit.jupiter.api.Test"/>
     <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
-    <fullyQualifiedTypeName name="com.sistemacontrolepeso.domain.repository.HistoricoMedicoRepository"/>
     <fullyQualifiedTypeName name="org.junit.jupiter.api.Order"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
-    <fullyQualifiedTypeName name="org.springframework.validation.annotation.Validated"/>
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.domain.exception.EntidadeNaoEncontradaException"/>
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.domain.model.HistoricoMedico"/>
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.domain.exception.HistoricoMedicoNaoEncontradoException"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PutMapping"/>
+    <fullyQualifiedTypeName name="com.sistemacontrolepeso.domain.repository.HistoricoMedicoRepository"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.DeleteMapping"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ResponseStatus"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
+    <fullyQualifiedTypeName name="org.springframework.validation.annotation.Validated"/>
     <fullyQualifiedTypeName name="java.time.LocalDateTime"/>
+    <fullyQualifiedTypeName name="com.sistemacontrolepeso.api.model.input.PessoaIdInput"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.sistemacontrolepeso.domain.service.CadastroPessoaService"/>
 </qualifiedTypeNameHistroy>
