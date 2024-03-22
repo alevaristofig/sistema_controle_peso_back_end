@@ -1,0 +1,61 @@
+package com.sistemacontrolepeso.api.exceptionhandler;
+
+import java.time.OffsetDateTime;
+
+import org.springframework.beans.TypeMismatchException;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatusCode;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.ControllerAdvice;
+import org.springframework.web.context.request.WebRequest;
+import org.springframework.web.method.annotation.MethodArgumentTypeMismatchException;
+import org.springframework.web.servlet.NoHandlerFoundException;
+import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
+
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
+@ControllerAdvice
+public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
+	
+	public static final String MSG_ERRO_GENERICA_USUARIO_FINAL = "Ocorreu um erro interno inesperado no sistema."
+			+ "Tente novamente e se o problema persistir, entre em contato com o administrador do sistema";
+	
+	
+	@Override
+	protected ResponseEntity<Object> handleTypeMismatch(TypeMismatchException ex, HttpHeaders headers,
+			HttpStatusCode status, WebRequest request) {
+		
+		if(MethodArgumentTypeMismatchException) {
+			return 
+		}
+		
+		
+		return super.handleTypeMismatch(ex, headers, status, request);
+	}
+	
+	private ResponseEntity<Object> handleMethodArgumentTypeMismatch(MethodArgumentTypeMismatchException ex,
+			HttpHeaders http, HttpStatusCode status, WebRequest web){
+		
+		ProblemType problemType = ProblemType.PARAMETRO_INVALIDO;
+		
+		String detail = String.format("O parâmetro de URL '%' recebeu o valor '%s' "
+				+ "que é um tipo inválido. Corrija e informe um valor compatível com o tipo %s", 
+				ex.getName(), ex.getValue(), ex.getRequiredType().getSimpleName());
+		
+		Problem problem = 
+	}
+	
+	private Problem.ProblemBuilder createProblemBuilder(HttpStatusCode status, 
+			ProblemType problemType, String detail){
+		
+		return Problem.builder()
+				.timestamp(OffsetDateTime.now())
+				.status(status.value())
+				.type(problemType.getUri())
+				.title(problemType.getTitle())
+				.detail(detail);
+	}
+	
+	
+}
