@@ -5,7 +5,8 @@ import lombok.Getter;
 @Getter
 public enum ProblemType {
 
-	PARAMETRO_INVALIDO("/parametro-invalido", "Parâmetro inválido");
+	PARAMETRO_INVALIDO("/parametro-invalido", "Parâmetro inválido"),
+	RECURSO_NAO_ENCONTRADO("/recurso-nao-encontrado", "Recurso não encontrado");
 	
 	private String title;
 	private String uri;
