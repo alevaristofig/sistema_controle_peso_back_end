@@ -14,6 +14,9 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -29,15 +32,22 @@ public class Peso {
 	@EqualsAndHashCode.Include
 	private Long id;
 	
+	@NotNull
+	@Column(nullable = false)
 	private double valor;
 	
+	@NotNull
+	@Column(nullable = false)
 	private double imc;
 	
 
+	@NotNull
 	@CreationTimestamp
 	@Column(nullable = false, columnDefinition = "datetime")
 	private LocalDateTime data;
 	
+	@Valid
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "pessoa_id", referencedColumnName = "id")
 	private Pessoa pessoa;

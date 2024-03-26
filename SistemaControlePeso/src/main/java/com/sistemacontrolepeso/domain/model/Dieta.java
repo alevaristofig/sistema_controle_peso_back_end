@@ -3,12 +3,14 @@ package com.sistemacontrolepeso.domain.model;
 import java.time.LocalDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.validation.constraints.NotBlank;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,13 +26,15 @@ public class Dieta {
 	@EqualsAndHashCode.Include
 	private Long id;
 	
+	@NotBlank
+	@Column(nullable = false)
 	private String nome;
 	
 	@CreationTimestamp
 	@Column(nullable = false, columnDefinition = "datetime")
 	private LocalDateTime dataCadastro;
 	
-	@CreationTimestamp
+	@UpdateTimestamp
 	@Column(nullable = true, columnDefinition = "datetime")
 	private LocalDateTime dataAtualizacao;
 }
