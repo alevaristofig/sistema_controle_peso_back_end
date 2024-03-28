@@ -1,0 +1,56 @@
+package com.sistemacontrolepeso.core.springdoc;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import com.sistemacontrolepeso.api.exceptionhandler.Problem;
+
+import io.swagger.v3.core.converter.ModelConverters;
+import io.swagger.v3.oas.models.Components;
+import io.swagger.v3.oas.models.ExternalDocumentation;
+import io.swagger.v3.oas.models.OpenAPI;
+import io.swagger.v3.oas.models.info.Info;
+import io.swagger.v3.oas.models.info.License;
+import io.swagger.v3.oas.models.media.Schema;
+import io.swagger.v3.oas.models.tags.Tag;
+
+@Configuration
+public class SpringDocConfig {
+
+	@Bean
+	public OpenAPI openAPI() {
+		return new OpenAPI()
+				.info(new Info()
+						.title("Sistema de Controle de Peso")
+						.version("v1")
+						.description("REST API Sistema de Controle de Peso")
+						.license(new License()
+								.name("Apache 2.0")
+								.url("http://springdoc.com")
+						)
+				).externalDocs(new ExternalDocumentation()
+						.description("Sistema de Controle de Peso")
+						.url("https://sistemacontrolpeso.com.br")
+				).tags(Arrays.asList(
+						new Tag().name("Pessoa").description("Gerencia as pessoas")
+				)).components(new Components()
+						.schemas(gerarSchemas())
+						);
+	}
+	
+	private Map<String, Schema> gerarSchemas(){
+		final Map<String, Schema> schemaMap = new HashMap<>();
+		
+		Map<String, Schema> problemSchema = ModelConverters.getInstance().read(Problem.class);
+		Map<String, Schema> problemObjectSchema = ModelConverters.getInstance().read(Problem.Object.class);
+		
+		schemaMap.putAll(problemSchema);
+		schemaMap.putAll(problemObjectSchema);
+		
+		return schemaMap;
+	}
+}

@@ -5,6 +5,7 @@ import java.time.LocalDateTime;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -13,6 +14,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
+import jakarta.validation.constraints.NotNull;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -32,14 +34,16 @@ public class AlimentoDieta {
 	@Column(columnDefinition = "datetime")
 	private LocalDateTime dataCriacao;
 	
-	@CreationTimestamp
+	@UpdateTimestamp
 	@Column(columnDefinition = "datetime")		
 	private LocalDateTime dataAtualizacao;
 	
+	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "alimento_id")
 	private Alimento alimento;
 	
+	@NotNull
 	@ManyToOne()
 	@OnDelete(action = OnDeleteAction.CASCADE)
 	@JoinColumn(name = "dieta_id")
