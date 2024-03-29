@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -20,6 +21,7 @@ import com.sistemacontrolepeso.api.assembler.PessoaInputDisassembler;
 import com.sistemacontrolepeso.api.assembler.PessoaModelAssembler;
 import com.sistemacontrolepeso.api.model.PessoaModel;
 import com.sistemacontrolepeso.api.model.input.PessoaInput;
+import com.sistemacontrolepeso.api.v1.openapi.controller.PessoaControllerOpenApi;
 import com.sistemacontrolepeso.domain.model.Pessoa;
 import com.sistemacontrolepeso.domain.repository.PessoaRepository;
 import com.sistemacontrolepeso.domain.service.CadastroPessoaService;
@@ -27,7 +29,7 @@ import com.sistemacontrolepeso.domain.service.CadastroPessoaService;
 @CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(value = "/pessoas", produces = MediaType.APPLICATION_JSON_VALUE)
-public class PessoaController {
+public class PessoaController implements PessoaControllerOpenApi {
 	
 	@Autowired
 	private PessoaInputDisassembler pessoaInputDisassembler;
@@ -42,15 +44,15 @@ public class PessoaController {
 	private PessoaRepository pessoaRepository;
 	
 	@GetMapping
-	public List<PessoaModel> listar(){
+	public CollectionModel<PessoaModel> listar(){
 		List<Pessoa> pessoas = pessoaRepository.findAll();
 		
 		return pessoaModelAssembler.toCollectionModel(pessoas);
 	}
 	
-	@GetMapping("/{pessoaId}")
-	public PessoaModel buscar(@PathVariable Long pessoaId) {
-		Pessoa pessoa = cadastroPessoaService.buscarOuFalhar(pessoaId);
+	@GetMapping("/{id}")
+	public PessoaModel buscar(@PathVariable Long id) {
+		Pessoa pessoa = cadastroPessoaService.buscarOuFalhar(id);
 		
 		return pessoaModelAssembler.toModel(pessoa);
 	}

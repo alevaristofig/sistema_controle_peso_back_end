@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.springdoc.core.customizers.OpenApiCustomizer;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -21,6 +22,7 @@ import io.swagger.v3.oas.models.media.Content;
 import io.swagger.v3.oas.models.media.MediaType;
 import io.swagger.v3.oas.models.media.Schema;
 import io.swagger.v3.oas.models.responses.ApiResponse;
+import io.swagger.v3.oas.models.responses.ApiResponses;
 import io.swagger.v3.oas.models.tags.Tag;
 
 @Configuration
@@ -51,6 +53,28 @@ public class SpringDocConfig {
 						.schemas(gerarSchemas())
 						.responses(gerarResponses())
 				);
+	}
+	
+	@Bean
+	public OpenApiCustomizer openApiCustomizer() {
+		return openApi -> {	
+			openApi.getPaths()
+					.values()
+					.forEach(pathItem -> pathItem.readOperationsMap()
+							.forEach((httpMethod,operation) -> {
+								ApiResponses responses = operation.getResponses();
+								switch(httpMethod){
+									case GET:
+										responses.addApiResponse("406", new ApiResponse().$ref(notAcceptableResponse));
+										responses.addApiResponse("500", new ApiResponse().$ref(internalServerErrorResponse));
+										break;
+									default:										
+										responses.addApiResponse("500", new ApiResponse().$ref(internalServerErrorResponse));
+										break;
+								}
+							})
+					);
+			};
 	}
 	
 	private Map<String, Schema> gerarSchemas(){
