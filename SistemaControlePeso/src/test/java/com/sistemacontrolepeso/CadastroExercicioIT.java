@@ -4,6 +4,7 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import org.hamcrest.Matcher;
 import org.hamcrest.Matchers;
@@ -133,7 +134,7 @@ public class CadastroExercicioIT extends SistemaControlePesoApplicationTests {
 		exercicio.setTempo(55L);
 		exercicio.setFrequencia(5);
 		exercicio.setDataCadastro(LocalDateTime.now());
-		exercicio.setDataAtualizar(LocalDateTime.now());
+		exercicio.setDataAtualizar(OffsetDateTime.now());
 		
 		cadastroExercicio.salvar(exercicio);
 	}

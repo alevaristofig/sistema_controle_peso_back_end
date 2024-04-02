@@ -2,7 +2,6 @@ package com.sistemacontrolepeso.api.model;
 
 import java.time.LocalDateTime;
 
-import com.sistemacontrolepeso.api.model.input.ExercicioIdInput;
 import com.sistemacontrolepeso.api.model.input.PessoaIdInput;
 import com.sistemacontrolepeso.domain.model.Exercicio;
 

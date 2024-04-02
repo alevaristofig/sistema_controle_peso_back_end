@@ -1,8 +1,5 @@
 package com.sistemacontrolepeso.api.assembler;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
@@ -16,12 +13,12 @@ import com.sistemacontrolepeso.domain.model.Pessoa;
 @Component
 public class PessoaModelAssembler extends RepresentationModelAssemblerSupport<Pessoa, PessoaModel> {
 
+	@Autowired
+	private ModelMapper modelMapper;
+
 	public PessoaModelAssembler() {
 		super(PessoaController.class, PessoaModel.class);
 	}
-
-	@Autowired
-	private ModelMapper modelMapper;
 	
 	public PessoaModel toModel(Pessoa pessoa) {
 		return modelMapper.map(pessoa, PessoaModel.class);

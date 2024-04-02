@@ -1,0 +1,15 @@
+package com.sistemacontrolepeso.api.v1.openapi.controller;
+
+import org.springframework.hateoas.CollectionModel;
+
+import com.sistemacontrolepeso.api.model.PesoModel;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+
+@Tag(name = "Peso")
+public interface PesoControllerOpenApi {
+
+	@Operation(summary = "Lista os pesos")
+	CollectionModel<PesoModel> listar();
+}

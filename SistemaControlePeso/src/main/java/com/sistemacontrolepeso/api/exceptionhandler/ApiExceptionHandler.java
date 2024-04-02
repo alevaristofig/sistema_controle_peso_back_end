@@ -92,7 +92,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 		return handleExceptionInternal(ex, problem, new HttpHeaders(), status, request);						
 	}
 	
-	@ExceptionHandler(Exception.class)
+	/*@ExceptionHandler(Exception.class)
 	public ResponseEntity<Object> handleUncaught(Exception ex, WebRequest request){
 		HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
 		ProblemType problemType = ProblemType.ERRO_DE_SISTEMA;
@@ -103,7 +103,7 @@ public class ApiExceptionHandler extends ResponseEntityExceptionHandler {
 				.build();
 		
 		return handleExceptionInternal(ex, problem, new HttpHeaders(), status, request);
-	}
+	}*/
 
 	
 	@Override

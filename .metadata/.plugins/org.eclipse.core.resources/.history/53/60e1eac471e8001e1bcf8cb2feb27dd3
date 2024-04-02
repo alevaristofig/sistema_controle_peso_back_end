@@ -1,9 +1,0 @@
-package com.sistemacontrolepeso.api.exceptionhandler;
-
-import lombok.Getter;
-
-@Getter
-public class ProblemType {
-
-	
-}

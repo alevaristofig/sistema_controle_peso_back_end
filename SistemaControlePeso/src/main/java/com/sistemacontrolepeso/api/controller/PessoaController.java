@@ -59,7 +59,7 @@ public class PessoaController implements PessoaControllerOpenApi {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public PessoaModel salvar(@RequestBody PessoaInput pessoaInput) {
+	public PessoaModel adicionar(@RequestBody PessoaInput pessoaInput) {
 		Pessoa pessoa = pessoaInputDisassembler.toDomainObject(pessoaInput);
 		
 		pessoa.setData(new Date());
@@ -69,10 +69,10 @@ public class PessoaController implements PessoaControllerOpenApi {
 		return pessoaModelAssembler.toModel(pessoa);
 	}
 	
-	@PutMapping("/{pessoaId}")
+	@PutMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)
-	public PessoaModel atualizar(@PathVariable Long pessoaId, @RequestBody PessoaInput pessoaInput) {
-		Pessoa pessoa = cadastroPessoaService.buscarOuFalhar(pessoaId);
+	public PessoaModel atualizar(@PathVariable Long id, @RequestBody PessoaInput pessoaInput) {
+		Pessoa pessoa = cadastroPessoaService.buscarOuFalhar(id);
 		
 		pessoaInputDisassembler.copytoDomain(pessoaInput, pessoa);
 		
