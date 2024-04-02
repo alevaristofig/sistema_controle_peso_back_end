@@ -5,7 +5,12 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.data.web.PagedResourcesAssembler;
 import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -45,13 +50,19 @@ public class PesoController implements PesoControllerOpenApi {
 	private PesoModelAssembler pesoModelAssembler;
 	
 	@Autowired
+	private PagedResourcesAssembler<Peso> pagedResourcesAssembler;
+	
+	@Autowired
 	private PesoRepository pesoRepository;
 	
 	@GetMapping
-	public CollectionModel<PesoModel> listar(){
-		List<Peso> peso = pesoRepository.findAll();
+	public PagedModel<PesoModel> listar(@PageableDefault(size = 10) Pageable pageable){
+		Page<Peso> pesosPage = pesoRepository.findAll(pageable);
 		
-		return pesoModelAssembler.toCollectionModel(peso);
+		PagedModel<PesoModel> pesosPageModel = pagedResourcesAssembler
+				.toModel(pesosPage,pesoModelAssembler);
+		
+		return pesosPageModel;
 	}
 	
 	@GetMapping("/{id}")

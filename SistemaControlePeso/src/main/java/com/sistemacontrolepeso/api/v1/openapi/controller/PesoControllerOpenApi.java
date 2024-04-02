@@ -1,12 +1,15 @@
 package com.sistemacontrolepeso.api.v1.openapi.controller;
 
+import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.CollectionModel;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import com.sistemacontrolepeso.api.model.PesoModel;
 import com.sistemacontrolepeso.api.model.input.PesoInput;
 import com.sistemacontrolepeso.api.model.input.PessoaInput;
+import com.sistemacontrolepeso.core.springdoc.PageableParameter;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
@@ -19,8 +22,9 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "Peso")
 public interface PesoControllerOpenApi {
 
+	@PageableParameter
 	@Operation(summary = "Lista os pesos")
-	CollectionModel<PesoModel> listar();
+	PagedModel<PesoModel> listar(@Parameter(hidden = true) Pageable pageable);
 	
 	@Operation(summary = "Busca um peso por Id",
 			responses = {
