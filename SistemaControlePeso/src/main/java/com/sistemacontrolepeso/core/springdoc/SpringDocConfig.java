@@ -52,7 +52,8 @@ public class SpringDocConfig {
 						new Tag().name("Peso").description("Gerencia os pesos"),
 						new Tag().name("Exercicio").description("Gerencia os exercícios"),
 						new Tag().name("Alimento").description("Gerencia os alimentos"),
-						new Tag().name("Dieta").description("Gerencia as dietas")
+						new Tag().name("Dieta").description("Gerencia as dietas"),
+						new Tag().name("HistoricoMedico").description("Gerencia os Históricos Médico")
 				)).components(new Components()
 						.schemas(gerarSchemas())
 						.responses(gerarResponses())

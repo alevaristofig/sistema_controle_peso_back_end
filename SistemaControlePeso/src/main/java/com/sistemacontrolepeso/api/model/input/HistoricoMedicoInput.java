@@ -4,6 +4,7 @@ import java.time.LocalDateTime;
 
 import com.sistemacontrolepeso.domain.model.Pessoa;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,13 +12,18 @@ import lombok.Setter;
 @Setter
 public class HistoricoMedicoInput {
 
-private String descricao;
+	@Schema(example = "Diabetes")
+	private String descricao;
 	
+	@Schema(example = "Insulina")
 	private String remedio;
 	
+	@Schema(example = "28/03/2024")
 	private LocalDateTime dataCadastro;
 	
+	@Schema(example = "04/04/2024")
 	private LocalDateTime dataAtualizacao;
 	
+	@Schema(example = "1")
 	private PessoaIdInput pessoa;
 }

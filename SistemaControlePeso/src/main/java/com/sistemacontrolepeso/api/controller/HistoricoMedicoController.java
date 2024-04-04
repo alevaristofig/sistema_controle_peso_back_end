@@ -4,8 +4,14 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,6 +28,7 @@ import com.sistemacontrolepeso.api.assembler.HistoricoMedicoInputDisassembler;
 import com.sistemacontrolepeso.api.assembler.HistoricoMedicoModelAssembler;
 import com.sistemacontrolepeso.api.model.HistoricoMedicoModel;
 import com.sistemacontrolepeso.api.model.input.HistoricoMedicoInput;
+import com.sistemacontrolepeso.api.v1.openapi.controller.HistoricoMedicoControllerOpenApi;
 import com.sistemacontrolepeso.domain.model.HistoricoMedico;
 import com.sistemacontrolepeso.domain.repository.HistoricoMedicoRepository;
 import com.sistemacontrolepeso.domain.service.CadastroHistoricoMedicoService;
@@ -29,7 +36,7 @@ import com.sistemacontrolepeso.domain.service.CadastroHistoricoMedicoService;
 @CrossOrigin(originPatterns = "*")
 @RestController
 @RequestMapping(value = "/historicomedico", produces = MediaType.APPLICATION_JSON_VALUE)
-public class HistoricoMedicoController {
+public class HistoricoMedicoController implements HistoricoMedicoControllerOpenApi {
 
 	@Autowired
 	private CadastroHistoricoMedicoService cadastroHistoricoMedicoService;
@@ -43,6 +50,19 @@ public class HistoricoMedicoController {
 	@Autowired
 	private HistoricoMedicoRepository historicoMedicoRepository;
 	
+	@Autowired
+	private PagedResourcesAssembler<HistoricoMedico> pagedResourcesAssembler;
+	
+	@GetMapping
+	public PagedModel<HistoricoMedicoModel> listar(@PageableDefault(size = 10) Pageable pageable) {
+		Page<HistoricoMedico> historicosMedicoPage = historicoMedicoRepository.findAll(pageable);
+		
+		PagedModel<HistoricoMedicoModel> historicosMedicoPagedModel = pagedResourcesAssembler
+				.toModel(historicosMedicoPage,historicoMedicoModelAssembler);
+		
+		return historicosMedicoPagedModel;
+	}
+	
 	@GetMapping("/{id}")
 	public HistoricoMedicoModel buscar(@PathVariable @Validated Long id) {
 		HistoricoMedico historicoMedico = cadastroHistoricoMedicoService.buscarOuFalhar(id);
@@ -50,16 +70,10 @@ public class HistoricoMedicoController {
 		return historicoMedicoModelAssembler.toModel(historicoMedico);
 	}
 	
-	@GetMapping
-	public List<HistoricoMedicoModel> listar() {
-		List<HistoricoMedico> historicoMedico = historicoMedicoRepository.findAll();
-		
-		return historicoMedicoModelAssembler.toCollectionModel(historicoMedico);
-	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public HistoricoMedicoModel salvar(@RequestBody @Validated HistoricoMedicoInput historicoMedicoInput) {
+	public HistoricoMedicoModel adicionar(@RequestBody @Validated HistoricoMedicoInput historicoMedicoInput) {
 		HistoricoMedico historicoMedico = historicoMedicoInputDisassembler.toDomainObject(historicoMedicoInput);
 		
 		historicoMedico.setDataCadastro(LocalDateTime.now());
@@ -70,8 +84,8 @@ public class HistoricoMedicoController {
 	}
 	
 	@PutMapping("/{id}")
-	public HistoricoMedicoModel atualizar(@RequestBody @Validated HistoricoMedicoInput historicoMedicoInput, 
-			@PathVariable Long id) {
+	public HistoricoMedicoModel atualizar(@PathVariable Long id,
+			@RequestBody @Validated HistoricoMedicoInput historicoMedicoInput) {
 		HistoricoMedico historicoMedico = cadastroHistoricoMedicoService.buscarOuFalhar(id);
 		
 		historicoMedicoInputDisassembler.copytoDomain(historicoMedicoInput, historicoMedico);
@@ -85,9 +99,11 @@ public class HistoricoMedicoController {
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void apagar(@PathVariable @Validated Long id) {
+	public ResponseEntity<Void> remover(@PathVariable @Validated Long id) {
 		HistoricoMedico historicoMedico = cadastroHistoricoMedicoService.buscarOuFalhar(id);
 		
 		historicoMedicoRepository.delete(historicoMedico);
+		
+		return ResponseEntity.noContent().build();
 	}
 }
