@@ -1,5 +1,6 @@
 package com.sistemacontrolepeso.api.model.input;
 
+import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -7,5 +8,6 @@ import lombok.Setter;
 @Setter
 public class DietaInput {
 
+	@Schema(example = "Café da Manhã")
 	private String nome;
 }

@@ -1,0 +1,39 @@
+package com.sistemacontrolepeso.api.assembler;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
+import org.springframework.stereotype.Component;
+
+import com.sistemacontrolepeso.api.controller.ExercicioController;
+import com.sistemacontrolepeso.api.model.ExercicioModel;
+import com.sistemacontrolepeso.domain.model.Exercicio;
+
+@Component
+public class ExercicioModelAssembler extends RepresentationModelAssemblerSupport<Exercicio, ExercicioModel> {
+
+	public ExercicioModelAssembler(Class<?> controllerClass, Class<ExercicioModel> resourceType) {
+		super(ExercicioController.class, ExercicioModel.class);		
+	}
+
+	@Autowired
+	private ModelMapper modelMapper;
+	
+	@Override
+	public ExercicioModel toModel(Exercicio exercicio) {
+		ExercicioModel exercicioModel = createModelWithId(exercicio.getId(), exercicio);
+		
+		modelMapper.map(exercicio,exercicioModel);
+		
+		return exercicioModel;
+	}
+	
+	public List<ExercicioModel> toCollectionModel(List<Exercicio> exercicios){
+		return exercicios.stream()
+				.map(exercicio -> toModel(exercicio))
+				.collect(Collectors.toList());
+	}
+}

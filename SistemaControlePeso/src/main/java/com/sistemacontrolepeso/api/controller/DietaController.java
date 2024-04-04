@@ -4,8 +4,14 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -22,6 +28,7 @@ import com.sistemacontrolepeso.api.assembler.DietaInputDisassembler;
 import com.sistemacontrolepeso.api.assembler.DietaModelAssembler;
 import com.sistemacontrolepeso.api.model.DietaModel;
 import com.sistemacontrolepeso.api.model.input.DietaInput;
+import com.sistemacontrolepeso.api.v1.openapi.controller.DietaControllerOpenApi;
 import com.sistemacontrolepeso.domain.model.Dieta;
 import com.sistemacontrolepeso.domain.repository.DietaRepository;
 import com.sistemacontrolepeso.domain.service.CadastroDietaService;
@@ -29,7 +36,7 @@ import com.sistemacontrolepeso.domain.service.CadastroDietaService;
 @CrossOrigin(originPatterns = "*")
 @RestController
 @RequestMapping(value = "/dietas", produces = MediaType.APPLICATION_JSON_VALUE)
-public class DietaController {
+public class DietaController implements DietaControllerOpenApi {
 
 	@Autowired
 	private DietaRepository dietaRepository;
@@ -43,11 +50,17 @@ public class DietaController {
 	@Autowired
 	private DietaModelAssembler dietaModelAssembler;
 	
+	@Autowired
+	private PagedResourcesAssembler<Dieta> pagedResourcesAssembler;
+	
 	@GetMapping
-	public List<DietaModel> listar() {
-		List<Dieta> dietas = dietaRepository.findAll();
+	public PagedModel<DietaModel> listar(@PageableDefault(size = 10) Pageable pageable) {
+		Page<Dieta> dietasPage = dietaRepository.findAll(pageable);
 		
-		return dietaModelAssembler.toCollectionModel(dietas);
+		PagedModel<DietaModel> dietasPagedModel = pagedResourcesAssembler
+				.toModel(dietasPage,dietaModelAssembler);
+		
+		return dietasPagedModel;
 	}
 	
 	@GetMapping("/{id}")
@@ -59,7 +72,7 @@ public class DietaController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public DietaModel salvar(@RequestBody @Validated DietaInput dietaInput) {
+	public DietaModel adicionar(@RequestBody @Validated DietaInput dietaInput) {
 		Dieta dieta = dietaInputDisassembler.toDomainObject(dietaInput);
 		
 		dieta.setDataAtualizacao(LocalDateTime.now());
@@ -83,9 +96,11 @@ public class DietaController {
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void apagar(@PathVariable Long id) {
+	public ResponseEntity<Void> remover(@PathVariable Long id) {
 		Dieta dieta = cadastroDietaService.buscarOuFalhar(id);
 		
 		dietaRepository.delete(dieta);
+		
+		return ResponseEntity.noContent().build();
 	}
 }

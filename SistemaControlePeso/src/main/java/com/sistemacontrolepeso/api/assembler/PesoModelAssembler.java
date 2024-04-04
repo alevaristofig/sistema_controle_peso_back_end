@@ -33,8 +33,7 @@ public class PesoModelAssembler extends RepresentationModelAssemblerSupport<Peso
 		PesoModel pesoModel = createModelWithId(peso.getId(), peso);
 		
 		modelMapper.map(peso,pesoModel);
-		
-		
+				
 		links.linkToPesos("pesos");
 		
 		return pesoModel;

@@ -49,7 +49,10 @@ public class SpringDocConfig {
 						.url("https://sistemacontrolpeso.com.br")
 				).tags(Arrays.asList(
 						new Tag().name("Pessoa").description("Gerencia as pessoas"),
-						new Tag().name("Peso").description("Gerencia os pesos")
+						new Tag().name("Peso").description("Gerencia os pesos"),
+						new Tag().name("Exercicio").description("Gerencia os exercícios"),
+						new Tag().name("Alimento").description("Gerencia os alimentos"),
+						new Tag().name("Dieta").description("Gerencia as dietas")
 				)).components(new Components()
 						.schemas(gerarSchemas())
 						.responses(gerarResponses())

@@ -10,6 +10,7 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.stereotype.Component;
 
+import com.sistemacontrolepeso.api.controller.ExercicioController;
 import com.sistemacontrolepeso.api.controller.PesoController;
 
 @Component
@@ -23,14 +24,6 @@ public class SistemaControlePesoLinks {
 	public static final TemplateVariables PROJECAO_VARIABLES = new TemplateVariables(
 			new TemplateVariable("projecao", VariableType.REQUEST_PARAM));
 	
-	public Link linkToPesos(Long pesoId, String rel) {
-		return linkTo(methodOn(PesoController.class)
-				.buscar(pesoId)).withRel(rel);
-	}
-	
-	public Link linkToPesos(Long pesoId) {
-		return linkToPesos(pesoId,IanaLinkRelations.SELF.value());
-	}
 	
 	public Link linkToPesos(String rel) {
 		return linkTo(PesoController.class).withRel(rel);
@@ -38,6 +31,14 @@ public class SistemaControlePesoLinks {
 	
 	public Link linkToPesos() {
 		return linkToPesos(IanaLinkRelations.SELF.value());
+	}
+	
+	public Link linkToExercicios(String rel) {
+		return linkTo(ExercicioController.class).withRel(rel);
+	}
+	
+	public Link linkToExercicios() {
+		return linkToExercicios(IanaLinkRelations.SELF.value());
 	}
 	
 }

@@ -4,8 +4,14 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +27,7 @@ import com.sistemacontrolepeso.api.assembler.ExercicioInputDisassembler;
 import com.sistemacontrolepeso.api.assembler.ExercicioModelAssembler;
 import com.sistemacontrolepeso.api.model.ExercicioModel;
 import com.sistemacontrolepeso.api.model.input.ExercicioInput;
+import com.sistemacontrolepeso.api.v1.openapi.controller.ExercicioControllerOpenApi;
 import com.sistemacontrolepeso.domain.model.Exercicio;
 import com.sistemacontrolepeso.domain.model.Peso;
 import com.sistemacontrolepeso.domain.repository.ExercicioRepository;
@@ -28,8 +35,8 @@ import com.sistemacontrolepeso.domain.service.CadastroExercicioService;
 
 @CrossOrigin(originPatterns = "*")
 @RestController
-@RequestMapping(value = "/exercicio", produces = MediaType.APPLICATION_JSON_VALUE)
-public class ExercicioController {
+@RequestMapping(value = "/exercicios", produces = MediaType.APPLICATION_JSON_VALUE)
+public class ExercicioController implements ExercicioControllerOpenApi {
 
 	@Autowired
 	private CadastroExercicioService cadastroExercicioService;
@@ -43,17 +50,23 @@ public class ExercicioController {
 	@Autowired
 	private ExercicioModelAssembler exercicioModelAssembler;
 	
+	@Autowired
+	private PagedResourcesAssembler<Exercicio> pagedResourcesAssembler;
+	
 	@GetMapping
-	public List<ExercicioModel> listar(){
-		List<Exercicio> exercicios = exercicioRepository.findAll();
+	public PagedModel<ExercicioModel> listar(@PageableDefault(size = 10) Pageable pageable){
+		Page<Exercicio> exerciciosPage = exercicioRepository.findAll(pageable);
 		
-		return exercicioModelAssembler.toCollectionModel(exercicios);
+		PagedModel<ExercicioModel> exerciciosPagedModel = pagedResourcesAssembler
+				.toModel(exerciciosPage,exercicioModelAssembler);
+		
+		return exerciciosPagedModel;
 	}
 	
-	@GetMapping("/{exercicioId}")
-	public ExercicioModel buscar(@PathVariable Long exercicioId) {
+	@GetMapping("/{id}")
+	public ExercicioModel buscar(@PathVariable Long id) {
 		
-		Exercicio exercicio = cadastroExercicioService.buscarOuFalhar(exercicioId);
+		Exercicio exercicio = cadastroExercicioService.buscarOuFalhar(id);
 		
 		return exercicioModelAssembler.toModel(exercicio);
 	}
@@ -89,10 +102,12 @@ public class ExercicioController {
 	
 	@DeleteMapping("/{exercicioId}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void deletar(@PathVariable Long exercicioId) {
+	public ResponseEntity<Void> remover(@PathVariable Long exercicioId) {
 		Exercicio exercicio = cadastroExercicioService.buscarOuFalhar(exercicioId);
 		
 		exercicioRepository.delete(exercicio);
+		
+		return ResponseEntity.noContent().build();
 	}
 	
 }
