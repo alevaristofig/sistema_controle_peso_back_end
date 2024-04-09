@@ -16,7 +16,7 @@ public class AlimentoInput {
 	@Schema(example = "4 colheres")
 	private String quantidade;
 	
-	@Schema(example = "100 calorias")
+	@Schema(example = "100.00")
 	private double calorias;
 	
 	@Schema(example = "28/03/2024")

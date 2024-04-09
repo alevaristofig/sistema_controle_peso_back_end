@@ -63,6 +63,13 @@ public class ExercicioController implements ExercicioControllerOpenApi {
 		return exerciciosPagedModel;
 	}
 	
+	@GetMapping("/listarexercicios")
+	public List<ExercicioModel> listar() {
+		List<Exercicio> exercicios = exercicioRepository.findAll();
+		
+		return exercicioModelAssembler.toCollectionModel(exercicios);
+	}
+	
 	@GetMapping("/{id}")
 	public ExercicioModel buscar(@PathVariable Long id) {
 		

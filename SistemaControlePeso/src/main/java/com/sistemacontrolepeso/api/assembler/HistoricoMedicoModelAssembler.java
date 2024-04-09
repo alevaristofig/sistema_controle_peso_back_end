@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 
 import com.sistemacontrolepeso.api.model.DietaModel;
 import com.sistemacontrolepeso.api.model.HistoricoMedicoModel;
+import com.sistemacontrolepeso.api.v1.SistemaControlePesoLinks;
 import com.sistemacontrolepeso.domain.model.Dieta;
 import com.sistemacontrolepeso.domain.model.HistoricoMedico;
 
@@ -17,18 +18,24 @@ import com.sistemacontrolepeso.domain.model.HistoricoMedico;
 public class HistoricoMedicoModelAssembler extends RepresentationModelAssemblerSupport<
 				HistoricoMedico, HistoricoMedicoModel> {
 
+	@Autowired
+	private ModelMapper modelMapper;
+	
+	@Autowired
+	private SistemaControlePesoLinks links;
+	
 	public HistoricoMedicoModelAssembler() {
 		super(HistoricoMedico.class, HistoricoMedicoModel.class);
 	}
 
-	@Autowired
-	private ModelMapper modelMapper;
 	
 	@Override
 	public HistoricoMedicoModel toModel(HistoricoMedico historicosMedico) {
 		HistoricoMedicoModel historicoMedicoModel = createModelWithId(historicosMedico.getId(), historicosMedico);
 		
 		modelMapper.map(historicosMedico, historicoMedicoModel);
+		
+		links.linkToHistoricoMedico();
 		
 		return historicoMedicoModel;
 	}

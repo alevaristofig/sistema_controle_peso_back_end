@@ -74,7 +74,6 @@ public class AlimentoController implements AlimentoControllerOpenApi {
 		Alimento alimento = cadastroAlimentoService.buscarOuFalhar(id);
 		
 		alimentoInputDisassembler.copytoDomain(alimentoInput, alimento);
-		alimento.setDataCadastro(LocalDateTime.now());
 		alimento.setDataAtualizacao(LocalDateTime.now());
 		
 		alimento = cadastroAlimentoService.salvar(alimento);

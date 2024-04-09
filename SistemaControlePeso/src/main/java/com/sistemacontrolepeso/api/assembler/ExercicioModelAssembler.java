@@ -16,15 +16,16 @@ import com.sistemacontrolepeso.domain.model.Exercicio;
 @Component
 public class ExercicioModelAssembler extends RepresentationModelAssemblerSupport<Exercicio, ExercicioModel> {
 
-	public ExercicioModelAssembler() {
-		super(ExercicioController.class, ExercicioModel.class);		
-	}
-
 	@Autowired
 	private ModelMapper modelMapper;
 	
 	@Autowired
 	private SistemaControlePesoLinks links;
+	
+	public ExercicioModelAssembler() {
+		super(ExercicioController.class, ExercicioModel.class);		
+	}
+
 	
 	@Override
 	public ExercicioModel toModel(Exercicio exercicio) {

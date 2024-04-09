@@ -26,7 +26,7 @@ public class PessoaInput {
 	
 	@Schema(example = "1.70")
 	@NotNull
-	private Double altura;
+	private double altura;
 	
 	@Schema(example = "28/03/2024")
 	@NotNull

@@ -10,23 +10,30 @@ import org.springframework.stereotype.Component;
 
 import com.sistemacontrolepeso.api.controller.DietaController;
 import com.sistemacontrolepeso.api.model.DietaModel;
+import com.sistemacontrolepeso.api.v1.SistemaControlePesoLinks;
 import com.sistemacontrolepeso.domain.model.Dieta;
 
 @Component
 public class DietaModelAssembler extends RepresentationModelAssemblerSupport<Dieta, DietaModel> {
 
+	@Autowired
+	private ModelMapper modelMapper;
+	
+	@Autowired
+	private SistemaControlePesoLinks links;
+	
 	public DietaModelAssembler() {
 		super(DietaController.class, DietaModel.class);
 	}
 
-	@Autowired
-	private ModelMapper modelMapper;
 	
 	@Override
 	public DietaModel toModel(Dieta dieta) {
 		DietaModel dietaModel = createModelWithId(dieta.getId(), dieta);
 		
 		modelMapper.map(dieta, dietaModel);
+		
+		links.linkToDietas();
 		
 		return dietaModel;
 	}

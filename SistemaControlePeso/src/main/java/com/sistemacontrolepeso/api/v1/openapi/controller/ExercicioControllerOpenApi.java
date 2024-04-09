@@ -1,5 +1,7 @@
 package com.sistemacontrolepeso.api.v1.openapi.controller;
 
+import java.util.List;
+
 import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
@@ -22,6 +24,9 @@ public interface ExercicioControllerOpenApi {
 	@PageableParameter
 	@Operation(summary = "Lista os exercícios")
 	PagedModel<ExercicioModel> listar(@Parameter(hidden = true) Pageable pageable);
+	
+	@Operation(summary = "Lista os exercícios sem paginação")
+	List<ExercicioModel> listar();
 
 	@Operation(summary = "Busca um exercício por Id",
 			responses = {

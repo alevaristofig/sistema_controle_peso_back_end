@@ -10,23 +10,30 @@ import org.springframework.stereotype.Component;
 
 import com.sistemacontrolepeso.api.controller.AlimentoController;
 import com.sistemacontrolepeso.api.model.AlimentoModel;
+import com.sistemacontrolepeso.api.v1.SistemaControlePesoLinks;
 import com.sistemacontrolepeso.domain.model.Alimento;
 
 @Component
 public class AlimentoModelAssembler extends RepresentationModelAssemblerSupport<Alimento, AlimentoModel>{
 
+	@Autowired
+	private ModelMapper modelMapper;
+	
+	@Autowired
+	private SistemaControlePesoLinks links;
+	
 	public AlimentoModelAssembler() {
 		super(AlimentoController.class, AlimentoModel.class);		
 	}
 
-	@Autowired
-	private ModelMapper modelMapper;
 	
 	@Override
 	public AlimentoModel toModel(Alimento alimento) {
 		AlimentoModel alimentoModel = createModelWithId(alimento.getId(), alimento);
 		
 		modelMapper.map(alimento, alimentoModel);
+		
+		links.linkToAlimentos();
 		
 		return alimentoModel;
 	}
