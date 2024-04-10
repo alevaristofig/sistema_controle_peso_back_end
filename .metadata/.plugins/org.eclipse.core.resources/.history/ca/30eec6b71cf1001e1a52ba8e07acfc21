@@ -1,5 +1,0 @@
-package com.sistemacontrolepeso.core.jackson;
-
-public class PageJsonSerializer {
-
-}

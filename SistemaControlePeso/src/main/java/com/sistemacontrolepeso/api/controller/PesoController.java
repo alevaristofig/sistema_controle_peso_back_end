@@ -3,6 +3,7 @@ package com.sistemacontrolepeso.api.controller;
 import java.time.LocalDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Limit;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -67,6 +68,14 @@ public class PesoController implements PesoControllerOpenApi {
 		Peso peso = cadastroPesoService.buscarOuFalhar(id);
 		
 		return pesoModelAssembler.toModel(peso);
+	}
+	
+	@GetMapping("/buscarprimeiropeso")
+	public PesoModel buscarPrimeiroPeso() {
+		Peso peso = pesoRepository.findTop1ByOrderByIdAsc();
+		Peso peso2 = pesoRepository.findTop1ByOrderByIdDesc();
+		
+		return pesoModelAssembler.toModel(peso2);
 	}
 	
 	@PostMapping

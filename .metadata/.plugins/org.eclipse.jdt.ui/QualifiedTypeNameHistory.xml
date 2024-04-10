@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="jakarta.validation.constraints.NotNull"/>
-    <fullyQualifiedTypeName name="org.springframework.hateoas.TemplateVariable"/>
     <fullyQualifiedTypeName name="org.springframework.hateoas.TemplateVariable.VariableType"/>
     <fullyQualifiedTypeName name="org.springframework.hateoas.Link"/>
     <fullyQualifiedTypeName name="org.springframework.hateoas.server.mvc.WebMvcLinkBuilder"/>
@@ -17,7 +15,6 @@
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.api.ResourceUriHelper"/>
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.api.controller.PesoController"/>
     <fullyQualifiedTypeName name="org.springframework.hateoas.IanaLinkRelations"/>
-    <fullyQualifiedTypeName name="java.time.OffsetDateTime"/>
     <fullyQualifiedTypeName name="java.lang.Override"/>
     <fullyQualifiedTypeName name="com.fasterxml.jackson.databind.JsonSerializer"/>
     <fullyQualifiedTypeName name="java.lang.annotation.Target"/>
@@ -29,8 +26,6 @@
     <fullyQualifiedTypeName name="io.swagger.v3.oas.annotations.Parameter"/>
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.api.v1.openapi.controller.ExercicioControllerOpenApi"/>
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.api.model.input.ExercicioInput"/>
-    <fullyQualifiedTypeName name="com.sistemacontrolepeso.domain.model.Exercicio"/>
-    <fullyQualifiedTypeName name="com.sistemacontrolepeso.api.model.ExercicioModel"/>
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.api.controller.ExercicioController"/>
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.api.v1.openapi.controller.AlimentoControllerOpenApi"/>
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.api.model.input.AlimentoInput"/>
@@ -60,4 +55,9 @@
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.api.controller.HistoricoMedicoController"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.api.v1.SistemaControlePesoLinks"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="java.util.List"/>
+    <fullyQualifiedTypeName name="com.sistemacontrolepeso.api.model.ExercicioModel"/>
+    <fullyQualifiedTypeName name="com.sistemacontrolepeso.domain.model.Exercicio"/>
+    <fullyQualifiedTypeName name="java.time.OffsetDateTime"/>
 </qualifiedTypeNameHistroy>

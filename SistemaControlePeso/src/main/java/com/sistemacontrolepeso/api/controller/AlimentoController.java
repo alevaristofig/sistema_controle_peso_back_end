@@ -1,6 +1,7 @@
 package com.sistemacontrolepeso.api.controller;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -74,7 +75,7 @@ public class AlimentoController implements AlimentoControllerOpenApi {
 		Alimento alimento = cadastroAlimentoService.buscarOuFalhar(id);
 		
 		alimentoInputDisassembler.copytoDomain(alimentoInput, alimento);
-		alimento.setDataAtualizacao(LocalDateTime.now());
+		alimento.setDataAtualizacao(OffsetDateTime.now());
 		
 		alimento = cadastroAlimentoService.salvar(alimento);
 		
@@ -84,9 +85,9 @@ public class AlimentoController implements AlimentoControllerOpenApi {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public AlimentoModel adicionar(@RequestBody @Validated AlimentoInput alimentoInput) {
+		
 		Alimento alimento = alimentoInputDisassembler.toDomainObject(alimentoInput);
-		alimento.setDataCadastro(LocalDateTime.now());
-		alimento.setDataAtualizacao(null);
+		alimento.setDataCadastro(OffsetDateTime.now());
 		
 		alimento = cadastroAlimentoService.salvar(alimento);
 		

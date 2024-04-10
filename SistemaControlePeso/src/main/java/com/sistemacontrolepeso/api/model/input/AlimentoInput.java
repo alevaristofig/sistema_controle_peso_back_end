@@ -1,6 +1,7 @@
 package com.sistemacontrolepeso.api.model.input;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Getter;
@@ -20,8 +21,8 @@ public class AlimentoInput {
 	private double calorias;
 	
 	@Schema(example = "28/03/2024")
-	private LocalDateTime dataCadastro;
+	private OffsetDateTime dataCadastro;
 	
 	@Schema(example = "03/04/2024")
-	private LocalDateTime dataAtualizacao;
+	private OffsetDateTime dataAtualizacao;
 }
