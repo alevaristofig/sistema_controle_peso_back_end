@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.springframework.hateoas.TemplateVariable.VariableType"/>
-    <fullyQualifiedTypeName name="org.springframework.hateoas.Link"/>
-    <fullyQualifiedTypeName name="org.springframework.hateoas.server.mvc.WebMvcLinkBuilder"/>
-    <fullyQualifiedTypeName name="java.net.URI"/>
     <fullyQualifiedTypeName name="org.springframework.web.servlet.support.ServletUriComponentsBuilder"/>
     <fullyQualifiedTypeName name="jakarta.servlet.http.HttpServletResponse"/>
     <fullyQualifiedTypeName name="org.springframework.web.context.request.ServletRequestAttributes"/>
@@ -55,9 +51,13 @@
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.api.controller.HistoricoMedicoController"/>
     <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.api.v1.SistemaControlePesoLinks"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="java.util.List"/>
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.api.model.ExercicioModel"/>
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.domain.model.Exercicio"/>
     <fullyQualifiedTypeName name="java.time.OffsetDateTime"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
+    <fullyQualifiedTypeName name="com.sistemacontrolepeso.domain.repository.PesoRepository"/>
+    <fullyQualifiedTypeName name="com.sistemacontrolepeso.domain.model.Peso"/>
+    <fullyQualifiedTypeName name="org.springframework.data.domain.Limit"/>
+    <fullyQualifiedTypeName name="com.mysql.cj.x.protobuf.MysqlxCrud.Limit"/>
 </qualifiedTypeNameHistroy>

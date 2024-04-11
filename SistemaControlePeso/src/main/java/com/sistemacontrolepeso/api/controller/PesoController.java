@@ -73,9 +73,15 @@ public class PesoController implements PesoControllerOpenApi {
 	@GetMapping("/buscarprimeiropeso")
 	public PesoModel buscarPrimeiroPeso() {
 		Peso peso = pesoRepository.findTop1ByOrderByIdAsc();
-		Peso peso2 = pesoRepository.findTop1ByOrderByIdDesc();
 		
-		return pesoModelAssembler.toModel(peso2);
+		return pesoModelAssembler.toModel(peso);
+	}
+	
+	@GetMapping("/buscarultimoropeso")
+	public PesoModel buscarUltimoPeso() {
+		Peso peso = pesoRepository.findTop1ByOrderByIdDesc();
+		
+		return pesoModelAssembler.toModel(peso);
 	}
 	
 	@PostMapping
