@@ -1,0 +1,5 @@
+package com.sistemacontrolepeso.api.v1.openapi.controller;
+
+public class AlimentoDietaControllerOpenApi {
+
+}

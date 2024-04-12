@@ -1,9 +1,11 @@
 package com.sistemacontrolepeso.domain.model;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.Date;
 
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -44,7 +46,12 @@ public class Peso {
 	@NotNull
 	@CreationTimestamp
 	@Column(nullable = false, columnDefinition = "datetime")
-	private LocalDateTime data;
+	private OffsetDateTime dataCadastro;
+	
+	@NotNull
+	@UpdateTimestamp
+	@Column(nullable = false, columnDefinition = "datetime")
+	private OffsetDateTime dataAtualizacao;
 	
 	@Valid
 	@NotNull

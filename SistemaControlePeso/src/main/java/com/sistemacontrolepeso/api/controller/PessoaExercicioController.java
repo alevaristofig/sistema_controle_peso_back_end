@@ -1,9 +1,15 @@
 package com.sistemacontrolepeso.api.controller;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import org.springframework.data.web.PagedResourcesAssembler;
+import org.springframework.hateoas.PagedModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.validation.annotation.Validated;
@@ -18,6 +24,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.sistemacontrolepeso.api.assembler.PessoaExercicioModelAssembler;
 import com.sistemacontrolepeso.api.model.PessoaExercicioModel;
 import com.sistemacontrolepeso.api.model.input.PessoaExercicioInput;
+import com.sistemacontrolepeso.api.v1.openapi.controller.PessoaExercicioControllerOpenApi;
 import com.sistemacontrolepeso.domain.model.Exercicio;
 import com.sistemacontrolepeso.domain.model.Pessoa;
 import com.sistemacontrolepeso.domain.model.PessoaExercicio;
@@ -27,7 +34,7 @@ import com.sistemacontrolepeso.domain.service.CadastroPessoaExercicioService;
 @CrossOrigin(originPatterns = "*")
 @RestController
 @RequestMapping(value = "/pessoaexercicio", produces = MediaType.APPLICATION_JSON_VALUE)
-public class PessoaExercicioController {
+public class PessoaExercicioController implements PessoaExercicioControllerOpenApi {
 
 	@Autowired
 	private CadastroPessoaExercicioService cadastroPessoaExercicioService;
@@ -38,16 +45,22 @@ public class PessoaExercicioController {
 	@Autowired
 	private PessoaExercicioModelAssembler pessoaExercicioModelAssembler;
 	
+	@Autowired
+	private PagedResourcesAssembler<PessoaExercicio> pagedResourcesAssembler;
+	
 	@GetMapping
-	public List<PessoaExercicioModel> listar() {
-		List<PessoaExercicio> pessoaExercicio = pessoaExercicioRepository.findAll();
+	public PagedModel<PessoaExercicioModel> listar(@PageableDefault(size = 10) Pageable pageable) {
+		Page<PessoaExercicio> pessoaExercicioPage = pessoaExercicioRepository.findAll(pageable);
 		
-		return pessoaExercicioModelAssembler.toCollectionModel(pessoaExercicio);
+		PagedModel<PessoaExercicioModel> pessoaExercicioPageModel = pagedResourcesAssembler
+				.toModel(pessoaExercicioPage,pessoaExercicioModelAssembler);
+		
+		return pessoaExercicioPageModel;
 	}
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public PessoaExercicio salvar(@Validated @RequestBody PessoaExercicioInput pessoaExercicioInput) {
+	public PessoaExercicio adicionar(@Validated @RequestBody PessoaExercicioInput pessoaExercicioInput) {
 		Pessoa pessoa = new Pessoa();		
 		pessoa.setId(pessoaExercicioInput.getPessoaId().getId());
 		
@@ -58,7 +71,7 @@ public class PessoaExercicioController {
 		pessoaExercicio.setPessoa(pessoa);
 		pessoaExercicio.setExercicio(exercicio);
 		pessoaExercicio.setTreino(pessoaExercicioInput.getTreino());
-		pessoaExercicio.setData(LocalDateTime.now());
+		pessoaExercicio.setData(OffsetDateTime.now());
 		
 		return cadastroPessoaExercicioService.salvar(pessoaExercicio);
 		

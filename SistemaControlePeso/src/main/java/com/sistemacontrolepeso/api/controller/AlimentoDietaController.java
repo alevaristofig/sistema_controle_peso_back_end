@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -25,6 +26,7 @@ import com.sistemacontrolepeso.api.model.AlimentoDietaModel;
 import com.sistemacontrolepeso.api.model.DietaModel;
 import com.sistemacontrolepeso.api.model.input.AlimentoDietaInput;
 import com.sistemacontrolepeso.api.model.input.DietaInput;
+import com.sistemacontrolepeso.api.v1.openapi.controller.AlimentoDietaControllerOpenApi;
 import com.sistemacontrolepeso.domain.model.Alimento;
 import com.sistemacontrolepeso.domain.model.AlimentoDieta;
 import com.sistemacontrolepeso.domain.model.Dieta;
@@ -34,7 +36,7 @@ import com.sistemacontrolepeso.domain.service.CadastroAlimentoDietaService;
 @CrossOrigin(originPatterns = "*")
 @RestController
 @RequestMapping(value = "/alimentodieta", produces = MediaType.APPLICATION_JSON_VALUE)
-public class AlimentoDietaController {
+public class AlimentoDietaController implements AlimentoDietaControllerOpenApi {
 
 	@Autowired
 	private CadastroAlimentoDietaService cadastroAlimentoDietaService;
@@ -60,7 +62,7 @@ public class AlimentoDietaController {
 	
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public AlimentoDieta salvar(@RequestBody @Validated AlimentoDietaInput alimentoDietaInput) {
+	public AlimentoDieta adicionar(@RequestBody @Validated AlimentoDietaInput alimentoDietaInput) {
 		
 		Dieta dieta = new Dieta();
 		dieta.setId(alimentoDietaInput.getDietaId().getId());
@@ -100,9 +102,11 @@ public class AlimentoDietaController {
 	
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
-	public void apagar(@PathVariable Long id) {
+	public ResponseEntity<Void> remover(@PathVariable Long id) {
 		AlimentoDieta alimentoDieta = cadastroAlimentoDietaService.buscarOuFalhar(id);
 		
 		alimentoRepository.delete(alimentoDieta);
+		
+		return ResponseEntity.noContent().build();
 	}
 }

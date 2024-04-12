@@ -1,6 +1,7 @@
 package com.sistemacontrolepeso.domain.model;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -34,7 +35,7 @@ public class PessoaExercicio {
 	
 	@CreationTimestamp
 	@Column(columnDefinition = "datetime")
-	private LocalDateTime data;
+	private OffsetDateTime data;
 	
 	@ManyToOne
 	@JoinColumn(name = "pessoa_id")

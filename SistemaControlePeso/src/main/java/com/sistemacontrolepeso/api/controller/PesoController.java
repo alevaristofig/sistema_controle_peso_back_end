@@ -1,6 +1,7 @@
 package com.sistemacontrolepeso.api.controller;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Limit;
@@ -88,7 +89,7 @@ public class PesoController implements PesoControllerOpenApi {
 	@ResponseStatus(HttpStatus.CREATED)
 	public PesoModel adicionar(@RequestBody PesoInput pesoInput) {
 		Peso peso = pesoInputDisassembler.toDomainObject(pesoInput);
-		peso.setData(LocalDateTime.now());
+		peso.setDataCadastro(OffsetDateTime.now());
 		
 		peso = cadastroPesoService.salvar(peso);
 		
@@ -102,6 +103,7 @@ public class PesoController implements PesoControllerOpenApi {
 	@PutMapping("/{id}")
 	public PesoModel atualizar(@PathVariable Long id, @RequestBody PesoInput pesoInput) {
 		Peso peso = cadastroPesoService.buscarOuFalhar(id);
+		peso.setDataAtualizacao(OffsetDateTime.now());
 		
 		pesoInputDisassembler.copyToDomain(pesoInput, peso);
 		

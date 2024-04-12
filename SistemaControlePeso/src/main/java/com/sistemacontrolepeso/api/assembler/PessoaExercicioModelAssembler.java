@@ -5,21 +5,32 @@ import java.util.stream.Collectors;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.stereotype.Component;
 
+import com.sistemacontrolepeso.api.controller.PessoaExercicioController;
 import com.sistemacontrolepeso.api.model.ExercicioModel;
 import com.sistemacontrolepeso.api.model.PessoaExercicioModel;
 import com.sistemacontrolepeso.domain.model.Exercicio;
 import com.sistemacontrolepeso.domain.model.PessoaExercicio;
 
 @Component
-public class PessoaExercicioModelAssembler {
+public class PessoaExercicioModelAssembler extends RepresentationModelAssemblerSupport<PessoaExercicio, PessoaExercicioModel> {
+
+	public PessoaExercicioModelAssembler() {
+		super(PessoaExercicioController.class, PessoaExercicioModel.class);
+	}
 
 	@Autowired
 	private ModelMapper modelMapper;
 	
+	@Override
 	public PessoaExercicioModel toModel(PessoaExercicio pessoaExercicio) {
-		return modelMapper.map(pessoaExercicio, PessoaExercicioModel.class);
+		PessoaExercicioModel pessoaExercicioModel = createModelWithId(pessoaExercicio.getId(), pessoaExercicio);
+		
+		modelMapper.map(pessoaExercicio, pessoaExercicioModel);
+		
+		return pessoaExercicioModel;
 	}
 	
 	public List<PessoaExercicioModel> toCollectionModel(List<PessoaExercicio> pessoasExercicio){

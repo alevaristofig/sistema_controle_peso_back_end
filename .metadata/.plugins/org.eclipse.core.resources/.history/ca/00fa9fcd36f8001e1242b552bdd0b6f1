@@ -1,0 +1,26 @@
+package com.sistemacontrolepeso.api.v1.openapi.controller;
+
+import java.util.List;
+
+import com.sistemacontrolepeso.api.model.AlimentoDietaModel;
+
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
+
+public interface AlimentoDietaControllerOpenApi {
+
+	@Operation(summary = "Busca os alimentos por Id da Dieta",
+			responses = {
+					@ApiResponse(responseCode = "200"),
+					@ApiResponse(responseCode = "400", description = "ID da dieta inválido",
+									content = @Content(schema = @Schema(ref = "Problema"))
+							),
+					@ApiResponse(responseCode = "404", description = "Alimentos da Dieta não encontrada",
+									content = @Content(schema = @Schema(ref = "Problema"))
+							)
+	})
+	List<AlimentoDietaModel> buscar(@Parameter(description = "ID de uma dieta", example = "1", required = true) Long id);
+}
