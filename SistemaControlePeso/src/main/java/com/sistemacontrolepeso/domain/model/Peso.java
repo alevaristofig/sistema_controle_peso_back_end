@@ -50,7 +50,7 @@ public class Peso {
 	
 	@NotNull
 	@UpdateTimestamp
-	@Column(nullable = false, columnDefinition = "datetime")
+	@Column(nullable = true, columnDefinition = "datetime")
 	private OffsetDateTime dataAtualizacao;
 	
 	@Valid

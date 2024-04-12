@@ -4535,3 +4535,9 @@ org.eclipse.core.runtime.CoreException: Could not resolve artifact org.webjars:s
 2024-04-11 22:50:53,458 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
 2024-04-11 22:50:53,461 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
 2024-04-11 22:50:53,462 [Worker-27: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\test\resources to target\test-classes
+2024-04-12 15:29:47,704 [Worker-1: Loading available Gradle versions] INFO  o.e.b.c.i.u.g.PublishedGradleVersions - Gradle version information cache is out-of-date. Trying to update.
+2024-04-12 15:35:39,365 [Worker-1: Launching SistemaControlePeso - SistemaControlePesoApplication] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact mysql:mysql-connector-java:jar:8.0.33 has been relocated to com.mysql:mysql-connector-j:jar:8.0.33: MySQL Connector/J artifacts moved to reverse-DNS compliant Maven 2+ coordinates.
+2024-04-12 15:35:39,368 [Worker-1: Launching SistemaControlePeso - SistemaControlePesoApplication] WARN  o.e.m.c.i.embedder.EclipseLogger - The artifact org.hibernate:hibernate-validator:jar:8.0.1.Final has been relocated to org.hibernate.validator:hibernate-validator:jar:8.0.1.Final
+2024-04-12 17:56:24,528 [Worker-32: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 1 resource from src\main\resources to target\classes
+2024-04-12 17:56:24,558 [Worker-32: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 0 resource from src\main\resources to target\classes
+2024-04-12 17:56:24,562 [Worker-32: Building] INFO  o.a.m.s.f.DefaultMavenResourcesFiltering - Copying 4 resources from src\test\resources to target\test-classes
