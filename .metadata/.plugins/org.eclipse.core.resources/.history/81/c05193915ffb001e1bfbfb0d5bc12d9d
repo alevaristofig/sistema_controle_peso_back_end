@@ -1,0 +1,14 @@
+package com.sistemacontrolepeso.domain.model.dto;
+
+public class PessoaExercicio {
+
+	private int quantidade;
+	private int exercicio_id;
+	private String nome;
+	
+	public PessoaExercicio(int quantidade, int exercicio_id, String nome) {
+		this.quantidade = quantidade;
+		//this.exercicio_id = exercicio_id;
+		//this.nome = nome;
+	}
+}

@@ -1,0 +1,22 @@
+package com.sistemacontrolepeso.domain.repository;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
+import com.sistemacontrolepeso.domain.model.PessoaExercicio;
+
+public interface PessoaExercicioRepository extends JpaRepository<PessoaExercicio, Long> {
+
+	/*@Query(value = "select SUM(pe.exercicio_id) AS quantidade, pe.exercicio_id, e.nome from pessoa_exercicio pe "
+			+ "inner join exercicio e ON e.id = pe.exercicio_id "
+			+ "where pe.treino = :treino "
+			+ "group by pe.exercicio_id", nativeQuery = true)
+	public List<Object[]> listarQuantidadeTreinos(@Param("treino") char treino);*/
+	
+	public List<Object[]> countByPessoaExercicioExercicioByTreinoEquals(char treino);
+
+	public List<Object[]> countByExercicioAndTreinoEquals(char treino);
+}
