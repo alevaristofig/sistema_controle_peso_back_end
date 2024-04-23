@@ -3,6 +3,7 @@ package com.sistemacontrolepeso;
 import static io.restassured.RestAssured.given;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.Date;
 
 import org.hamcrest.Matchers;
@@ -77,7 +78,7 @@ public class CadastroPessoaExercicio extends SistemaControlePesoApplicationTests
 		pessoa.setAltura(1.70);
 		pessoa.setEmail("alevaristofig@gmail.com");
 		pessoa.setEndereco("Rua Anhanguera, 109 - Santa Tereza, 31.015.090, Belo Horizonte MG");
-		pessoa.setData(new Date());
+		pessoa.setDataCadastro(OffsetDateTime.now());
 		
 		pessoaService.salvar(pessoa);
 		
@@ -94,7 +95,7 @@ public class CadastroPessoaExercicio extends SistemaControlePesoApplicationTests
 		pessoaExercicio.setPessoa(pessoa);
 		pessoaExercicio.setExercicio(exercicio);
 		pessoaExercicio.setTreino('S');
-		pessoaExercicio.setData(LocalDateTime.now());
+		pessoaExercicio.setDataCadastro(OffsetDateTime.now());
 		
 		cadastroPessoaExercicioService.salvar(pessoaExercicio);
 	}

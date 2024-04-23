@@ -1,0 +1,57 @@
+package com.sistemacontrolepeso.model;
+
+import java.time.OffsetDateTime;
+import java.util.Date;
+
+import com.sistemacontrolepeso.api.model.PessoaModel;
+import com.sistemacontrolepeso.api.model.input.PessoaIdInput;
+import com.sistemacontrolepeso.api.model.input.PessoaInput;
+import com.sistemacontrolepeso.domain.model.Pessoa;
+
+public class PessoaTestData {
+
+	private PessoaTestData() {}
+	
+	public static Pessoa umaNovaPessoa() {
+		Pessoa pessoa = new Pessoa();
+		
+		pessoa.setNome("Alexandre");
+		pessoa.setAltura(1.70);
+		pessoa.setEmail("alevaristofig@gmail.com");
+		pessoa.setEndereco("Rua Anhanguera, 109 - Santa Tereza, 31.015.090, Belo Horizonte MG");
+		pessoa.setDataCadastro(OffsetDateTime.now());
+		
+		return pessoa;
+	}
+	
+	
+	public static PessoaModel umaNovaPessoaModel() {
+		PessoaModel pessoaModel = new PessoaModel();
+		
+		pessoaModel.setNome("Alexandre");
+		pessoaModel.setAltura(1.70);
+		pessoaModel.setEmail("alevaristofig@gmail.com");
+		pessoaModel.setEndereco("Rua Anhanguera, 109 - Santa Tereza, 31.015.090, Belo Horizonte MG");
+		pessoaModel.setDataCadastro(OffsetDateTime.now());
+		
+		return pessoaModel;
+	}
+	
+	public static PessoaInput umaNovaPessoaInput() {
+		PessoaInput pessoaInput = new PessoaInput();
+		
+		pessoaInput.setNome("Alexandre");
+		pessoaInput.setAltura(1.70);
+		pessoaInput.setEmail("alevaristofig@gmail.com");
+		pessoaInput.setEndereco("Rua Anhanguera, 109 - Santa Tereza, 31.015.090, Belo Horizonte MG");
+		
+		return pessoaInput;
+	}
+	
+	public static PessoaIdInput umaNovaPessoaIdInput() {
+		PessoaIdInput pessoaIdInput = new PessoaIdInput();
+		pessoaIdInput.setId(1L);
+		
+		return pessoaIdInput;
+	}
+}

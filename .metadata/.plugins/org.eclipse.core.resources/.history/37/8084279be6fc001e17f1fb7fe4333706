@@ -1,0 +1,103 @@
+package com.sistemacontrolepeso.api.controller;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Date;
+import java.util.Optional;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
+import org.mockito.Mockito;
+import org.mockito.Spy;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import com.sistemacontrolepeso.api.model.PessoaModel;
+import com.sistemacontrolepeso.api.model.input.PessoaInput;
+import com.sistemacontrolepeso.domain.model.Pessoa;
+import com.sistemacontrolepeso.domain.service.CadastroPessoaService;
+import com.sistemacontrolepeso.model.PessoaTestData;
+
+@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
+@ExtendWith(MockitoExtension.class)
+class PessoaControllerTest {
+	
+	@Mock
+	CadastroPessoaService pessoaService;
+	
+	@InjectMocks
+	PessoaController pessoaController;
+
+	@Nested
+	class CadastroComPessoaValida {
+		
+		@Spy
+		Pessoa pessoa = PessoaTestData.umaNovaPessoa();
+		
+		@BeforeEach
+		void init() {
+			Mockito.when(pessoaService.salvar(Mockito.any(Pessoa.class)))
+					.thenAnswer(
+							invocacao -> {
+								Pessoa pessoaPassada = invocacao.getArgument(0, Pessoa.class);
+								pessoaPassada.setId(1L);
+								return pessoaPassada;
+							});
+		}
+		
+		@Test
+		void Dado_uma_Pessoa_valida_Quando_criar_Entao_deve_retornar_um_id_de_cadastro() {
+			var pessaoSalva = pessoaService.salvar(pessoa);
+			assertEquals(1, pessoa.getId());
+		}
+		
+		@Test
+		void Dado_uma_Pessoa_valida_Quando_criar_Entao_deve_chamar_metodo_salvar_do_service() {
+			pessoaService.salvar(pessoa);
+			Mockito.verify(pessoaService,Mockito.times(1))
+					.salvar(Mockito.eq(pessoa));
+		}
+	}
+	
+	@Nested
+	class EdicaoComPessoaValida {
+		
+		@Spy
+		Pessoa pessoa = PessoaTestData.umaNovaPessoa();
+		
+		@Spy
+		PessoaModel pessoaModel = PessoaTestData.umaNovaPessoaModel();
+		
+		@Spy
+		PessoaInput pessoaInput = PessoaTestData.umaNovaPessoaInput();
+		
+		@BeforeEach
+		void init() {
+			Mockito.when(pessoaService.salvar(pessoa))
+				.thenAnswer(invocacao -> invocacao.getArgument(0,Pessoa.class));
+			
+			Mockito.when(pessoaController.buscar(1L)).thenReturn(pessoaModel);
+		}
+		
+		@Test
+		void Dado_uma_Pessoa_valida_Quando_editar_Entao_deve_alterar_pessoa_salva() {
+			//Pessoa pessoaAtualizada = PessoaTestData.umaNovaPessoa();
+			//pessoaAtualizada.setEndereco("Rua caratinga 41 Anchieta");
+			pessoaInput.setEndereco("Rua caratinga 41 Anchieta");
+			
+			//pessoaService.salvar(pessoa);
+			pessoaController.atualizar(1L, pessoaInput);
+			
+			//Mockito.verify(pessoaService,Mockito.times(1)).salvar(pessoa);
+			Mockito.verify(pessoaController,Mockito.times(1)).atualizar(1L, pessoaInput);
+			
+			//assertEquals("Rua caratinga 41 Anchieta", pessoa.getEndereco());			
+		}
+	}
+
+}

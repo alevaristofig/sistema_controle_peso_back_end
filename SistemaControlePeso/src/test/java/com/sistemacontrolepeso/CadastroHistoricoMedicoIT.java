@@ -5,6 +5,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.Arrays;
 import java.util.Date;
 
@@ -137,7 +138,7 @@ public class CadastroHistoricoMedicoIT {
 		pessoa.setAltura(1.70);
 		pessoa.setEmail("alevaristofig@gmail.com");
 		pessoa.setEndereco("Rua Anhanguera, 109 - Santa Tereza, 31.015.090, Belo Horizonte MG");
-		pessoa.setData(new Date());
+		pessoa.setDataCadastro(OffsetDateTime.now());
 		
 		cadastroPessoaService.salvar(pessoa);
 		

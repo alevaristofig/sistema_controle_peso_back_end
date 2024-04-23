@@ -21,6 +21,7 @@ public class CadastroPesoService {
 	}
 	
 	public Peso buscarOuFalhar(Long id) {
+		System.out.println("Id do teste "+id);
 		return pesoRepository.findById(id)
 				.orElseThrow(() -> new PesoNaoEncontradoException(id)); 
 	}

@@ -1,6 +1,6 @@
 package com.sistemacontrolepeso.api.model.input;
 
-import java.util.Date;
+import java.time.OffsetDateTime;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
@@ -28,7 +28,14 @@ public class PessoaInput {
 	@NotNull
 	private double altura;
 	
-	@Schema(example = "28/03/2024")
+	@Schema(example = "$2y$12$NSsM4gEOR7MKogflKR7GMeYugkttjNhAJMvFdHrBLaLp2HzlggP5W")
+	@NotBlank
+	private String senha;
+	
+	@Schema(example = "22/04/2024")
 	@NotNull
-	private Date data;
+	private OffsetDateTime dataCadastro;
+	
+	@Schema(example = "22/04/2024")
+	private OffsetDateTime dataAtualizacao;
 }

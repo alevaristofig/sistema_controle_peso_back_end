@@ -1,10 +1,8 @@
 package com.sistemacontrolepeso.api.controller;
 
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Limit;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -24,7 +22,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sistemacontrolepeso.api.ResourceUriHelper;
 import com.sistemacontrolepeso.api.assembler.PesoInputDisassembler;
 import com.sistemacontrolepeso.api.assembler.PesoModelAssembler;
 import com.sistemacontrolepeso.api.model.PesoModel;
@@ -88,22 +85,19 @@ public class PesoController implements PesoControllerOpenApi {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public PesoModel adicionar(@RequestBody PesoInput pesoInput) {
-		Peso peso = pesoInputDisassembler.toDomainObject(pesoInput);
-		peso.setDataCadastro(OffsetDateTime.now());
 		
+		Peso peso = pesoInputDisassembler.toDomainObject(pesoInput);		
+				System.out.println(pesoInput+","+peso);
 		peso = cadastroPesoService.salvar(peso);
 		
 		PesoModel pesoModel = pesoModelAssembler.toModel(peso);
-		
-		ResourceUriHelper.addUriInResponseHeader(pesoModel.getId());
 		
 		return pesoModel;
 	}
 	
 	@PutMapping("/{id}")
-	public PesoModel atualizar(@PathVariable Long id, @RequestBody PesoInput pesoInput) {
+	public PesoModel atualizar(@PathVariable Long id, @RequestBody PesoInput pesoInput) {		
 		Peso peso = cadastroPesoService.buscarOuFalhar(id);
-		peso.setDataAtualizacao(OffsetDateTime.now());
 		
 		pesoInputDisassembler.copyToDomain(pesoInput, peso);
 		

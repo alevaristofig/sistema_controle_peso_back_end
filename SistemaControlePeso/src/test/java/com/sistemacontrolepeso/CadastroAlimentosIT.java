@@ -5,6 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import static org.hamcrest.CoreMatchers.equalTo;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import org.hamcrest.Matchers;
 import org.junit.jupiter.api.BeforeAll;
@@ -118,7 +119,7 @@ public class CadastroAlimentosIT {
 		alimento.setNome("Café com Leite");
 		alimento.setQuantidade("200ml");
 		alimento.setCalorias(90L);
-		alimento.setDataCadastro(LocalDateTime.now());
+		alimento.setDataCadastro(OffsetDateTime.now());
 		alimento.setDataAtualizacao(null);
 		
 		cadastroAlimentoService.salvar(alimento);
@@ -128,7 +129,7 @@ public class CadastroAlimentosIT {
 		alimento2.setNome("Pão com Creme de Ricota");
 		alimento2.setQuantidade("1");
 		alimento2.setCalorias(227);
-		alimento2.setDataCadastro(LocalDateTime.now());
+		alimento2.setDataCadastro(OffsetDateTime.now());
 		alimento2.setDataAtualizacao(null);
 		
 		cadastroAlimentoService.salvar(alimento2);
@@ -140,8 +141,8 @@ public class CadastroAlimentosIT {
 		alimento.setNome("Arroz");
 		alimento.setQuantidade("2 colheres");
 		alimento.setCalorias(45L);
-		alimento.setDataCadastro(LocalDateTime.now());
-		alimento.setDataAtualizacao(LocalDateTime.now());
+		alimento.setDataCadastro(OffsetDateTime.now());
+		alimento.setDataAtualizacao(OffsetDateTime.now());
 		
 		cadastroAlimentoService.salvar(alimento);
 	}

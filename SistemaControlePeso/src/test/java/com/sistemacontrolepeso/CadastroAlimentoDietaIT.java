@@ -3,6 +3,7 @@ package com.sistemacontrolepeso;
 import static io.restassured.RestAssured.given;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -64,7 +65,7 @@ public class CadastroAlimentoDietaIT {
 		alimento.setNome("Café com Leite");
 		alimento.setQuantidade("200ml");
 		alimento.setCalorias(90L);
-		alimento.setDataCadastro(LocalDateTime.now());
+		alimento.setDataCadastro(OffsetDateTime.now());
 		alimento.setDataAtualizacao(null);
 		
 		cadastroAlimentoService.salvar(alimento);

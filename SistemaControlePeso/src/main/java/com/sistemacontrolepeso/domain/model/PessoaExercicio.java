@@ -35,7 +35,7 @@ public class PessoaExercicio {
 	
 	@CreationTimestamp
 	@Column(columnDefinition = "datetime")
-	private OffsetDateTime data;
+	private OffsetDateTime dataCadastro;
 	
 	@ManyToOne
 	@JoinColumn(name = "pessoa_id")

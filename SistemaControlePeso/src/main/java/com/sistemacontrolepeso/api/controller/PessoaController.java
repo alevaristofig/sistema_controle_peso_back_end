@@ -1,5 +1,6 @@
 package com.sistemacontrolepeso.api.controller;
 
+import java.time.OffsetDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -60,9 +61,7 @@ public class PessoaController implements PessoaControllerOpenApi {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public PessoaModel adicionar(@RequestBody PessoaInput pessoaInput) {
-		Pessoa pessoa = pessoaInputDisassembler.toDomainObject(pessoaInput);
-		
-		pessoa.setData(new Date());
+		Pessoa pessoa = pessoaInputDisassembler.toDomainObject(pessoaInput);			
 		
 		pessoa = cadastroPessoaService.salvar(pessoa);
 		

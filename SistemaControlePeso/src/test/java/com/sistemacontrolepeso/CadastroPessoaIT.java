@@ -3,6 +3,7 @@ package com.sistemacontrolepeso;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 
+import java.time.OffsetDateTime;
 import java.util.Date;
 
 import org.hamcrest.Matchers;
@@ -41,10 +42,10 @@ public class CadastroPessoaIT extends SistemaControlePesoApplicationTests {
 	@Autowired
 	private PessoaRepository pessoaRepository;
 	
+	
 	private String pessoa_atualizar;
 	
 	@BeforeAll
-	//@BeforeEach
 	public void setUp() {		
 		RestAssured.port = port;
 		RestAssured.basePath = "/pessoas";
@@ -109,14 +110,16 @@ public class CadastroPessoaIT extends SistemaControlePesoApplicationTests {
 		pessoa.setAltura(1.70);
 		pessoa.setEmail("alevaristofig@gmail.com");
 		pessoa.setEndereco("Rua Anhanguera, 109 - Santa Tereza, 31.015.090, Belo Horizonte MG");
-		pessoa.setData(new Date());
+		pessoa.setSenha("123");
+		pessoa.setDataCadastro(OffsetDateTime.now());
 		
 		Pessoa pessoa2 = new Pessoa();
 		pessoa2.setNome("Adriane");
 		pessoa2.setAltura(1.72);
 		pessoa2.setEmail("adrianeef@yahoo.com.br");
 		pessoa2.setEndereco("Rua Anhanguera, 109 - Santa Tereza, 31.015.090, Belo Horizonte MG");
-		pessoa2.setData(new Date());
+		pessoa2.setSenha("123");
+		pessoa2.setDataCadastro(OffsetDateTime.now());
 		
 		pessoaService.salvar(pessoa);
 		pessoaService.salvar(pessoa2);		
@@ -130,7 +133,7 @@ public class CadastroPessoaIT extends SistemaControlePesoApplicationTests {
 		pessoa.setAltura(1.70);
 		pessoa.setEmail("alevaristofig@gmail.com");
 		pessoa.setEndereco("Rua Anhanguera, 109 - Santa Tereza, 31.015.090, Belo Horizonte MG");		
-		pessoa.setData(new Date());
+		pessoa.setDataCadastro(OffsetDateTime.now());
 		
 		pessoaService.salvar(pessoa);
 	}
@@ -139,3 +142,5 @@ public class CadastroPessoaIT extends SistemaControlePesoApplicationTests {
 		pessoaRepository.deleteAll();
 	}
 }
+
+

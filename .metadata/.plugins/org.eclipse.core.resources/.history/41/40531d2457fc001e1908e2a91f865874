@@ -1,0 +1,30 @@
+package com.sistemacontrolepeso.api.controller;
+
+import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.Date;
+
+import org.junit.jupiter.api.DisplayNameGeneration;
+import org.junit.jupiter.api.DisplayNameGenerator;
+import org.junit.jupiter.api.Nested;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.Spy;
+import org.mockito.junit.jupiter.MockitoExtension;
+
+import com.sistemacontrolepeso.domain.model.Pessoa;
+
+@DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
+@ExtendWith(MockitoExtension.class)
+class PessoaControllerTest {
+
+	@Nested
+	class CadastroComPessoaValida {
+		
+		@Spy
+		Pessoa pessoa = new Pessoa();
+		
+		//pessoa.setNome("alexandre");
+	}
+
+}

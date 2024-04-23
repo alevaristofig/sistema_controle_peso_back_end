@@ -1,7 +1,11 @@
 package com.sistemacontrolepeso.domain.model;
 
+import java.time.OffsetDateTime;
 import java.util.Date;
 import java.util.List;
+
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
@@ -15,6 +19,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Temporal;
 import jakarta.persistence.TemporalType;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.Setter;
@@ -40,12 +45,22 @@ public class Pessoa {
 	@Column(nullable = false)
 	private String endereco;
 	
-	@NotBlank
+	@NotNull
 	@Column(nullable = false)
 	private Double altura;
 	
-	@Temporal(TemporalType.DATE)
-	private Date data;
+	@NotBlank
+	@Column(nullable = false)
+	private String senha;
+	
+	@NotNull
+	@CreationTimestamp
+	@Column(nullable = false, columnDefinition = "datetime")
+	private OffsetDateTime dataCadastro;
+	
+	@UpdateTimestamp
+	@Column(nullable = true, columnDefinition = "datetime")
+	private OffsetDateTime dataAtualizacao;
 	
 	@OneToMany
 	@JoinColumn(name = "pessoa_id")

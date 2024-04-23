@@ -72,7 +72,7 @@ public class PessoaExercicioController implements PessoaExercicioControllerOpenA
 		pessoaExercicio.setPessoa(pessoa);
 		pessoaExercicio.setExercicio(exercicio);
 		pessoaExercicio.setTreino(pessoaExercicioInput.getTreino());
-		pessoaExercicio.setData(OffsetDateTime.now());
+		//pessoaExercicio.set(OffsetDateTime.now());
 		
 		return cadastroPessoaExercicioService.salvar(pessoaExercicio);
 		

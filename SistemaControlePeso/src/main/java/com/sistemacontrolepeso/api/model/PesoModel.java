@@ -1,6 +1,7 @@
 package com.sistemacontrolepeso.api.model;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import org.springframework.hateoas.RepresentationModel;
 
@@ -22,7 +23,10 @@ public class PesoModel extends RepresentationModel<PesoModel> {
 	private double imc;
 	
 	@Schema(example = "28/03/2024")
-	private LocalDateTime data;
+	private OffsetDateTime dataCadastro;
+	
+	@Schema(example = "28/03/2024")
+	private OffsetDateTime dataAtualizacao;
 	
 	@Schema(example = "João da Silva")
 	private PessoaModel pessoa;

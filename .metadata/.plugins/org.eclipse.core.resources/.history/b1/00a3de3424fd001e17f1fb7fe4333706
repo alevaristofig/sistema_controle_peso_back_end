@@ -1,0 +1,22 @@
+package com.sistemacontrolepeso.model;
+
+import java.time.OffsetDateTime;
+
+import com.sistemacontrolepeso.domain.model.Peso;
+
+public class PesoTestData {
+
+	private PesoTestData() {}
+	
+	public static Peso umNovoPeso() {
+		Peso peso = new Peso();
+		
+		peso.setId(1L);
+		peso.setValor(99);
+		peso.setImc(34.67);
+		peso.setDataCadastro(OffsetDateTime.now());
+		peso.setPessoa(PessoaTestData.umaNovaPessoa());
+		
+		return peso;
+	}
+}

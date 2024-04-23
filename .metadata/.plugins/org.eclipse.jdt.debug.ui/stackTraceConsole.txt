@@ -1,0 +1,8 @@
+java.lang.NullPointerException: Cannot invoke "com.sistemacontrolepeso.domain.model.Peso.setDataAtualizacao(java.time.OffsetDateTime)" because "peso" is null
+	at com.sistemacontrolepeso.api.controller.PesoController.atualizar(PesoController.java:105)
+	at com.sistemacontrolepeso.api.controller.PesoControllerTest$EdicaoComPesoValido.Dado_um_peso_valid0_Quando_editar_Entao_deve_retornar_status_200(PesoControllerTest.java:90)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+
