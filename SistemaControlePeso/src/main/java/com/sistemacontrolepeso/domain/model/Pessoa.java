@@ -2,7 +2,9 @@ package com.sistemacontrolepeso.domain.model;
 
 import java.time.OffsetDateTime;
 import java.util.Date;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -14,6 +16,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Temporal;
@@ -65,5 +69,10 @@ public class Pessoa {
 	@OneToMany
 	@JoinColumn(name = "pessoa_id")
 	private List<HistoricoMedico> historicoMedico;
+	
+	@ManyToMany
+	@JoinTable(name = "pessoa_grupo", joinColumns = @JoinColumn(name = "pessoa_id"),
+				inverseJoinColumns = @JoinColumn(name = "grupo_id"))
+	private Set<Grupo> grupos = new HashSet<>();
 	
 }

@@ -1,0 +1,5 @@
+package com.sistemacontrolepeso.domain.model;
+
+public class Grupo {
+
+}

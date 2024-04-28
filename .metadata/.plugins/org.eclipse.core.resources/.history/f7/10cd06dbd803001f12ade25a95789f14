@@ -1,0 +1,16 @@
+#DataBase
+spring.datasource.url=jdbc:mysql://localhost:3306/sistemapeso?createDatabaseIfNotExist=true&serverTimezone=UTC
+spring.datasource.username=root
+spring.datasource.password=rootpesquisa
+
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQLDialect
+spring.jpa.hibernate.ddl-auto=update
+
+#Security
+sistemacontrolepeso.auth.provider-url=http://localhost:8080
+spring.security.oauth2.resourceserver.opaque-token.introspection-uri=http://localhost:8080/oauth2/introspect
+spring.security.oauth2.resourceserver.opaque-token.client-id=sisetemacontrolepesobackend
+spring.security.oauth2.resourceserver.opaque-token.client-secret=123
+
+#logging.level.org.springframework.web= ERROR

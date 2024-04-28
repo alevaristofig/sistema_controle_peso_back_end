@@ -2,4 +2,5 @@
 <libraryInfos>
     <libraryInfo home="D:\sts-4.17.1.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.5.v20221102-0933\jre" version="17.0.5"/>
     <libraryInfo home="D:\sts-4.17.1.RELEASE\plugins\org.eclipse.justj.openjdk.hotspot.jre.full.win32.x86_64_17.0.5.v20221102-0933" version="17.0.5"/>
+    <libraryInfo home="C:\Program Files\Eclipse Adoptium\jdk-21.0.1.12-hotspot" version="21.0.1"/>
 </libraryInfos>

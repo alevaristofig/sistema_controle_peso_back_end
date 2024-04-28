@@ -1,0 +1,30 @@
+package com.sistemacontrolepeso.core.security.authorizationserver;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.transaction.annotation.Transactional;
+
+import com.sistemacontrolepeso.domain.exception.PessoaNaoEncontradaException;
+import com.sistemacontrolepeso.domain.model.Pessoa;
+import com.sistemacontrolepeso.domain.repository.PessoaRepository;
+
+public class JpaUserDetailService implements UserDetailsService {
+	
+	@Autowired
+	private PessoaRepository pessoaRepository;
+
+	@Transactional(readOnly = true)
+	@Override
+	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+		System.out.println("entrou");
+		Pessoa pessoa = pessoaRepository.findByEmail(username)
+				.orElseThrow(() -> new UsernameNotFoundException("Pessoa não encontrada com e-mail informado"));
+				
+				
+		return new AuthUser(pessoa, null);
+	}
+
+}

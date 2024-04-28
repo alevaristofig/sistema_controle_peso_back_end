@@ -1,28 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="pessoaModelAssembler"/>
+		<item key="selection" value="SistemaControlePesoSecurityProperties"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="SistemaControlePesoSecurityProperties"/>
+			<item value="SecurityContext"/>
+			<item value="JdbcOAuth2AuthorizationService"/>
+			<item value="save"/>
+			<item value="spring-security-oauth2-authorization-server"/>
+			<item value="spring-boot-starter-oauth2-resource-server"/>
+			<item value="security"/>
+			<item value="spring-security-oauth2"/>
+			<item value="spring-security"/>
 			<item value="pessoaModelAssembler"/>
 			<item value="pessoaInputDisassembler"/>
 			<item value="pessoaService"/>
 			<item value="hateoas"/>
 			<item value="springdoc"/>
 			<item value="springfox"/>
-			<item value="handleHttpMessageNotReadable"/>
-			<item value="detail"/>
 		</list>
 		<list key="replacehistory">
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="1983"/>
-		<item key="DIALOG_Y_ORIGIN" value="231"/>
+		<item key="DIALOG_X_ORIGIN" value="1450"/>
+		<item key="DIALOG_Y_ORIGIN" value="174"/>
 		<item key="DIALOG_WIDTH" value="511"/>
 		<item key="DIALOG_HEIGHT" value="523"/>
 		<item key="DIALOG_FONT_NAME" value="1|Segoe UI|9.0|0|WINDOWS|1|-18|0|0|0|400|0|0|0|1|0|0|0|0|Segoe UI"/>
