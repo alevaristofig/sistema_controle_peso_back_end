@@ -27,6 +27,7 @@ import com.sistemacontrolepeso.api.assembler.PesoModelAssembler;
 import com.sistemacontrolepeso.api.model.PesoModel;
 import com.sistemacontrolepeso.api.model.input.PesoInput;
 import com.sistemacontrolepeso.api.v1.openapi.controller.PesoControllerOpenApi;
+import com.sistemacontrolepeso.core.security.CheckSecurity;
 import com.sistemacontrolepeso.domain.model.Peso;
 import com.sistemacontrolepeso.domain.repository.PesoRepository;
 import com.sistemacontrolepeso.domain.service.CadastroPesoService;
@@ -51,6 +52,7 @@ public class PesoController implements PesoControllerOpenApi {
 	@Autowired
 	private PesoRepository pesoRepository;
 	
+	@CheckSecurity.Pesos.PodeConsultar
 	@GetMapping
 	public PagedModel<PesoModel> listar(@PageableDefault(size = 10) Pageable pageable){
 		Page<Peso> pesosPage = pesoRepository.findAll(pageable);
@@ -85,9 +87,9 @@ public class PesoController implements PesoControllerOpenApi {
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public PesoModel adicionar(@RequestBody PesoInput pesoInput) {
-		
+		System.out.println(OffsetDateTime.now());
 		Peso peso = pesoInputDisassembler.toDomainObject(pesoInput);		
-				System.out.println(pesoInput+","+peso);
+				
 		peso = cadastroPesoService.salvar(peso);
 		
 		PesoModel pesoModel = pesoModelAssembler.toModel(peso);

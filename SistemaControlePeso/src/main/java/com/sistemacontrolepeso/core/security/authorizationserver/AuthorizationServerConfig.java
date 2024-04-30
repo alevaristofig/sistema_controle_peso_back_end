@@ -21,6 +21,7 @@ import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.server.authorization.JdbcOAuth2AuthorizationService;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
 import org.springframework.security.oauth2.server.authorization.client.InMemoryRegisteredClientRepository;
+import org.springframework.security.oauth2.server.authorization.client.JdbcRegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.config.annotation.web.configuration.OAuth2AuthorizationServerConfiguration;
@@ -48,7 +49,7 @@ public class AuthorizationServerConfig {
 	public SecurityFilterChain authFilterChain(HttpSecurity http) throws Exception {
 		OAuth2AuthorizationServerConfiguration.applyDefaultSecurity(http);
 		
-		return http.formLogin(Customizer.withDefaults()).build();
+		return http.formLogin(customizer -> customizer.loginPage("/login")).build();
 	}
 	
 	@Bean
@@ -59,28 +60,11 @@ public class AuthorizationServerConfig {
 	}
 	
 	@Bean
-	public RegisteredClientRepository registeredClientRepository(PasswordEncoder passwordEncoder) {
+	public RegisteredClientRepository registeredClientRepository(PasswordEncoder passwordEncoder, 
+															     JdbcOperations jdbcOperations) {
 		
-		RegisteredClient backEnd = RegisteredClient
-				.withId("1")
-				.clientId("sisetemacontrolepesobackend")
-				.clientSecret(passwordEncoder.encode("123"))
-				.clientAuthenticationMethod(ClientAuthenticationMethod.CLIENT_SECRET_BASIC)
-				//.authorizationGrantType(AuthorizationGrantType.CLIENT_CREDENTIALS)
-				.authorizationGrantType(AuthorizationGrantType.AUTHORIZATION_CODE)
-				.tokenSettings(TokenSettings.builder()
-						//.accessTokenFormat(OAuth2TokenFormat.REFERENCE)
-						.accessTokenFormat(OAuth2TokenFormat.SELF_CONTAINED)
-						.accessTokenTimeToLive(Duration.ofMinutes(15))
-						.build())
-				.redirectUri("http://localhost:8080/authorized")
-				.clientSettings(ClientSettings.builder()
-						.requireAuthorizationConsent(false)
-						.build())
-				.build();
-				
+		return new JdbcRegisteredClientRepository(jdbcOperations);
 		
-		return new InMemoryRegisteredClientRepository(Arrays.asList(backEnd));
 	}
 	
 	
