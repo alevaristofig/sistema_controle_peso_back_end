@@ -28,6 +28,7 @@ import com.sistemacontrolepeso.api.assembler.ExercicioModelAssembler;
 import com.sistemacontrolepeso.api.model.ExercicioModel;
 import com.sistemacontrolepeso.api.model.input.ExercicioInput;
 import com.sistemacontrolepeso.api.v1.openapi.controller.ExercicioControllerOpenApi;
+import com.sistemacontrolepeso.core.security.CheckSecurity;
 import com.sistemacontrolepeso.domain.model.Exercicio;
 import com.sistemacontrolepeso.domain.model.Peso;
 import com.sistemacontrolepeso.domain.repository.ExercicioRepository;
@@ -53,6 +54,7 @@ public class ExercicioController implements ExercicioControllerOpenApi {
 	@Autowired
 	private PagedResourcesAssembler<Exercicio> pagedResourcesAssembler;
 	
+	@CheckSecurity.Exercicios.PodeConsultar
 	@GetMapping
 	public PagedModel<ExercicioModel> listar(@PageableDefault(size = 10) Pageable pageable){
 		Page<Exercicio> exerciciosPage = exercicioRepository.findAll(pageable);
@@ -63,6 +65,7 @@ public class ExercicioController implements ExercicioControllerOpenApi {
 		return exerciciosPagedModel;
 	}
 	
+	@CheckSecurity.Exercicios.PodeConsultar
 	@GetMapping("/listarexercicios")
 	public List<ExercicioModel> listar() {
 		List<Exercicio> exercicios = exercicioRepository.findAll();

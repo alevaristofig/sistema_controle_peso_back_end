@@ -15,6 +15,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.util.AntPathMatcher;
 
 @Configuration
 @EnableMethodSecurity
@@ -23,13 +24,27 @@ public class ResourceServerConfig {
 
 	@Bean
 	public SecurityFilterChain resourceServerFilterChain(HttpSecurity http) throws Exception {
-		 http.formLogin(Customizer.withDefaults())
+		/* http.formLogin(Customizer.withDefaults())
 		 	.csrf().disable()
 		 	.cors()
 		 	.and()
 		 	.oauth2ResourceServer().jwt().jwtAuthenticationConverter(jwtAuthenticationConverter());
 
-		 return http.build();
+		 return http.formLogin(customizer -> customizer.loginPage("/login")).build();*/
+		
+		http.formLogin(form -> form
+				.loginPage("/login")
+				.permitAll()
+			)
+			.authorizeHttpRequests(authorize -> authorize
+				.anyRequest().authenticated()
+				)			
+			.oauth2ResourceServer(oauth2 -> oauth2
+					.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())
+					)
+			);
+		
+		return http.build();
 	}
 	
 	private JwtAuthenticationConverter jwtAuthenticationConverter() {

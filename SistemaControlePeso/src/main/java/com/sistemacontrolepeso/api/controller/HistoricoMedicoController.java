@@ -29,6 +29,7 @@ import com.sistemacontrolepeso.api.assembler.HistoricoMedicoModelAssembler;
 import com.sistemacontrolepeso.api.model.HistoricoMedicoModel;
 import com.sistemacontrolepeso.api.model.input.HistoricoMedicoInput;
 import com.sistemacontrolepeso.api.v1.openapi.controller.HistoricoMedicoControllerOpenApi;
+import com.sistemacontrolepeso.core.security.CheckSecurity;
 import com.sistemacontrolepeso.domain.model.HistoricoMedico;
 import com.sistemacontrolepeso.domain.repository.HistoricoMedicoRepository;
 import com.sistemacontrolepeso.domain.service.CadastroHistoricoMedicoService;
@@ -53,6 +54,7 @@ public class HistoricoMedicoController implements HistoricoMedicoControllerOpenA
 	@Autowired
 	private PagedResourcesAssembler<HistoricoMedico> pagedResourcesAssembler;
 	
+	@CheckSecurity.HistoricosMedico.PodeConsultar
 	@GetMapping
 	public PagedModel<HistoricoMedicoModel> listar(@PageableDefault(size = 10) Pageable pageable) {
 		Page<HistoricoMedico> historicosMedicoPage = historicoMedicoRepository.findAll(pageable);

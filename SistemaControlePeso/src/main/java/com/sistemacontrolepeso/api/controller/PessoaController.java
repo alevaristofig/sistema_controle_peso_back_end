@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +25,7 @@ import com.sistemacontrolepeso.api.assembler.PessoaModelAssembler;
 import com.sistemacontrolepeso.api.model.PessoaModel;
 import com.sistemacontrolepeso.api.model.input.PessoaInput;
 import com.sistemacontrolepeso.api.v1.openapi.controller.PessoaControllerOpenApi;
+import com.sistemacontrolepeso.core.security.CheckSecurity;
 import com.sistemacontrolepeso.domain.model.Pessoa;
 import com.sistemacontrolepeso.domain.repository.PessoaRepository;
 import com.sistemacontrolepeso.domain.service.CadastroPessoaService;
@@ -51,6 +54,7 @@ public class PessoaController implements PessoaControllerOpenApi {
 		return pessoaModelAssembler.toCollectionModel(pessoas);
 	}
 	
+	@CheckSecurity.Pessoas.PodeConsultar
 	@GetMapping("/{id}")
 	public PessoaModel buscar(@PathVariable Long id) {
 		Pessoa pessoa = cadastroPessoaService.buscarOuFalhar(id);
@@ -78,5 +82,18 @@ public class PessoaController implements PessoaControllerOpenApi {
 		pessoa = cadastroPessoaService.salvar(pessoa);
 		
 		return pessoaModelAssembler.toModel(pessoa);
+	}
+	
+	@CheckSecurity.Pessoas.PodeConsultar
+	@GetMapping("/buscardadostoken/{token}")
+	public Pessoa buscarDadosToken(@PathVariable String token) {
+		return pessoaRepository.buscarIdEmailToken(token);
+	}
+	
+	@DeleteMapping("/{token}")
+	public ResponseEntity<Void> removerToken(@PathVariable String token) {
+		pessoaRepository.removerToken(token);
+		
+		return ResponseEntity.noContent().build();
 	}
 }

@@ -26,6 +26,7 @@ import com.sistemacontrolepeso.api.assembler.PessoaExercicioModelAssembler;
 import com.sistemacontrolepeso.api.model.PessoaExercicioModel;
 import com.sistemacontrolepeso.api.model.input.PessoaExercicioInput;
 import com.sistemacontrolepeso.api.v1.openapi.controller.PessoaExercicioControllerOpenApi;
+import com.sistemacontrolepeso.core.security.CheckSecurity;
 import com.sistemacontrolepeso.domain.model.Exercicio;
 import com.sistemacontrolepeso.domain.model.Pessoa;
 import com.sistemacontrolepeso.domain.model.PessoaExercicio;
@@ -49,6 +50,7 @@ public class PessoaExercicioController implements PessoaExercicioControllerOpenA
 	@Autowired
 	private PagedResourcesAssembler<PessoaExercicio> pagedResourcesAssembler;
 	
+	@CheckSecurity.PessoasExercicios.PodeConsultar
 	@GetMapping
 	public PagedModel<PessoaExercicioModel> listar(@PageableDefault(size = 10) Pageable pageable) {
 		Page<PessoaExercicio> pessoaExercicioPage = pessoaExercicioRepository.findAll(pageable);
@@ -78,6 +80,7 @@ public class PessoaExercicioController implements PessoaExercicioControllerOpenA
 		
 	}
 	
+	@CheckSecurity.PessoasExercicios.PodeConsultar
 	@GetMapping("/listartreinos/{treino}")
 	public List<com.sistemacontrolepeso.domain.model.dto.PessoaExercicio> listarTreinos(@PathVariable char treino) {
 		return pessoaExercicioRepository.listarQuantidadeTreinos(treino);

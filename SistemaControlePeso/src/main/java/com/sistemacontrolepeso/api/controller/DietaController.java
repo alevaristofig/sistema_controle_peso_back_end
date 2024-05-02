@@ -29,6 +29,7 @@ import com.sistemacontrolepeso.api.assembler.DietaModelAssembler;
 import com.sistemacontrolepeso.api.model.DietaModel;
 import com.sistemacontrolepeso.api.model.input.DietaInput;
 import com.sistemacontrolepeso.api.v1.openapi.controller.DietaControllerOpenApi;
+import com.sistemacontrolepeso.core.security.CheckSecurity;
 import com.sistemacontrolepeso.domain.model.Dieta;
 import com.sistemacontrolepeso.domain.repository.DietaRepository;
 import com.sistemacontrolepeso.domain.service.CadastroDietaService;
@@ -53,6 +54,7 @@ public class DietaController implements DietaControllerOpenApi {
 	@Autowired
 	private PagedResourcesAssembler<Dieta> pagedResourcesAssembler;
 	
+	@CheckSecurity.Dietas.PodeConsultar
 	@GetMapping
 	public PagedModel<DietaModel> listar(@PageableDefault(size = 10) Pageable pageable) {
 		Page<Dieta> dietasPage = dietaRepository.findAll(pageable);

@@ -63,6 +63,7 @@ public class PesoController implements PesoControllerOpenApi {
 		return pesosPageModel;
 	}
 	
+	@CheckSecurity.Pesos.PodeConsultar
 	@GetMapping("/{id}")
 	public PesoModel buscar(@PathVariable Long id) {
 		Peso peso = cadastroPesoService.buscarOuFalhar(id);

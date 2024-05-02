@@ -29,6 +29,7 @@ import com.sistemacontrolepeso.api.assembler.AlimentoModelAssembler;
 import com.sistemacontrolepeso.api.model.AlimentoModel;
 import com.sistemacontrolepeso.api.model.input.AlimentoInput;
 import com.sistemacontrolepeso.api.v1.openapi.controller.AlimentoControllerOpenApi;
+import com.sistemacontrolepeso.core.security.CheckSecurity;
 import com.sistemacontrolepeso.domain.model.Alimento;
 import com.sistemacontrolepeso.domain.repository.AlimentoRepositoy;
 import com.sistemacontrolepeso.domain.service.CadastroAlimentoService;
@@ -60,6 +61,7 @@ public class AlimentoController implements AlimentoControllerOpenApi {
 		return alimentoModelAssembler.toModel(alimento);
 	}
 	
+	@CheckSecurity.Alimentos.PodeConsultar
 	@GetMapping
 	public PagedModel<AlimentoModel> listar(@PageableDefault(size = 10) Pageable pageable){
 		Page<Alimento> alimentoPage = alimentoRepositoy.findAll(pageable);

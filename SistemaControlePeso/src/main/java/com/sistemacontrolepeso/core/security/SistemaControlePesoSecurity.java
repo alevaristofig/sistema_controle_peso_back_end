@@ -15,7 +15,12 @@ public class SistemaControlePesoSecurity {
 		return getAuthentication().isAuthenticated();
 	}
 	
-	public boolean podeConsultarPesos() {
+	public boolean hasAuthority(String authorityName) {
+		return getAuthentication().getAuthorities().stream()
+				.anyMatch(authority -> authority.getAuthority().equals(authorityName));
+	}
+	
+	public boolean podeConsultar() {
 		return isAutenticado();
 	}
 }
