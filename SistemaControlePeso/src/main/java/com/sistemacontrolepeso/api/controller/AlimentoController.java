@@ -54,6 +54,7 @@ public class AlimentoController implements AlimentoControllerOpenApi {
 	@Autowired
 	private PagedResourcesAssembler<Alimento> pagedResourcesAssembler;
 	
+	@CheckSecurity.Alimentos.PodeConsultar
 	@GetMapping("/{id}")
 	public AlimentoModel buscar(@PathVariable Long id) {
 		Alimento alimento = cadastroAlimentoService.buscarOuFalhar(id);

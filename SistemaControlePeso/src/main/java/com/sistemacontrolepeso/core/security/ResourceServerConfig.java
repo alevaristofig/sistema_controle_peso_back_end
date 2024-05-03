@@ -23,15 +23,7 @@ import org.springframework.util.AntPathMatcher;
 public class ResourceServerConfig {
 
 	@Bean
-	public SecurityFilterChain resourceServerFilterChain(HttpSecurity http) throws Exception {
-		/* http.formLogin(Customizer.withDefaults())
-		 	.csrf().disable()
-		 	.cors()
-		 	.and()
-		 	.oauth2ResourceServer().jwt().jwtAuthenticationConverter(jwtAuthenticationConverter());
-
-		 return http.formLogin(customizer -> customizer.loginPage("/login")).build();*/
-		
+	public SecurityFilterChain resourceServerFilterChain(HttpSecurity http) throws Exception {		
 		http.formLogin(form -> form
 				.loginPage("/login")
 				.permitAll()
@@ -40,7 +32,7 @@ public class ResourceServerConfig {
 				.anyRequest().authenticated()
 				)			
 			.oauth2ResourceServer(oauth2 -> oauth2
-					.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())
+					.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())						
 					)
 			);
 		

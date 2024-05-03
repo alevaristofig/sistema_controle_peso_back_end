@@ -65,6 +65,7 @@ public class HistoricoMedicoController implements HistoricoMedicoControllerOpenA
 		return historicosMedicoPagedModel;
 	}
 	
+	@CheckSecurity.HistoricosMedico.PodeConsultar
 	@GetMapping("/{id}")
 	public HistoricoMedicoModel buscar(@PathVariable @Validated Long id) {
 		HistoricoMedico historicoMedico = cadastroHistoricoMedicoService.buscarOuFalhar(id);

@@ -65,6 +65,7 @@ public class DietaController implements DietaControllerOpenApi {
 		return dietasPagedModel;
 	}
 	
+	@CheckSecurity.Dietas.PodeConsultar
 	@GetMapping("/{id}")
 	public DietaModel buscar(@PathVariable Long id) {
 		Dieta dieta = cadastroDietaService.buscarOuFalhar(id);

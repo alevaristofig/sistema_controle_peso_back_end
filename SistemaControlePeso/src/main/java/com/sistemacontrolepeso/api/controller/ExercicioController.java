@@ -73,6 +73,7 @@ public class ExercicioController implements ExercicioControllerOpenApi {
 		return exercicioModelAssembler.toCollectionModel(exercicios);
 	}
 	
+	@CheckSecurity.Exercicios.PodeConsultar
 	@GetMapping("/{id}")
 	public ExercicioModel buscar(@PathVariable Long id) {
 		
