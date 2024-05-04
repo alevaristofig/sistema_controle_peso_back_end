@@ -78,14 +78,12 @@ public class DietaController implements DietaControllerOpenApi {
 	public DietaModel adicionar(@RequestBody @Validated DietaInput dietaInput) {
 		Dieta dieta = dietaInputDisassembler.toDomainObject(dietaInput);
 		
-		dieta.setDataAtualizacao(LocalDateTime.now());
-		dieta.setDataAtualizacao(null);
-		
 		dieta = cadastroDietaService.salvar(dieta);
 		
 		return dietaModelAssembler.toModel(dieta);
 	}
 	
+	@CheckSecurity.Dietas.podeEditar
 	@PutMapping("/{id}")
 	public DietaModel atualizar(@PathVariable Long id, @RequestBody @Validated DietaInput dietaInput) {
 		Dieta dieta = cadastroDietaService.buscarOuFalhar(id);

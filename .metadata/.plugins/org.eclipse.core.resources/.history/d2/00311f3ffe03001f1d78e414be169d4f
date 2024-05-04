@@ -1,5 +1,0 @@
-package com.sistemacontrolepeso.core.security.authorizationserver;
-
-public class JpaUserDetailService {
-
-}

@@ -73,6 +73,7 @@ public class AlimentoController implements AlimentoControllerOpenApi {
 		return alimentosPagedModel;
 	}
 	
+	@CheckSecurity.Alimentos.podeEditar
 	@PutMapping("/{id}")
 	public AlimentoModel atualizar(@PathVariable Long id, @RequestBody AlimentoInput alimentoInput) {
 		Alimento alimento = cadastroAlimentoService.buscarOuFalhar(id);

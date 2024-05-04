@@ -72,6 +72,7 @@ public class PessoaController implements PessoaControllerOpenApi {
 		return pessoaModelAssembler.toModel(pessoa);
 	}
 	
+	@CheckSecurity.Pessoas.podeEditar
 	@PutMapping("/{id}")
 	@ResponseStatus(HttpStatus.OK)
 	public PessoaModel atualizar(@PathVariable Long id, @RequestBody PessoaInput pessoaInput) {
@@ -91,9 +92,7 @@ public class PessoaController implements PessoaControllerOpenApi {
 	}
 	
 	@DeleteMapping("/{token}")
-	public ResponseEntity<Void> removerToken(@PathVariable String token) {
+	public void removerToken(@PathVariable String token) {
 		pessoaRepository.removerToken(token);
-		
-		return ResponseEntity.noContent().build();
 	}
 }

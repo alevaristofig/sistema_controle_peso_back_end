@@ -14,6 +14,11 @@ public @interface CheckSecurity {
 		@Retention(RetentionPolicy.RUNTIME)
 		@Target(ElementType.METHOD)
 		public @interface PodeConsultar {}
+		
+		@PreAuthorize("hasAuthority('EDITAR_PESSOA')")
+		@Retention(RetentionPolicy.RUNTIME)
+		@Target(ElementType.METHOD)
+		public @interface podeEditar{}
 	}
 
 	public @interface Pesos {
@@ -48,6 +53,11 @@ public @interface CheckSecurity {
 		@Retention(RetentionPolicy.RUNTIME)
 		@Target(ElementType.METHOD)
 		public @interface PodeConsultar {}
+		
+		@PreAuthorize("hasAuthority('CRIAR_EDITAR_DELETAR_ALIMENTOS')")
+		@Retention(RetentionPolicy.RUNTIME)
+		@Target(ElementType.METHOD)
+		public @interface podeEditar{}
 	}
 	
 	public @interface Dietas {
@@ -55,6 +65,11 @@ public @interface CheckSecurity {
 		@Retention(RetentionPolicy.RUNTIME)
 		@Target(ElementType.METHOD)
 		public @interface PodeConsultar {}
+		
+		@PreAuthorize("hasAuthority('CRIAR_EDITAR_DELETAR_DIETAS')")
+		@Retention(RetentionPolicy.RUNTIME)
+		@Target(ElementType.METHOD)
+		public @interface podeEditar{}
 	}
 	
 	public @interface HistoricosMedico {
@@ -62,6 +77,18 @@ public @interface CheckSecurity {
 		@Retention(RetentionPolicy.RUNTIME)
 		@Target(ElementType.METHOD)
 		public @interface PodeConsultar {}
+		
+		@PreAuthorize("hasAuthority('CRIAR_EDITAR_DELETAR_HISTORICOS_MEDICO')")
+		@Retention(RetentionPolicy.RUNTIME)
+		@Target(ElementType.METHOD)
+		public @interface podeEditar{}
+	}
+	
+	public @interface AlimentosDietas {
+		@PreAuthorize("hasAuthority('CRIAR_EDITAR_DELETAR_ALIMENTOS_DIETAS')")
+		@Retention(RetentionPolicy.RUNTIME)
+		@Target(ElementType.METHOD)
+		public @interface podeEditar{}
 	}
 	
 }

@@ -27,6 +27,7 @@ import com.sistemacontrolepeso.api.model.DietaModel;
 import com.sistemacontrolepeso.api.model.input.AlimentoDietaInput;
 import com.sistemacontrolepeso.api.model.input.DietaInput;
 import com.sistemacontrolepeso.api.v1.openapi.controller.AlimentoDietaControllerOpenApi;
+import com.sistemacontrolepeso.core.security.CheckSecurity;
 import com.sistemacontrolepeso.domain.model.Alimento;
 import com.sistemacontrolepeso.domain.model.AlimentoDieta;
 import com.sistemacontrolepeso.domain.model.Dieta;
@@ -60,6 +61,7 @@ public class AlimentoDietaController implements AlimentoDietaControllerOpenApi {
 		return alimentoDietaModelAssembler.toCollectionModel(alimentoDieta);
 	}
 	
+	@CheckSecurity.AlimentosDietas.podeEditar
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public AlimentoDieta adicionar(@RequestBody @Validated AlimentoDietaInput alimentoDietaInput) {
@@ -73,12 +75,11 @@ public class AlimentoDietaController implements AlimentoDietaControllerOpenApi {
 		AlimentoDieta alimentoDieta = new AlimentoDieta();
 		alimentoDieta.setDieta(dieta);
 		alimentoDieta.setAlimento(alimento);
-		alimentoDieta.setDataCriacao(LocalDateTime.now());
-		alimentoDieta.setDataAtualizacao(null);
 		
 		return cadastroAlimentoDietaService.salvar(alimentoDieta);
 	}
 	
+	@CheckSecurity.AlimentosDietas.podeEditar
 	@PutMapping("/{id}")
 	public AlimentoDietaModel atualizar(@PathVariable Long id, 
 										@RequestBody @Validated AlimentoDietaInput alimentoDietaInput) {
@@ -92,8 +93,6 @@ public class AlimentoDietaController implements AlimentoDietaControllerOpenApi {
 		
 		alimentoDieta.setDieta(dieta);
 		alimentoDieta.setAlimento(alimento);
-		alimentoDieta.setDataCriacao(alimentoDietaInput.getDataCriacao());
-		alimentoDieta.setDataAtualizacao(LocalDateTime.now());
 		
 		alimentoDieta = cadastroAlimentoDietaService.salvar(alimentoDieta);
 		

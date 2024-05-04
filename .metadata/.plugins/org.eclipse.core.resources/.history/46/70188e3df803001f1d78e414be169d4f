@@ -1,5 +1,0 @@
-package com.sistemacontrolepeso.core.io;
-
-public class Base64ProtocolResolver {
-
-}

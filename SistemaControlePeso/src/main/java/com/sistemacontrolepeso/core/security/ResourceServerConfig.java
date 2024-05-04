@@ -26,14 +26,15 @@ public class ResourceServerConfig {
 	public SecurityFilterChain resourceServerFilterChain(HttpSecurity http) throws Exception {		
 		http.formLogin(form -> form
 				.loginPage("/login")
-				.permitAll()
-			)
+				.permitAll())
+				.logout((logout) -> logout.clearAuthentication(true)
+						.invalidateHttpSession(true)
+						.deleteCookies()
+						)
 			.authorizeHttpRequests(authorize -> authorize
-				.anyRequest().authenticated()
-				)			
+				.anyRequest().authenticated())			
 			.oauth2ResourceServer(oauth2 -> oauth2
-					.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter())						
-					)
+					.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter()))
 			);
 		
 		return http.build();

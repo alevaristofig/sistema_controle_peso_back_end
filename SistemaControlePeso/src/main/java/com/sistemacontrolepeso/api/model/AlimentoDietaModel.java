@@ -14,7 +14,7 @@ public class AlimentoDietaModel {
 
 	private Long id;
 	
-	private LocalDateTime dataCriacao;
+	private LocalDateTime dataCadastro;
 			
 	private LocalDateTime dataAtualizacao;
 	

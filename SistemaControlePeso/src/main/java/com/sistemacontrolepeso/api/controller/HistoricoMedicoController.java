@@ -86,13 +86,13 @@ public class HistoricoMedicoController implements HistoricoMedicoControllerOpenA
 		return historicoMedicoModelAssembler.toModel(historicoMedico);
 	}
 	
+	@CheckSecurity.HistoricosMedico.podeEditar
 	@PutMapping("/{id}")
 	public HistoricoMedicoModel atualizar(@PathVariable Long id,
 			@RequestBody @Validated HistoricoMedicoInput historicoMedicoInput) {
 		HistoricoMedico historicoMedico = cadastroHistoricoMedicoService.buscarOuFalhar(id);
 		
-		historicoMedicoInputDisassembler.copytoDomain(historicoMedicoInput, historicoMedico);
-		historicoMedico.setDataAtualizacao(LocalDateTime.now());
+		historicoMedicoInputDisassembler.copytoDomain(historicoMedicoInput, historicoMedico);		
 		
 		historicoMedico = cadastroHistoricoMedicoService.salvar(historicoMedico);
 		

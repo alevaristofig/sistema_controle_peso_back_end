@@ -3,11 +3,14 @@ package com.sistemacontrolepeso.domain.repository;
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.http.ResponseEntity;
 
 import com.sistemacontrolepeso.domain.model.Pessoa;
+
+import jakarta.transaction.Transactional;
 
 public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
 
@@ -19,8 +22,10 @@ public interface PessoaRepository extends JpaRepository<Pessoa, Long> {
 			nativeQuery = true)
 	Pessoa buscarIdEmailToken(@Param("token") String token);
 	
+	@Modifying
+	@Transactional
 	@Query(value = "delete from oauth2_authorization "
 			+ "where access_token_value= :token",
 			nativeQuery = true)
-	ResponseEntity<Void> removerToken(@Param("token") String token);
+	void removerToken(@Param("token") String token);
 }

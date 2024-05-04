@@ -98,6 +98,7 @@ public class PesoController implements PesoControllerOpenApi {
 		return pesoModel;
 	}
 	
+	@CheckSecurity.Pesos.podeEditar
 	@PutMapping("/{id}")
 	public PesoModel atualizar(@PathVariable Long id, @RequestBody PesoInput pesoInput) {		
 		Peso peso = cadastroPesoService.buscarOuFalhar(id);

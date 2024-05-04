@@ -1,6 +1,7 @@
 package com.sistemacontrolepeso.domain.model;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.OnDelete;
@@ -32,11 +33,11 @@ public class AlimentoDieta {
 	
 	@CreationTimestamp
 	@Column(columnDefinition = "datetime")
-	private LocalDateTime dataCriacao;
+	private OffsetDateTime dataCadastro;
 	
 	@UpdateTimestamp
 	@Column(columnDefinition = "datetime")		
-	private LocalDateTime dataAtualizacao;
+	private OffsetDateTime dataAtualizacao;
 	
 	@NotNull
 	@ManyToOne
