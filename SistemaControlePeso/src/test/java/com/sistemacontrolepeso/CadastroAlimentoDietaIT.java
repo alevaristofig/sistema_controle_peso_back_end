@@ -73,14 +73,14 @@ public class CadastroAlimentoDietaIT {
 		Dieta dieta = new Dieta();
 		
 		dieta.setNome("Café da Manhã");
-		dieta.setDataCadastro(LocalDateTime.now());
+		dieta.setDataCadastro(OffsetDateTime.now());
 		
 		cadastroDietaService.salvar(dieta);
 		
 		AlimentoDieta alimentoDieta = new AlimentoDieta();
 		alimentoDieta.setAlimento(alimento);
 		alimentoDieta.setDieta(dieta);
-		alimentoDieta.setDataCriacao(LocalDateTime.now());
+		alimentoDieta.setDataCadastro(OffsetDateTime.now());
 		alimentoDieta.setDataAtualizacao(null);
 		
 		cadastroAlimentoDietaService.salvar(alimentoDieta);

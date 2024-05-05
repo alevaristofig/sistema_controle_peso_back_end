@@ -5,6 +5,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 import java.util.List;
 
 import org.hamcrest.Matchers;
@@ -131,12 +132,12 @@ public class CadastroDietaIT {
 		Dieta dieta = new Dieta();
 		
 		dieta.setNome("Café da Manhã");
-		dieta.setDataCadastro(LocalDateTime.now());
+		dieta.setDataCadastro(OffsetDateTime.now());
 		
 		Dieta dieta2 = new Dieta();
 		
 		dieta2.setNome("Almoço");
-		dieta2.setDataCadastro(LocalDateTime.now());
+		dieta2.setDataCadastro(OffsetDateTime.now());
 		
 		cadastroDietaService.salvar(dieta);
 		cadastroDietaService.salvar(dieta2);
@@ -147,7 +148,7 @@ public class CadastroDietaIT {
 		
 		dieta.setNome("Café da Manhã Tarde");
 		dieta.setDataCadastro(dieta.getDataCadastro());
-		dieta.setDataAtualizacao(LocalDateTime.now());
+		dieta.setDataAtualizacao(OffsetDateTime.now());
 		
 		cadastroDietaService.salvar(dieta);
 	}

@@ -86,6 +86,7 @@ public class AlimentoController implements AlimentoControllerOpenApi {
 		return alimentoModelAssembler.toModel(alimento);
 	}
 	
+	@CheckSecurity.Alimentos.podeEditar
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public AlimentoModel adicionar(@RequestBody @Validated AlimentoInput alimentoInput) {
@@ -99,6 +100,7 @@ public class AlimentoController implements AlimentoControllerOpenApi {
 		
 	}
 	
+	@CheckSecurity.Alimentos.podeEditar
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public ResponseEntity<Void> remover(@PathVariable Long id) {

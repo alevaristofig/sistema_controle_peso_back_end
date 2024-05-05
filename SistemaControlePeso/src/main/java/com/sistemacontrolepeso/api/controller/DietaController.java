@@ -73,6 +73,7 @@ public class DietaController implements DietaControllerOpenApi {
 		return dietaModelAssembler.toModel(dieta);
 	}
 	
+	@CheckSecurity.Dietas.podeEditar
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public DietaModel adicionar(@RequestBody @Validated DietaInput dietaInput) {
@@ -95,6 +96,7 @@ public class DietaController implements DietaControllerOpenApi {
 		return dietaModelAssembler.toModel(dieta);
 	}
 	
+	@CheckSecurity.Dietas.podeEditar
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public ResponseEntity<Void> remover(@PathVariable Long id) {

@@ -73,14 +73,12 @@ public class HistoricoMedicoController implements HistoricoMedicoControllerOpenA
 		return historicoMedicoModelAssembler.toModel(historicoMedico);
 	}
 	
-	
+	@CheckSecurity.HistoricosMedico.podeEditar
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public HistoricoMedicoModel adicionar(@RequestBody @Validated HistoricoMedicoInput historicoMedicoInput) {
 		HistoricoMedico historicoMedico = historicoMedicoInputDisassembler.toDomainObject(historicoMedicoInput);
 		
-		historicoMedico.setDataCadastro(LocalDateTime.now());
-		historicoMedico.setDataAtualizacao(null);
 		historicoMedico = cadastroHistoricoMedicoService.salvar(historicoMedico);
 		
 		return historicoMedicoModelAssembler.toModel(historicoMedico);
@@ -100,6 +98,7 @@ public class HistoricoMedicoController implements HistoricoMedicoControllerOpenA
 		
 	}
 	
+	@CheckSecurity.HistoricosMedico.podeEditar
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public ResponseEntity<Void> remover(@PathVariable @Validated Long id) {

@@ -1,6 +1,7 @@
 package com.sistemacontrolepeso.api.model;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import org.springframework.hateoas.RepresentationModel;
 
@@ -24,10 +25,10 @@ public class HistoricoMedicoModel extends RepresentationModel<HistoricoMedicoMod
 	private String remedio;
 	
 	@Schema(example = "28/03/2024")
-	private LocalDateTime dataCadastro;
+	private OffsetDateTime dataCadastro;
 	
 	@Schema(example = "04/04/2024")
-	private LocalDateTime dataAtualizacao;
+	private OffsetDateTime dataAtualizacao;
 	
 	@Schema(example = "1")
 	private PessoaIdInput pessoa;

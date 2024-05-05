@@ -85,6 +85,7 @@ public class PesoController implements PesoControllerOpenApi {
 		return pesoModelAssembler.toModel(peso);
 	}
 	
+	@CheckSecurity.Pesos.podeEditar
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public PesoModel adicionar(@RequestBody PesoInput pesoInput) {
@@ -110,6 +111,7 @@ public class PesoController implements PesoControllerOpenApi {
 		return pesoModelAssembler.toModel(peso);
 	}
 	
+	@CheckSecurity.Pesos.podeEditar
 	@DeleteMapping("/{id}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public ResponseEntity<Void> remover(@PathVariable Long id) {

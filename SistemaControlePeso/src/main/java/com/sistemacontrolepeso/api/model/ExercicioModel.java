@@ -1,6 +1,7 @@
 package com.sistemacontrolepeso.api.model;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import org.springframework.hateoas.RepresentationModel;
 
@@ -25,8 +26,8 @@ public class ExercicioModel extends RepresentationModel<ExercicioModel> {
 	private int frequencia;
 	
 	@Schema(example = "28/03/2024")
-	private LocalDateTime dataCadastro;
+	private OffsetDateTime dataCadastro;
 	
 	@Schema(example = "03/04/2024")
-	private LocalDateTime dataAtualizar;
+	private OffsetDateTime dataAtualizar;
 }

@@ -86,8 +86,6 @@ public class ExercicioController implements ExercicioControllerOpenApi {
 	@ResponseStatus(HttpStatus.OK)
 	public ExercicioModel atualizar(@PathVariable Long exercicioId, @RequestBody ExercicioInput exercicioInput) {
 		
-		exercicioInput.setDataAtualizar(LocalDateTime.now());
-		
 		Exercicio exercicio = cadastroExercicioService.buscarOuFalhar(exercicioId);
 		
 		exercicioInputDisassembler.copytoDomain(exercicioInput, exercicio);
@@ -97,20 +95,19 @@ public class ExercicioController implements ExercicioControllerOpenApi {
 		return exercicioModelAssembler.toModel(exercicio);
 	}
 	
+	@CheckSecurity.Exercicios.podeEditar
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public ExercicioModel salvar(@RequestBody ExercicioInput exercicioInput) {
 		
 		Exercicio exercicio = exercicioInputDisassembler.toDomainObject(exercicioInput);
 		
-		exercicio.setDataCadastro(LocalDateTime.now());
-		exercicio.setDataAtualizar(null);
-		
 		cadastroExercicioService.salvar(exercicio);
 		
 		return exercicioModelAssembler.toModel(exercicio);
 	}
 	
+	@CheckSecurity.Exercicios.podeEditar
 	@DeleteMapping("/{exercicioId}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public ResponseEntity<Void> remover(@PathVariable Long exercicioId) {

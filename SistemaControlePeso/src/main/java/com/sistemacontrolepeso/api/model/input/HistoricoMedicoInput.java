@@ -1,6 +1,7 @@
 package com.sistemacontrolepeso.api.model.input;
 
 import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import com.sistemacontrolepeso.domain.model.Pessoa;
 
@@ -19,11 +20,11 @@ public class HistoricoMedicoInput {
 	private String remedio;
 	
 	@Schema(example = "28/03/2024")
-	private LocalDateTime dataCadastro;
+	private OffsetDateTime dataCadastro;
 	
 	@Schema(example = "04/04/2024")
-	private LocalDateTime dataAtualizacao;
+	private OffsetDateTime dataAtualizacao;
 	
 	@Schema(example = "1")
-	private PessoaIdInput pessoa;
+	private Pessoa pessoa;
 }
