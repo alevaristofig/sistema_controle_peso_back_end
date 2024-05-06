@@ -86,7 +86,7 @@ public class CadastroPessoaExercicio extends SistemaControlePesoApplicationTests
 		exercicio.setNome("Esteira");
 		exercicio.setTempo(45L);
 		exercicio.setFrequencia(3);
-		exercicio.setDataCadastro(LocalDateTime.now());
+		exercicio.setDataCadastro(OffsetDateTime.now());
 		exercicio.setDataAtualizar(null);
 		
 		cadastroExercicio.salvar(exercicio);

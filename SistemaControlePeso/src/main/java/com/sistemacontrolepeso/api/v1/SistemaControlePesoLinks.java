@@ -14,7 +14,10 @@ import com.sistemacontrolepeso.api.controller.AlimentoController;
 import com.sistemacontrolepeso.api.controller.DietaController;
 import com.sistemacontrolepeso.api.controller.ExercicioController;
 import com.sistemacontrolepeso.api.controller.HistoricoMedicoController;
-import com.sistemacontrolepeso.api.controller.PesoController;
+import com.sistemacontrolepeso.api.v1.controller.PesoController;
+import com.sistemacontrolepeso.api.v1.controller.PessoaController;
+import com.sistemacontrolepeso.api.v1.controller.PessoaExercicioController;
+
 
 @Component
 public class SistemaControlePesoLinks {
@@ -27,6 +30,14 @@ public class SistemaControlePesoLinks {
 	public static final TemplateVariables PROJECAO_VARIABLES = new TemplateVariables(
 			new TemplateVariable("projecao", VariableType.REQUEST_PARAM));
 	
+	
+	public Link linkToPessoas(String rel) {
+		return linkTo(PessoaController.class).withRel(rel);
+	}
+	
+	public Link linkttoPessoas() {
+		return linkToPessoas(IanaLinkRelations.SELF.value());
+	}
 	
 	public Link linkToPesos(String rel) {
 		return linkTo(PesoController.class).withRel(rel);
@@ -66,6 +77,14 @@ public class SistemaControlePesoLinks {
 	
 	public Link linkToHistoricoMedico() {
 		return linkToAlimentos(IanaLinkRelations.SELF.value());
+	}
+	
+	public Link linkToPessoaExericico(String rel) {
+		return linkTo(PessoaExercicioController.class).withRel(rel);
+	}
+	
+	public Link linkToPessoaExericico() {
+		return linkToPessoaExericico(IanaLinkRelations.SELF.value());
 	}
 	
 }

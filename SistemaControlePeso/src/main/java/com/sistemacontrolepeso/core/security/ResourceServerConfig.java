@@ -15,6 +15,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.oauth2.server.resource.authentication.JwtAuthenticationConverter;
 import org.springframework.security.oauth2.server.resource.authentication.JwtGrantedAuthoritiesConverter;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import org.springframework.util.AntPathMatcher;
 
 @Configuration
@@ -27,7 +28,11 @@ public class ResourceServerConfig {
 		http.formLogin(form -> form
 				.loginPage("/login")
 				.permitAll())
-				.logout((logout) -> logout.clearAuthentication(true)
+				.logout((logout) -> logout.logoutRequestMatcher(
+							new AntPathRequestMatcher("/logout", "GET")
+						)
+						.logoutSuccessUrl("http://localhost:3000/login")
+						.clearAuthentication(true)
 						.invalidateHttpSession(true)
 						.deleteCookies()
 						)

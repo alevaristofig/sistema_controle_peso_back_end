@@ -145,14 +145,14 @@ public class CadastroHistoricoMedicoIT {
 		HistoricoMedico historicoMedico = new HistoricoMedico();
 		historicoMedico.setDescricao("Colesterol Alto");
 		historicoMedico.setRemedio("Sinvastatina");
-		historicoMedico.setDataCadastro(LocalDateTime.now());
+		historicoMedico.setDataCadastro(OffsetDateTime.now());
 		historicoMedico.setDataAtualizacao(null);
 		historicoMedico.setPessoa(pessoa);	
 		
 		HistoricoMedico historicoMedico2 = new HistoricoMedico();
 		historicoMedico2.setDescricao("Obsidade");
 		historicoMedico2.setRemedio("Ozempic");
-		historicoMedico2.setDataCadastro(LocalDateTime.now());
+		historicoMedico2.setDataCadastro(OffsetDateTime.now());
 		historicoMedico2.setDataAtualizacao(null);
 		historicoMedico2.setPessoa(pessoa);			
 		
@@ -166,8 +166,8 @@ public class CadastroHistoricoMedicoIT {
 		
 		historicoMedico.setDescricao("Diabetes");
 		historicoMedico.setRemedio("Insulina");
-		historicoMedico.setDataAtualizacao(LocalDateTime.now());
-		historicoMedico.setDataCadastro(LocalDateTime.now());
+		historicoMedico.setDataAtualizacao(OffsetDateTime.now());
+		historicoMedico.setDataCadastro(OffsetDateTime.now());
 		historicoMedico.setPessoa(pessoa);
 		
 		cadastroHistoricoMedico.salvar(historicoMedico);
