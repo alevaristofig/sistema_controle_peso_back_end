@@ -1,7 +1,5 @@
 package com.sistemacontrolepeso.api.v1.controller;
 
-import java.time.LocalDateTime;
-import java.time.OffsetDateTime;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sistemacontrolepeso.api.model.PessoaExercicioModel;
-import com.sistemacontrolepeso.api.model.input.PessoaExercicioInput;
 import com.sistemacontrolepeso.api.v1.assembler.PessoaExercicioModelAssembler;
+import com.sistemacontrolepeso.api.v1.model.PessoaExercicioModel;
+import com.sistemacontrolepeso.api.v1.model.input.PessoaExercicioInput;
 import com.sistemacontrolepeso.api.v1.openapi.controller.PessoaExercicioControllerOpenApi;
 import com.sistemacontrolepeso.core.security.CheckSecurity;
 import com.sistemacontrolepeso.domain.model.Exercicio;

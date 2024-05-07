@@ -8,10 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.stereotype.Component;
 
-import com.sistemacontrolepeso.api.model.ExercicioModel;
-import com.sistemacontrolepeso.api.model.PessoaExercicioModel;
 import com.sistemacontrolepeso.api.v1.controller.PessoaExercicioController;
-import com.sistemacontrolepeso.domain.model.Exercicio;
+import com.sistemacontrolepeso.api.v1.model.PessoaExercicioModel;
 import com.sistemacontrolepeso.domain.model.PessoaExercicio;
 
 @Component

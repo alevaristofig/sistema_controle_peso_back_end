@@ -4,8 +4,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
 
-import com.sistemacontrolepeso.api.model.AlimentoModel;
-import com.sistemacontrolepeso.api.model.input.AlimentoInput;
+import com.sistemacontrolepeso.api.v1.model.AlimentoModel;
+import com.sistemacontrolepeso.api.v1.model.input.AlimentoInput;
 import com.sistemacontrolepeso.core.springdoc.PageableParameter;
 
 import io.swagger.v3.oas.annotations.Operation;

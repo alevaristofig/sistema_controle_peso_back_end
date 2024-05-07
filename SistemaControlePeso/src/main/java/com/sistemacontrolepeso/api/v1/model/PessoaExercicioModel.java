@@ -1,11 +1,10 @@
 package com.sistemacontrolepeso.api.v1.model;
 
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 
 import org.springframework.hateoas.RepresentationModel;
 
-import com.sistemacontrolepeso.api.model.input.PessoaIdInput;
+import com.sistemacontrolepeso.api.v1.model.input.PessoaIdInput;
 import com.sistemacontrolepeso.domain.model.Exercicio;
 
 import io.swagger.v3.oas.annotations.media.Schema;

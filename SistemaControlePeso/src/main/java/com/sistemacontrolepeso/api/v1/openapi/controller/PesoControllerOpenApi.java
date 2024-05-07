@@ -1,14 +1,11 @@
 package com.sistemacontrolepeso.api.v1.openapi.controller;
 
 import org.springframework.data.domain.Pageable;
-import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
 
-import com.sistemacontrolepeso.api.model.PesoModel;
-import com.sistemacontrolepeso.api.model.input.PesoInput;
-import com.sistemacontrolepeso.api.model.input.PessoaInput;
+import com.sistemacontrolepeso.api.v1.model.PesoModel;
+import com.sistemacontrolepeso.api.v1.model.input.PesoInput;
 import com.sistemacontrolepeso.core.springdoc.PageableParameter;
 
 import io.swagger.v3.oas.annotations.Operation;

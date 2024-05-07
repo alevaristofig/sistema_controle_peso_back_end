@@ -31,6 +31,11 @@ public class RootEntryPointController {
 			rootEntryPointModel.add(sistemaControlePesoLinks.linkToPessoas("pessoas"));
 			rootEntryPointModel.add(sistemaControlePesoLinks.linkToPesos("pesos"));
 			rootEntryPointModel.add(sistemaControlePesoLinks.linkToPessoaExericico("pessoaexercicio"));
+			rootEntryPointModel.add(sistemaControlePesoLinks.linkToExercicios("exercicios"));
+			rootEntryPointModel.add(sistemaControlePesoLinks.linkToAlimentos("alimentos"));
+			rootEntryPointModel.add(sistemaControlePesoLinks.linkToDietas("dietas"));
+			rootEntryPointModel.add(sistemaControlePesoLinks.linkToAlimentoDieta("alimentodieta"));
+			rootEntryPointModel.add(sistemaControlePesoLinks.linkToHistoricoMedico("historicomedico"));
 		}
 		
 		return rootEntryPointModel;

@@ -4,8 +4,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
 
-import com.sistemacontrolepeso.api.model.DietaModel;
-import com.sistemacontrolepeso.api.model.input.DietaInput;
+import com.sistemacontrolepeso.api.v1.model.DietaModel;
+import com.sistemacontrolepeso.api.v1.model.input.DietaInput;
 import com.sistemacontrolepeso.core.springdoc.PageableParameter;
 
 import io.swagger.v3.oas.annotations.Operation;

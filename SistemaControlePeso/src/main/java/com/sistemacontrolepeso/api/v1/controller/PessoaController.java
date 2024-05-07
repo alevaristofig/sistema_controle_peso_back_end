@@ -1,14 +1,11 @@
 package com.sistemacontrolepeso.api.v1.controller;
 
-import java.time.OffsetDateTime;
-import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.CollectionModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,11 +17,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-
-import com.sistemacontrolepeso.api.model.PessoaModel;
-import com.sistemacontrolepeso.api.model.input.PessoaInput;
 import com.sistemacontrolepeso.api.v1.assembler.PessoaInputDisassembler;
 import com.sistemacontrolepeso.api.v1.assembler.PessoaModelAssembler;
+import com.sistemacontrolepeso.api.v1.model.PessoaModel;
+import com.sistemacontrolepeso.api.v1.model.input.PessoaInput;
 import com.sistemacontrolepeso.api.v1.openapi.controller.PessoaControllerOpenApi;
 import com.sistemacontrolepeso.core.security.CheckSecurity;
 import com.sistemacontrolepeso.domain.model.Pessoa;
@@ -92,7 +88,8 @@ public class PessoaController implements PessoaControllerOpenApi {
 		return pessoaRepository.buscarIdEmailToken(token);
 	}
 	
-	@DeleteMapping("/{token}")
+	@CheckSecurity.Pessoas.PodeConsultar
+	@DeleteMapping("/removertoken/{token}")
 	public void removerToken(@PathVariable String token) {
 		pessoaRepository.removerToken(token);
 	}

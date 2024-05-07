@@ -3,8 +3,8 @@ package com.sistemacontrolepeso.api.v1.openapi.controller;
 import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.PagedModel;
 
-import com.sistemacontrolepeso.api.model.PessoaExercicioModel;
-import com.sistemacontrolepeso.api.model.input.PessoaExercicioInput;
+import com.sistemacontrolepeso.api.v1.model.PessoaExercicioModel;
+import com.sistemacontrolepeso.api.v1.model.input.PessoaExercicioInput;
 import com.sistemacontrolepeso.core.springdoc.PageableParameter;
 import com.sistemacontrolepeso.domain.model.PessoaExercicio;
 

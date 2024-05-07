@@ -4,8 +4,8 @@ import java.util.List;
 
 import org.springframework.http.ResponseEntity;
 
-import com.sistemacontrolepeso.api.model.AlimentoDietaModel;
-import com.sistemacontrolepeso.api.model.input.AlimentoDietaInput;
+import com.sistemacontrolepeso.api.v1.model.AlimentoDietaModel;
+import com.sistemacontrolepeso.api.v1.model.input.AlimentoDietaInput;
 import com.sistemacontrolepeso.domain.model.AlimentoDieta;
 
 import io.swagger.v3.oas.annotations.Operation;

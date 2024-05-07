@@ -22,10 +22,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.sistemacontrolepeso.api.model.PesoModel;
-import com.sistemacontrolepeso.api.model.input.PesoInput;
 import com.sistemacontrolepeso.api.v1.assembler.PesoInputDisassembler;
 import com.sistemacontrolepeso.api.v1.assembler.PesoModelAssembler;
+import com.sistemacontrolepeso.api.v1.model.PesoModel;
+import com.sistemacontrolepeso.api.v1.model.input.PesoInput;
 import com.sistemacontrolepeso.api.v1.openapi.controller.PesoControllerOpenApi;
 import com.sistemacontrolepeso.core.security.CheckSecurity;
 import com.sistemacontrolepeso.domain.model.Peso;

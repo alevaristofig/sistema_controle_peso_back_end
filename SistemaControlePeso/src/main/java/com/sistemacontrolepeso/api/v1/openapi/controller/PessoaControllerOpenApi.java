@@ -2,8 +2,8 @@ package com.sistemacontrolepeso.api.v1.openapi.controller;
 
 import org.springframework.hateoas.CollectionModel;
 
-import com.sistemacontrolepeso.api.model.PessoaModel;
-import com.sistemacontrolepeso.api.model.input.PessoaInput;
+import com.sistemacontrolepeso.api.v1.model.PessoaModel;
+import com.sistemacontrolepeso.api.v1.model.input.PessoaInput;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;

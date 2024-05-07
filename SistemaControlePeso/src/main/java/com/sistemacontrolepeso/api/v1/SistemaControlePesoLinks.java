@@ -1,19 +1,19 @@
 package com.sistemacontrolepeso.api.v1;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+
+import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.hateoas.Link;
 import org.springframework.hateoas.TemplateVariable;
 import org.springframework.hateoas.TemplateVariable.VariableType;
 import org.springframework.hateoas.TemplateVariables;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
-
-import org.springframework.hateoas.IanaLinkRelations;
 import org.springframework.stereotype.Component;
 
-import com.sistemacontrolepeso.api.controller.AlimentoController;
-import com.sistemacontrolepeso.api.controller.DietaController;
-import com.sistemacontrolepeso.api.controller.ExercicioController;
-import com.sistemacontrolepeso.api.controller.HistoricoMedicoController;
+import com.sistemacontrolepeso.api.v1.controller.AlimentoController;
+import com.sistemacontrolepeso.api.v1.controller.AlimentoDietaController;
+import com.sistemacontrolepeso.api.v1.controller.DietaController;
+import com.sistemacontrolepeso.api.v1.controller.ExercicioController;
+import com.sistemacontrolepeso.api.v1.controller.HistoricoMedicoController;
 import com.sistemacontrolepeso.api.v1.controller.PesoController;
 import com.sistemacontrolepeso.api.v1.controller.PessoaController;
 import com.sistemacontrolepeso.api.v1.controller.PessoaExercicioController;
@@ -84,6 +84,14 @@ public class SistemaControlePesoLinks {
 	}
 	
 	public Link linkToPessoaExericico() {
+		return linkToPessoaExericico(IanaLinkRelations.SELF.value());
+	}
+	
+	public Link linkToAlimentoDieta(String rel) {
+		return linkTo(AlimentoDietaController.class).withRel(rel);
+	}
+	
+	public Link linkToAlimentoDieta() {
 		return linkToPessoaExericico(IanaLinkRelations.SELF.value());
 	}
 	

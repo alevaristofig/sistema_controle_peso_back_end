@@ -4,8 +4,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.hateoas.PagedModel;
 import org.springframework.http.ResponseEntity;
 
-import com.sistemacontrolepeso.api.model.HistoricoMedicoModel;
-import com.sistemacontrolepeso.api.model.input.HistoricoMedicoInput;
+import com.sistemacontrolepeso.api.v1.model.HistoricoMedicoModel;
+import com.sistemacontrolepeso.api.v1.model.input.HistoricoMedicoInput;
 import com.sistemacontrolepeso.core.springdoc.PageableParameter;
 
 import io.swagger.v3.oas.annotations.Operation;

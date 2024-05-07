@@ -6,9 +6,8 @@ import org.springframework.hateoas.CollectionModel;
 import org.springframework.hateoas.server.mvc.RepresentationModelAssemblerSupport;
 import org.springframework.stereotype.Component;
 
-
-import com.sistemacontrolepeso.api.model.PessoaModel;
 import com.sistemacontrolepeso.api.v1.controller.PessoaController;
+import com.sistemacontrolepeso.api.v1.model.PessoaModel;
 import com.sistemacontrolepeso.domain.model.Pessoa;
 
 @Component
