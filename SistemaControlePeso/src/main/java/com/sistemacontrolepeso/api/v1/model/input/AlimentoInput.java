@@ -19,6 +19,9 @@ public class AlimentoInput {
 	@Schema(example = "100.00")
 	private double calorias;
 	
+	@Schema(example = "João da Silva")
+	private PessoaIdInput pessoa;
+	
 	@Schema(example = "28/03/2024")
 	private OffsetDateTime dataCadastro;
 	

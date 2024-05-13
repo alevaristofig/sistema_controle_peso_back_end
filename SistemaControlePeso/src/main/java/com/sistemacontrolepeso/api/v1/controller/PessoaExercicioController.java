@@ -59,6 +59,7 @@ public class PessoaExercicioController implements PessoaExercicioControllerOpenA
 		return pessoaExercicioPageModel;
 	}
 	
+	@CheckSecurity.PessoasExercicios.podeEditar
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
 	public PessoaExercicio adicionar(@Validated @RequestBody PessoaExercicioInput pessoaExercicioInput) {

@@ -4,12 +4,8 @@ import static io.restassured.RestAssured.given;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
-import java.util.List;
 
-import org.hamcrest.Matchers;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Order;
@@ -22,8 +18,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 
-import com.sistemacontrolepeso.api.model.DietaModel;
-import com.sistemacontrolepeso.domain.model.Alimento;
 import com.sistemacontrolepeso.domain.model.Dieta;
 import com.sistemacontrolepeso.domain.repository.DietaRepository;
 import com.sistemacontrolepeso.domain.service.CadastroDietaService;
@@ -32,7 +26,6 @@ import com.sistemacontrolepeso.util.DatabaseCleaner;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.path.json.JsonPath;
-import io.restassured.path.xml.XmlPath;
 import io.restassured.response.Response;
 
 @TestInstance(Lifecycle.PER_CLASS)

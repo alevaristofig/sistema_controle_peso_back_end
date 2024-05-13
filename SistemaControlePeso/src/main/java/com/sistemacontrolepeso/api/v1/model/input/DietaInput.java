@@ -13,6 +13,9 @@ public class DietaInput {
 	@Schema(example = "Café da Manhã")
 	private String nome;
 	
+	@Schema(example = "João da Silva")
+	private PessoaIdInput pessoa;
+	
 	@Schema(example = "28/03/2024")
 	private OffsetDateTime dataCadastro;
 	

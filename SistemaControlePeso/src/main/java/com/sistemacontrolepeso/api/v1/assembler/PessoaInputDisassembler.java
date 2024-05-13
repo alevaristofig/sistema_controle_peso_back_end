@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.sistemacontrolepeso.api.v1.model.input.PessoaInput;
+import com.sistemacontrolepeso.api.v1.model.input.PessoaSenhaInput;
 import com.sistemacontrolepeso.domain.model.Pessoa;
 
 @Component
@@ -19,5 +20,9 @@ public class PessoaInputDisassembler {
 	
 	public void copytoDomain(PessoaInput pessoaInput, Pessoa pessoa) {
 		modelMapper.map(pessoaInput, pessoa);
+	}
+	
+	public void copytoDomain(PessoaSenhaInput pessoaSenha, Pessoa pessoa) {
+		modelMapper.map(pessoaSenha, pessoa);
 	}
 }

@@ -20,6 +20,9 @@ public class ExercicioInput {
 	@Schema(example = "3")
 	private int frequencia;
 	
+	@Schema(example = "João da Silva")
+	private PessoaIdInput pessoa;
+	
 	@Schema(example = "28/03/2024")
 	private OffsetDateTime dataCadastro;
 	

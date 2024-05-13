@@ -1,6 +1,6 @@
 package com.sistemacontrolepeso.api.v1.model;
 
-import java.time.LocalDateTime;
+import java.time.OffsetDateTime;
 
 import com.sistemacontrolepeso.api.v1.model.input.AlimentoIdInput;
 import com.sistemacontrolepeso.api.v1.model.input.DietaIdInput;
@@ -14,9 +14,9 @@ public class AlimentoDietaModel {
 
 	private Long id;
 	
-	private LocalDateTime dataCadastro;
+	private OffsetDateTime dataCadastro;
 			
-	private LocalDateTime dataAtualizacao;
+	private OffsetDateTime dataAtualizacao;
 	
 	private AlimentoIdInput alimento;
 	

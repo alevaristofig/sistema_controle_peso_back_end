@@ -1,10 +1,11 @@
 package com.sistemacontrolepeso.domain.model;
 
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -44,6 +45,7 @@ public class HistoricoMedico {
 	@Column(nullable = true, columnDefinition = "datetime")
 	private OffsetDateTime dataAtualizacao;
 	
+	@JsonIgnore
 	@ManyToOne
 	private Pessoa pessoa;
 }

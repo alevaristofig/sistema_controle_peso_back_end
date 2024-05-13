@@ -6,11 +6,14 @@ import java.time.OffsetDateTime;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.ManyToOne;
 import jakarta.validation.constraints.NotBlank;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -30,6 +33,10 @@ public class Dieta {
 	@NotBlank
 	@Column(nullable = false)
 	private String nome;
+	
+	@JsonIgnore
+	@ManyToOne
+	private Pessoa pessoa;
 	
 	@CreationTimestamp
 	@Column(nullable = false, columnDefinition = "datetime")

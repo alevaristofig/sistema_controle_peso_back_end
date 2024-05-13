@@ -9,6 +9,8 @@ import java.util.Set;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -70,6 +72,19 @@ public class Pessoa {
 	@JoinColumn(name = "pessoa_id")
 	private List<HistoricoMedico> historicoMedico;
 	
+	@OneToMany
+	@JoinColumn(name = "pessoa_id")
+	private List<Alimento> alimento;
+	
+	@OneToMany
+	@JoinColumn(name = "pessoa_id")
+	private List<Dieta> dieta;
+	
+	@OneToMany
+	@JoinColumn(name = "pessoa_id")
+	private List<Exercicio> exercicio;
+	
+	@JsonIgnore
 	@ManyToMany
 	@JoinTable(name = "pessoa_grupo", joinColumns = @JoinColumn(name = "pessoa_id"),
 				inverseJoinColumns = @JoinColumn(name = "grupo_id"))

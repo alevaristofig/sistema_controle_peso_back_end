@@ -15,10 +15,10 @@ import lombok.Setter;
 public class PessoaModel extends RepresentationModel<PessoaModel> {
 
 	@Schema(example = "1")
-	public Long id;
+	private Long id;
 	
 	@Schema(example = "João da Silva")
-	public String nome;
+	private String nome;
 	
 	@Schema(example = "joaosilva@email.com.br")
 	private String email;	

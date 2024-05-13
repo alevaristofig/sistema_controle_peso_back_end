@@ -3,6 +3,7 @@ org.springframework.ide.eclipse.boot.wizard.PopularityTracker.data-jpa=1
 org.springframework.ide.eclipse.boot.wizard.PopularityTracker.data-redis=1
 org.springframework.ide.eclipse.boot.wizard.PopularityTracker.devtools=1
 org.springframework.ide.eclipse.boot.wizard.PopularityTracker.hateoas=1
+org.springframework.ide.eclipse.boot.wizard.PopularityTracker.mariadb=1
 org.springframework.ide.eclipse.boot.wizard.PopularityTracker.mysql=1
 org.springframework.ide.eclipse.boot.wizard.PopularityTracker.oauth2-authorization-server=1
 org.springframework.ide.eclipse.boot.wizard.PopularityTracker.oauth2-resource-server=1
