@@ -18,7 +18,8 @@ public interface PessoaExercicioControllerOpenApi {
 	
 	@PageableParameter
 	@Operation(summary = "Lista as Pessoas/Exercícios")
-	PagedModel<PessoaExercicioModel> listar(@Parameter(hidden = true) Pageable pageable);
+	PagedModel<PessoaExercicioModel> listar(@Parameter(description = "ID de uma pessoa", example = "1", required = true) Long id,
+			@Parameter(hidden = true) Pageable pageable);
 
 	@Operation(summary = "Cadastra um exercício para a pessoa", description = "Cadastra um exercício para a pessoa")
 	PessoaExercicio adicionar(@RequestBody(description = "Representação de uma nova PessoaExercicio", required = true)

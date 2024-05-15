@@ -1,0 +1,14 @@
+package com.sistemacontrolepeso.domain.repository;
+
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import com.sistemacontrolepeso.domain.model.Peso;
+
+public interface PesoRepository extends JpaRepository<Peso, Long> {
+	
+	Peso findPessoaIdTop1ByOrderByIdAsc(Long id);
+	Peso findTop1ByOrderByIdDesc();
+	
+	Page<Peso> findAllByPessoaId(Long id,Pageable pageable);
+}

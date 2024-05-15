@@ -52,9 +52,9 @@ public class DietaController implements DietaControllerOpenApi {
 	private PagedResourcesAssembler<Dieta> pagedResourcesAssembler;
 	
 	@CheckSecurity.Dietas.PodeConsultar
-	@GetMapping
-	public PagedModel<DietaModel> listar(@PageableDefault(size = 10) Pageable pageable) {
-		Page<Dieta> dietasPage = dietaRepository.findAll(pageable);
+	@GetMapping("/listardietaspaginacao/{id}")
+	public PagedModel<DietaModel> listar(@PathVariable Long id, @PageableDefault(size = 10) Pageable pageable) {
+		Page<Dieta> dietasPage = dietaRepository.findAllByPessoaId(id, pageable);				
 		
 		PagedModel<DietaModel> dietasPagedModel = pagedResourcesAssembler
 				.toModel(dietasPage,dietaModelAssembler);

@@ -1,6 +1,7 @@
 package com.sistemacontrolepeso.core.security;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -41,32 +42,36 @@ public class ResourceServerConfig {
 						)	
 			.csrf(csrf -> csrf.disable())
 			.authorizeHttpRequests(authorize -> authorize	
-				.requestMatchers(HttpMethod.POST,"/v1/pessoas/**").permitAll()
+				.requestMatchers(HttpMethod.POST,"/v1/pessoas").permitAll()
 				.requestMatchers(HttpMethod.PUT,"/v1/pessoas/recuperarsenha").permitAll()	
 				.requestMatchers(HttpMethod.DELETE, "/v1/pessoas/removertoken/**").permitAll()
+				.requestMatchers(HttpMethod.GET, "http://localhost:8080/logout").permitAll()
 				.anyRequest().authenticated())								
 			.oauth2ResourceServer(oauth2 -> oauth2					
 					.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter()))
 			);
+			//.oauth2ResourceServer().jwt();
 		
 		return http.build();
 	}
 	
-	private JwtAuthenticationConverter jwtAuthenticationConverter() {
+	private JwtAuthenticationConverter jwtAuthenticationConverter() {		
 		JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
 		
 		converter.setJwtGrantedAuthoritiesConverter(jwt -> {
+			//"authorities" é um campo costumizado no AuthorizationServerConfig
+			List<String> authorities = jwt.getClaimAsStringList("authorities");
+			
+			if(authorities == null) {
+				return Collections.emptyList();
+			}
+			
 			JwtGrantedAuthoritiesConverter authoritiesConverter = new JwtGrantedAuthoritiesConverter();
 			
 			//ler permissões vinda do scope
 			Collection<GrantedAuthority> grantedAuthorites = authoritiesConverter.convert(jwt);
 			
-			//"authorities" é um campo costumizado no AuthorizationServerConfig
-			List<String> authorities = jwt.getClaimAsStringList("authorities");
 			
-			if(authorities == null) {
-				return grantedAuthorites;
-			}
 			
 			grantedAuthorites.addAll(authorities
 				.stream()

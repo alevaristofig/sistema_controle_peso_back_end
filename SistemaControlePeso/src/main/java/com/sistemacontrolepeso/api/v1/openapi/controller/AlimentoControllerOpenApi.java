@@ -21,7 +21,8 @@ public interface AlimentoControllerOpenApi {
 	
 	@PageableParameter
 	@Operation(summary = "Lista os alimentos")
-	PagedModel<AlimentoModel> listar(@Parameter(hidden = true) Pageable pageable);
+	PagedModel<AlimentoModel> listar(@Parameter(description = "ID de uma Pessoa", example = "1", required = true) Long id,
+			@Parameter(hidden = true) Pageable pageable);
 	
 	@Operation(summary = "Busca um alimento por Id",
 			responses = {

@@ -21,7 +21,8 @@ public interface PesoControllerOpenApi {
 
 	@PageableParameter
 	@Operation(summary = "Lista os pesos")
-	PagedModel<PesoModel> listar(@Parameter(hidden = true) Pageable pageable);
+	PagedModel<PesoModel> listar(@Parameter(description = "ID de uma pessoa", example = "1", required = true) Long id,
+			@Parameter(hidden = true) Pageable pageable);
 	
 	@Operation(summary = "Busca um peso por Id",
 			responses = {

@@ -2,6 +2,8 @@ package com.sistemacontrolepeso.domain.repository;
 
 import java.util.List;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -10,6 +12,8 @@ import com.sistemacontrolepeso.domain.model.PessoaExercicio;
 
 
 public interface PessoaExercicioRepository extends JpaRepository<PessoaExercicio, Long> {
+	
+	Page<PessoaExercicio> findAllByPessoaId(Long id,Pageable pageable);
 
 	@Query("select new com.sistemacontrolepeso.domain.model.dto.PessoaExercicio("
 			+ "pe.exercicio.id, count(pe), e.nome) from PessoaExercicio pe "

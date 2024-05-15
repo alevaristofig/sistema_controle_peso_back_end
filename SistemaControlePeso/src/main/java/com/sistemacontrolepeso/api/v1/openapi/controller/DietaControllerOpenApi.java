@@ -21,7 +21,8 @@ public interface DietaControllerOpenApi {
 	
 	@PageableParameter
 	@Operation(summary = "Lista as Dietas")
-	PagedModel<DietaModel> listar(@Parameter(hidden = true) Pageable pageable);
+	PagedModel<DietaModel> listar(@Parameter(description = "ID de uma pessoa", example = "1", required = true) Long id,
+			@Parameter(hidden = true) Pageable pageable);
 
 	@Operation(summary = "Busca uma dieta por Id",
 			responses = {

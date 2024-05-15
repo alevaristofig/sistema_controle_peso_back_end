@@ -53,9 +53,10 @@ public class ExercicioController implements ExercicioControllerOpenApi {
 	private PagedResourcesAssembler<Exercicio> pagedResourcesAssembler;
 	
 	@CheckSecurity.Exercicios.PodeConsultar
-	@GetMapping
-	public PagedModel<ExercicioModel> listar(@PageableDefault(size = 10) Pageable pageable){
-		Page<Exercicio> exerciciosPage = exercicioRepository.findAll(pageable);
+	@GetMapping("/listarexerciciospaginacao/{id}")
+	public PagedModel<ExercicioModel> listar(@PathVariable Long id, @PageableDefault(size = 10) Pageable pageable){
+		Page<Exercicio> exerciciosPage = //exercicioRepository.findAllByPessoaId(id, pageable);
+				exercicioRepository.findAll(pageable);
 		
 		PagedModel<ExercicioModel> exerciciosPagedModel = pagedResourcesAssembler
 				.toModel(exerciciosPage,exercicioModelAssembler);

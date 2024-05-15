@@ -63,7 +63,7 @@ public class PessoaController implements PessoaControllerOpenApi {
 
 	@PostMapping
 	@ResponseStatus(HttpStatus.CREATED)
-	public PessoaModel adicionar(@RequestBody PessoaInput pessoaInput) {
+	public PessoaModel adicionar(@RequestBody PessoaInput pessoaInput) {		
 		Pessoa pessoa = pessoaInputDisassembler.toDomainObject(pessoaInput);			
 		
 		pessoa = cadastroPessoaService.salvar(pessoa);

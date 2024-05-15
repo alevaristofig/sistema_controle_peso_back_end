@@ -49,9 +49,9 @@ public class PessoaExercicioController implements PessoaExercicioControllerOpenA
 	private PagedResourcesAssembler<PessoaExercicio> pagedResourcesAssembler;
 	
 	@CheckSecurity.PessoasExercicios.PodeConsultar
-	@GetMapping
-	public PagedModel<PessoaExercicioModel> listar(@PageableDefault(size = 10) Pageable pageable) {
-		Page<PessoaExercicio> pessoaExercicioPage = pessoaExercicioRepository.findAll(pageable);
+	@GetMapping("/{id}")
+	public PagedModel<PessoaExercicioModel> listar(@PathVariable Long id, @PageableDefault(size = 10) Pageable pageable) {
+		Page<PessoaExercicio> pessoaExercicioPage = pessoaExercicioRepository.findAllByPessoaId(id, pageable);				
 		
 		PagedModel<PessoaExercicioModel> pessoaExercicioPageModel = pagedResourcesAssembler
 				.toModel(pessoaExercicioPage,pessoaExercicioModelAssembler);

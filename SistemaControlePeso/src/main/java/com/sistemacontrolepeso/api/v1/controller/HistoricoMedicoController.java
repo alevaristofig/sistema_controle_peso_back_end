@@ -52,9 +52,9 @@ public class HistoricoMedicoController implements HistoricoMedicoControllerOpenA
 	private PagedResourcesAssembler<HistoricoMedico> pagedResourcesAssembler;
 	
 	@CheckSecurity.HistoricosMedico.PodeConsultar
-	@GetMapping
-	public PagedModel<HistoricoMedicoModel> listar(@PageableDefault(size = 10) Pageable pageable) {
-		Page<HistoricoMedico> historicosMedicoPage = historicoMedicoRepository.findAll(pageable);
+	@GetMapping("/listarhistoricomedicopaginacao/{id}")
+	public PagedModel<HistoricoMedicoModel> listar(@PathVariable Long id, @PageableDefault(size = 10) Pageable pageable) {
+		Page<HistoricoMedico> historicosMedicoPage = historicoMedicoRepository.findAllByPessoaId(id, pageable);
 		
 		PagedModel<HistoricoMedicoModel> historicosMedicoPagedModel = pagedResourcesAssembler
 				.toModel(historicosMedicoPage,historicoMedicoModelAssembler);

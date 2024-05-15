@@ -23,6 +23,7 @@ import org.springframework.security.oauth2.core.AuthorizationGrantType;
 import org.springframework.security.oauth2.core.ClientAuthenticationMethod;
 import org.springframework.security.oauth2.server.authorization.JdbcOAuth2AuthorizationService;
 import org.springframework.security.oauth2.server.authorization.OAuth2AuthorizationService;
+import org.springframework.security.oauth2.server.authorization.OAuth2TokenType;
 import org.springframework.security.oauth2.server.authorization.client.InMemoryRegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.client.JdbcRegisteredClientRepository;
 import org.springframework.security.oauth2.server.authorization.client.RegisteredClient;
@@ -72,7 +73,7 @@ public class AuthorizationServerConfig {
 	
 	
 	@Bean
-	public OAuth2AuthorizationService oAuth2AuthorizationService(JdbcOperations jdbcOperations, RegisteredClientRepository registeredClientRepository) {
+	public OAuth2AuthorizationService oAuth2AuthorizationService(JdbcOperations jdbcOperations, RegisteredClientRepository registeredClientRepository) {		
 		return new JdbcOAuth2AuthorizationService(
                 jdbcOperations,
                 registeredClientRepository
@@ -96,11 +97,13 @@ public class AuthorizationServerConfig {
 	}
 	
 	@Bean
-	public OAuth2TokenCustomizer<JwtEncodingContext> jwtCustomizer(PessoaRepository pessoaRepository){
+	public OAuth2TokenCustomizer<JwtEncodingContext> jwtCustomizer(PessoaRepository pessoaRepository){	
+		
 		return context -> {
 			Authentication authentication = context.getPrincipal();
 			
 			if(authentication.getPrincipal() instanceof User) {
+				
 				User user = (User) authentication.getPrincipal();
 				
 				Pessoa pessoa = pessoaRepository.findByEmail(user.getUsername()).orElseThrow();
@@ -112,7 +115,7 @@ public class AuthorizationServerConfig {
 				
 				context.getClaims().claim("pessoa_id", pessoa.getId().toString());
 				context.getClaims().claim("authorities", authorities);
-			}
+			} 					
 		};
 	}
 }

@@ -21,7 +21,8 @@ public interface HistoricoMedicoControllerOpenApi {
 	
 	@PageableParameter
 	@Operation(summary = "Lista os Históricos Médicos")
-	PagedModel<HistoricoMedicoModel> listar(@Parameter(hidden = true) Pageable pageable);
+	PagedModel<HistoricoMedicoModel> listar(@Parameter(description = "ID de uma pessoa", example = "1", required = true) Long id,
+			@Parameter(hidden = true) Pageable pageable);
 
 	@Operation(summary = "Busca um histórico médico por Id",
 			responses = {

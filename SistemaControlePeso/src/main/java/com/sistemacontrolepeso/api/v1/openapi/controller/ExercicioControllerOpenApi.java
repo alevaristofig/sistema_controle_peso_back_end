@@ -23,7 +23,8 @@ public interface ExercicioControllerOpenApi {
 	
 	@PageableParameter
 	@Operation(summary = "Lista os exercícios")
-	PagedModel<ExercicioModel> listar(@Parameter(hidden = true) Pageable pageable);
+	PagedModel<ExercicioModel> listar(@Parameter(description = "ID de uma pessoa", example = "1", required = true) Long id,
+			@Parameter(hidden = true) Pageable pageable);
 	
 	@Operation(summary = "Lista os exercícios sem paginação")
 	List<ExercicioModel> listar();

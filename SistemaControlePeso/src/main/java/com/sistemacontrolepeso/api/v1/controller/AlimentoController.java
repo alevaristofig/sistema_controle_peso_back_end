@@ -64,9 +64,10 @@ public class AlimentoController implements AlimentoControllerOpenApi {
 	}
 	
 	@CheckSecurity.Alimentos.PodeConsultar
-	@GetMapping
-	public PagedModel<AlimentoModel> listar(@PageableDefault(size = 10) Pageable pageable){
-		Page<Alimento> alimentoPage = alimentoRepositoy.findAll(pageable);
+	@GetMapping("/listaralimentospaginacao/{id}")
+	public PagedModel<AlimentoModel> listar(@PathVariable Long id, @PageableDefault(size = 10) Pageable pageable){
+		Page<Alimento> alimentoPage = alimentoRepositoy.findAllByPessoaId(id, pageable);
+				//alimentoRepositoy.findAll(pageable);
 		
 		PagedModel<AlimentoModel> alimentosPagedModel = pagedResourcesAssembler
 				.toModel(alimentoPage,alimentoModelAssembler);
