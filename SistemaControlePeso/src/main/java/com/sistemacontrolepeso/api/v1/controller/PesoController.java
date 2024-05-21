@@ -1,6 +1,7 @@
 package com.sistemacontrolepeso.api.v1.controller;
 
 import java.time.OffsetDateTime;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -28,6 +29,8 @@ import com.sistemacontrolepeso.api.v1.model.PesoModel;
 import com.sistemacontrolepeso.api.v1.model.input.PesoInput;
 import com.sistemacontrolepeso.api.v1.openapi.controller.PesoControllerOpenApi;
 import com.sistemacontrolepeso.core.security.CheckSecurity;
+import com.sistemacontrolepeso.domain.exception.NegocioException;
+import com.sistemacontrolepeso.domain.exception.PesoNaoEncontradoException;
 import com.sistemacontrolepeso.domain.model.Peso;
 import com.sistemacontrolepeso.domain.repository.PesoRepository;
 import com.sistemacontrolepeso.domain.service.CadastroPesoService;
@@ -72,17 +75,20 @@ public class PesoController implements PesoControllerOpenApi {
 	}
 	
 	@GetMapping("/buscarprimeiropeso/{id}")
-	public PesoModel buscarPrimeiroPeso(@PathVariable Long id) {
-		Peso peso = pesoRepository.findTop1ByPessoaIdOrderByIdAsc(id);
-		
-		return pesoModelAssembler.toModel(peso);
+	public PesoModel buscarPrimeiroPeso(@PathVariable Long id)  {
+			
+		Optional<Peso> peso = Optional.ofNullable(pesoRepository.findTop1ByPessoaIdOrderByIdAsc(id)
+				.orElseThrow(() -> new PesoNaoEncontradoException(id)));
+			
+		return pesoModelAssembler.toModel(peso.get());				
 	}
 	
 	@GetMapping("/buscarultimopeso/{id}")
 	public PesoModel buscarUltimoPeso(@PathVariable Long id) {
-		Peso peso = pesoRepository.findTop1ByPessoaIdOrderByIdDesc(id);
+		Optional<Peso> peso = Optional.ofNullable(pesoRepository.findTop1ByPessoaIdOrderByIdDesc(id)
+				.orElseThrow(() -> new PesoNaoEncontradoException(id)));
 		
-		return pesoModelAssembler.toModel(peso);
+		return pesoModelAssembler.toModel(peso.get());
 	}
 	
 	@CheckSecurity.Pesos.podeEditar
@@ -90,7 +96,7 @@ public class PesoController implements PesoControllerOpenApi {
 	@ResponseStatus(HttpStatus.CREATED)
 	public PesoModel adicionar(@RequestBody PesoInput pesoInput) {
 		Peso peso = pesoInputDisassembler.toDomainObject(pesoInput);		
-				System.out.println(pesoInput.getDataCadastro());
+				
 		peso = cadastroPesoService.salvar(peso);
 		
 		PesoModel pesoModel = pesoModelAssembler.toModel(peso);

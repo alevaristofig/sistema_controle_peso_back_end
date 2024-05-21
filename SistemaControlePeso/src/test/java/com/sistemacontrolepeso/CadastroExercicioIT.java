@@ -122,7 +122,7 @@ public class CadastroExercicioIT extends SistemaControlePesoApplicationTests {
 		exercicio.setTempo(45L);
 		exercicio.setFrequencia(3);
 		exercicio.setDataCadastro(OffsetDateTime.now());
-		exercicio.setDataAtualizar(null);
+		exercicio.setDataAtualizacao(null);
 		
 		cadastroExercicio.salvar(exercicio);
 	}
@@ -134,7 +134,7 @@ public class CadastroExercicioIT extends SistemaControlePesoApplicationTests {
 		exercicio.setTempo(55L);
 		exercicio.setFrequencia(5);
 		exercicio.setDataCadastro(OffsetDateTime.now());
-		exercicio.setDataAtualizar(OffsetDateTime.now());
+		exercicio.setDataAtualizacao(OffsetDateTime.now());
 		
 		cadastroExercicio.salvar(exercicio);
 	}

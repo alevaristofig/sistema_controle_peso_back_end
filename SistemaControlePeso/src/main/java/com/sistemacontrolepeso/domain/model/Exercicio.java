@@ -1,6 +1,5 @@
 package com.sistemacontrolepeso.domain.model;
 
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 
 import org.hibernate.annotations.CreationTimestamp;
@@ -53,5 +52,5 @@ public class Exercicio {
 	
 	@UpdateTimestamp
 	@Column(nullable = true, columnDefinition = "datetime")
-	private OffsetDateTime dataAtualizar;
+	private OffsetDateTime dataAtualizacao;
 }

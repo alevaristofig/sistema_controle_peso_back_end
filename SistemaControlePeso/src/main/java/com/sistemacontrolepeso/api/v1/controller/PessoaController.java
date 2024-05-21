@@ -90,7 +90,7 @@ public class PessoaController implements PessoaControllerOpenApi {
 		return  (Pessoa) pessoaRepository.buscarIdEmailToken(token);
 	}
 	
-	@CheckSecurity.Pessoas.podeEditar
+	//@CheckSecurity.Pessoas.podeEditar
 	@DeleteMapping("/removertoken/{token}")
 	public void removerToken(@PathVariable String token) {
 		pessoaRepository.removerToken(token);
