@@ -1,6 +1,5 @@
 package com.sistemacontrolepeso.api.v1.model;
 
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 
 import org.springframework.hateoas.RepresentationModel;

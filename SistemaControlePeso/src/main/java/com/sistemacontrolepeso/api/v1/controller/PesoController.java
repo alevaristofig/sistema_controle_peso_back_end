@@ -74,6 +74,7 @@ public class PesoController implements PesoControllerOpenApi {
 		return pesoModelAssembler.toModel(peso);
 	}
 	
+	@CheckSecurity.Pesos.PodeConsultar
 	@GetMapping("/buscarprimeiropeso/{id}")
 	public PesoModel buscarPrimeiroPeso(@PathVariable Long id)  {
 			
@@ -83,6 +84,7 @@ public class PesoController implements PesoControllerOpenApi {
 		return pesoModelAssembler.toModel(peso.get());				
 	}
 	
+	@CheckSecurity.Pesos.PodeConsultar
 	@GetMapping("/buscarultimopeso/{id}")
 	public PesoModel buscarUltimoPeso(@PathVariable Long id) {
 		Optional<Peso> peso = Optional.ofNullable(pesoRepository.findTop1ByPessoaIdOrderByIdDesc(id)

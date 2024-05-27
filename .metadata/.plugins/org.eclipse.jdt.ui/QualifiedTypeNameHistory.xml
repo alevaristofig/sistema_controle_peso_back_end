@@ -1,10 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="org.springframework.hateoas.RepresentationModel"/>
-    <fullyQualifiedTypeName name="io.swagger.v3.oas.annotations.Operation"/>
-    <fullyQualifiedTypeName name="com.sistemacontrolepeso.api.v1.controller.RootEntryPointController.RootEntryPointModel"/>
-    <fullyQualifiedTypeName name="com.sistemacontrolepeso.api.v1.SistemaControlePesoLinks"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.core.security.SistemaControlePesoSecurity"/>
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.api.controller.PessoaController"/>
     <fullyQualifiedTypeName name="org.springframework.hateoas.IanaLinkRelations"/>
@@ -33,7 +28,6 @@
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.core.security.CheckSecurity.Pessoas.podeEditar"/>
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.api.v1.model.PessoaModelToken"/>
     <fullyQualifiedTypeName name="java.time.OffsetDateTime"/>
-    <fullyQualifiedTypeName name="com.sistemacontrolepeso.core.security.CheckSecurity"/>
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.core.security.CheckSecurity.PessoasExercicios"/>
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.core.security.CheckSecurity.PessoasExercicios.podeEditar"/>
     <fullyQualifiedTypeName name="jakarta.persistence.NamedNativeQueries"/>
@@ -60,4 +54,10 @@
     <fullyQualifiedTypeName name="org.springframework.data.domain.Page"/>
     <fullyQualifiedTypeName name="com.sistemacontrolepeso.domain.model.HistoricoMedico"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PathVariable"/>
+    <fullyQualifiedTypeName name="com.sistemacontrolepeso.domain.exception.NegocioException"/>
+    <fullyQualifiedTypeName name="java.util.Optional"/>
+    <fullyQualifiedTypeName name="com.sistemacontrolepeso.domain.exception.PesoNaoEncontradoException"/>
+    <fullyQualifiedTypeName name="com.sistemacontrolepeso.core.security.CheckSecurity"/>
+    <fullyQualifiedTypeName name="com.sistemacontrolepeso.core.security.CheckSecurity.Pesos"/>
+    <fullyQualifiedTypeName name="com.sistemacontrolepeso.core.security.CheckSecurity.Pesos.PodeConsultar"/>
 </qualifiedTypeNameHistroy>
