@@ -90,7 +90,6 @@ public class PessoaController implements PessoaControllerOpenApi {
 		return  (Pessoa) pessoaRepository.buscarIdEmailToken(token);
 	}
 	
-	//@CheckSecurity.Pessoas.podeEditar
 	@DeleteMapping("/removertoken/{token}")
 	public void removerToken(@PathVariable String token) {
 		pessoaRepository.removerToken(token);
@@ -103,5 +102,12 @@ public class PessoaController implements PessoaControllerOpenApi {
 		
 		pessoaInputDisassembler.copytoDomain(pessoaSenha, pessoa);
 		cadastroPessoaService.salvar(pessoa);
+	}
+	
+	@PostMapping("/verificarEmail")
+	public boolean verificarEmail(@RequestBody PessoaSenhaInput pessoaSenhaInput) {
+		Optional<Pessoa> pessoa = pessoaRepository.findByEmail(pessoaSenhaInput.getEmail());			
+		
+		return pessoa.isPresent();
 	}
 }

@@ -79,8 +79,8 @@ public class PessoaExercicioController implements PessoaExercicioControllerOpenA
 	}
 	
 	@CheckSecurity.PessoasExercicios.PodeConsultar
-	@GetMapping("/listartreinos/{treino}")
-	public List<com.sistemacontrolepeso.domain.model.dto.PessoaExercicio> listarTreinos(@PathVariable char treino) {
-		return pessoaExercicioRepository.listarQuantidadeTreinos(treino);
+	@GetMapping("/listartreinos/{id}/{treino}")
+	public List<com.sistemacontrolepeso.domain.model.dto.PessoaExercicio> listarTreinos(@PathVariable char treino, @PathVariable Long id) {
+		return pessoaExercicioRepository.listarQuantidadeTreinos(treino, id);
 	}
 }

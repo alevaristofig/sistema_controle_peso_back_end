@@ -1,12 +1,10 @@
 package com.sistemacontrolepeso.api.v1.model;
 
 import java.time.OffsetDateTime;
-import java.util.Date;
 
 import org.springframework.hateoas.RepresentationModel;
 
 import io.swagger.v3.oas.annotations.media.Schema;
-import jakarta.validation.constraints.NotBlank;
 import lombok.Getter;
 import lombok.Setter;
 

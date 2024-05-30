@@ -1,6 +1,5 @@
 package com.sistemacontrolepeso.api.v1.model.input;
 
-import java.time.LocalDateTime;
 import java.time.OffsetDateTime;
 
 import io.swagger.v3.oas.annotations.media.Schema;

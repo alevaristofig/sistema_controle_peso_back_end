@@ -37,13 +37,4 @@ public class PesoModelAssembler extends RepresentationModelAssemblerSupport<Peso
 		
 		return pesoModel;
 	}
-	
-	/*@Override
-	public CollectionModel<PesoModel> toCollectionModel(Iterable<? extends Peso> entities) {
-		CollectionModel<PesoModel> collectionModel = super.toCollectionModel(entities);
-		
-		collectionModel.add(sistemaControlePesoLinks.linkToPesos());
-		
-		return collectionModel;
-	}*/
 }

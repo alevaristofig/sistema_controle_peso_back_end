@@ -16,10 +16,11 @@ public interface PessoaExercicioRepository extends JpaRepository<PessoaExercicio
 	Page<PessoaExercicio> findAllByPessoaId(Long id,Pageable pageable);
 
 	@Query("select new com.sistemacontrolepeso.domain.model.dto.PessoaExercicio("
-			+ "pe.exercicio.id, count(pe), e.nome) from PessoaExercicio pe "
+			+ "pe.exercicio.id, count(pe), e.nome, pe.pessoa.id) from PessoaExercicio pe "
 			+ "inner join pe.exercicio e "
 			+ "where treino= :treino "
+			+ "and pe.pessoa.id= :pessoaId "
 			+ "group by  pe.exercicio")
 	public List<com.sistemacontrolepeso.domain.model.dto.PessoaExercicio> listarQuantidadeTreinos(
-			@Param("treino") char treino);
+			@Param("treino") char treino, @Param("pessoaId") Long pessoaId);
 }

@@ -1,6 +1,5 @@
 package com.sistemacontrolepeso.api.v1.controller;
 
-import java.time.OffsetDateTime;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +28,6 @@ import com.sistemacontrolepeso.api.v1.model.PesoModel;
 import com.sistemacontrolepeso.api.v1.model.input.PesoInput;
 import com.sistemacontrolepeso.api.v1.openapi.controller.PesoControllerOpenApi;
 import com.sistemacontrolepeso.core.security.CheckSecurity;
-import com.sistemacontrolepeso.domain.exception.NegocioException;
 import com.sistemacontrolepeso.domain.exception.PesoNaoEncontradoException;
 import com.sistemacontrolepeso.domain.model.Peso;
 import com.sistemacontrolepeso.domain.repository.PesoRepository;
