@@ -33,10 +33,10 @@ public interface ExercicioControllerOpenApi {
 			responses = {
 					@ApiResponse(responseCode = "200"),
 					@ApiResponse(responseCode = "400", description = "ID do exercício inválido",
-									content = @Content(schema = @Schema(ref = "Problema"))
+									content = @Content(schema = @Schema(ref = "Problem"))
 							),
 					@ApiResponse(responseCode = "404", description = "Exercício não encontrado",
-									content = @Content(schema = @Schema(ref = "Problema"))
+									content = @Content(schema = @Schema(ref = "Problem"))
 							)
 	})
 	ExercicioModel buscar(@Parameter(description = "ID de um exercício", example = "1", required = true) Long id);
@@ -49,10 +49,10 @@ public interface ExercicioControllerOpenApi {
 			responses = {
 					@ApiResponse(responseCode = "200"),
 					@ApiResponse(responseCode = "400", description = "ID do Exercício inválido",
-						content = @Content(schema = @Schema(ref = "Problema"))
+						content = @Content(schema = @Schema(ref = "Problem"))
 					),
 					@ApiResponse(responseCode = "404", description = "Exercício não encontrado",
-							content = @Content(schema = @Schema(ref = "Problema")))
+							content = @Content(schema = @Schema(ref = "Problem")))
 	})
 	ExercicioModel atualizar(@Parameter(description = "ID de um Exercício", example = "1", required = true) Long id,
 			@RequestBody(description = "Representação de um exercício com dados atualizados", required = true)
@@ -62,10 +62,10 @@ public interface ExercicioControllerOpenApi {
 			responses = {
 					@ApiResponse(responseCode = "204"),
 					@ApiResponse(responseCode = "400", description = "ID do exercício inválido",
-								content = @Content(schema = @Schema(ref = "Problema"))
+								content = @Content(schema = @Schema(ref = "Problem"))
 					),
 					@ApiResponse(responseCode = "404", description = "Exercício não encontrado",
-							content = @Content(schema = @Schema(ref = "Problema"))
+							content = @Content(schema = @Schema(ref = "Problem"))
 					)
 	})
 	ResponseEntity<Void> remover(@Parameter(description = "ID de um exercício", 

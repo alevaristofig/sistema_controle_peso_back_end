@@ -35,8 +35,7 @@ public class ResourceServerConfig {
 				.logout((logout) -> logout.logoutRequestMatcher(
 							new AntPathRequestMatcher("/logout", "GET")
 						)
-						//.logoutSuccessUrl("http://controlepeso.s3-website-us-east-1.amazonaws.com/login")
-						.logoutSuccessUrl("http://localhost:8080/login")
+						.logoutSuccessUrl("http://controlepeso.s3-website-us-east-1.amazonaws.com/login")						
 						.clearAuthentication(true)
 						.invalidateHttpSession(true)
 						.deleteCookies()
@@ -47,8 +46,7 @@ public class ResourceServerConfig {
 				.requestMatchers(HttpMethod.PUT,"/v1/pessoas/recuperarsenha").permitAll()	
 				.requestMatchers(HttpMethod.DELETE, "/v1/pessoas/removertoken/**").permitAll()
 				.requestMatchers(HttpMethod.POST, "/v1/pessoas/verificarEmail").permitAll()
-				//.requestMatchers(HttpMethod.GET, "http://ec2-54-144-7-19.compute-1.amazonaws.com:8080/logout").permitAll()
-				.requestMatchers(HttpMethod.GET, "http://localhost:8080/logout").permitAll()
+				.requestMatchers(HttpMethod.GET, "http://ec2-54-144-7-19.compute-1.amazonaws.com:8080/logout").permitAll()
 				.anyRequest().authenticated())								
 			.oauth2ResourceServer(oauth2 -> oauth2					
 					.jwt(jwt -> jwt.jwtAuthenticationConverter(jwtAuthenticationConverter()))

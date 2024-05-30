@@ -28,10 +28,10 @@ public interface DietaControllerOpenApi {
 			responses = {
 					@ApiResponse(responseCode = "200"),
 					@ApiResponse(responseCode = "400", description = "ID da dieta inválido",
-									content = @Content(schema = @Schema(ref = "Problema"))
+									content = @Content(schema = @Schema(ref = "Problem"))
 							),
 					@ApiResponse(responseCode = "404", description = "Dieta não encontrada",
-									content = @Content(schema = @Schema(ref = "Problema"))
+									content = @Content(schema = @Schema(ref = "Problem"))
 							)
 	})
 	DietaModel buscar(@Parameter(description = "ID de uma dieta", example = "1", required = true) Long id);
@@ -44,10 +44,10 @@ public interface DietaControllerOpenApi {
 			responses = {
 					@ApiResponse(responseCode = "200"),
 					@ApiResponse(responseCode = "400", description = "ID da Dieta inválida",
-						content = @Content(schema = @Schema(ref = "Problema"))
+						content = @Content(schema = @Schema(ref = "Problem"))
 					),
 					@ApiResponse(responseCode = "404", description = "Dieta não encontrada",
-							content = @Content(schema = @Schema(ref = "Problema")))
+							content = @Content(schema = @Schema(ref = "Problem")))
 	})
 	DietaModel atualizar(@Parameter(description = "ID de uma Dieta", example = "1", required = true) Long id,
 						 @RequestBody(description = "Representação de uma dieta com dados atualizados", required = true)
@@ -57,10 +57,10 @@ public interface DietaControllerOpenApi {
 			responses = {
 					@ApiResponse(responseCode = "204"),
 					@ApiResponse(responseCode = "400", description = "ID da dieta inválida",
-								content = @Content(schema = @Schema(ref = "Problema"))
+								content = @Content(schema = @Schema(ref = "Problem"))
 					),
 					@ApiResponse(responseCode = "404", description = "Dieta não encontrado",
-							content = @Content(schema = @Schema(ref = "Problema"))
+							content = @Content(schema = @Schema(ref = "Problem"))
 					)
 	})
 	ResponseEntity<Void> remover(@Parameter(description = "ID de uma dieta", example = "1", required = true) Long id);

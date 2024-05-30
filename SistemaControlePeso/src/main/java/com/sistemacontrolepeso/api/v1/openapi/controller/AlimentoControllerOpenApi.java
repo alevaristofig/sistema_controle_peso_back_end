@@ -28,10 +28,10 @@ public interface AlimentoControllerOpenApi {
 			responses = {
 					@ApiResponse(responseCode = "200"),
 					@ApiResponse(responseCode = "400", description = "ID do alimento inválido",
-									content = @Content(schema = @Schema(ref = "Problema"))
+									content = @Content(schema = @Schema(ref = "Problem"))
 							),
 					@ApiResponse(responseCode = "404", description = "Alimento não encontrado",
-									content = @Content(schema = @Schema(ref = "Problema"))
+									content = @Content(schema = @Schema(ref = "Problem"))
 							)
 	})
 	AlimentoModel buscar(@Parameter(description = "ID de um alimento", example = "1", required = true) Long id);
@@ -44,10 +44,10 @@ public interface AlimentoControllerOpenApi {
 			responses = {
 					@ApiResponse(responseCode = "200"),
 					@ApiResponse(responseCode = "400", description = "ID do Alimento inválido",
-						content = @Content(schema = @Schema(ref = "Problema"))
+						content = @Content(schema = @Schema(ref = "Problem"))
 					),
 					@ApiResponse(responseCode = "404", description = "Alimento não encontrado",
-							content = @Content(schema = @Schema(ref = "Problema")))
+							content = @Content(schema = @Schema(ref = "Problem")))
 	})
 	AlimentoModel atualizar(@Parameter(description = "ID de um Alimento", example = "1", required = true) Long id,
 							@RequestBody(description = "Representação de um alimento com dados atualizados", required = true) 
@@ -57,10 +57,10 @@ public interface AlimentoControllerOpenApi {
 			responses = {
 					@ApiResponse(responseCode = "204"),
 					@ApiResponse(responseCode = "400", description = "ID do alimento inválido",
-								content = @Content(schema = @Schema(ref = "Problema"))
+								content = @Content(schema = @Schema(ref = "Problem"))
 					),
 					@ApiResponse(responseCode = "404", description = "Alimento não encontrado",
-							content = @Content(schema = @Schema(ref = "Problema"))
+							content = @Content(schema = @Schema(ref = "Problem"))
 					)
 	})
 	ResponseEntity<Void> remover(@Parameter(description = "ID de um alimento", example = "1", required = true) Long id);

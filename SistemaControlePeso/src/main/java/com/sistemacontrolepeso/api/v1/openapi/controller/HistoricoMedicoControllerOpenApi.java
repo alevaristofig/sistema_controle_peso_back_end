@@ -28,10 +28,10 @@ public interface HistoricoMedicoControllerOpenApi {
 			responses = {
 					@ApiResponse(responseCode = "200"),
 					@ApiResponse(responseCode = "400", description = "ID do histórico médico inválido",
-									content = @Content(schema = @Schema(ref = "Problema"))
+									content = @Content(schema = @Schema(ref = "Problem"))
 							),
 					@ApiResponse(responseCode = "404", description = "Histórico médico não encontrado",
-									content = @Content(schema = @Schema(ref = "Problema"))
+									content = @Content(schema = @Schema(ref = "Problem"))
 							)
 	})
 	HistoricoMedicoModel buscar(@Parameter(description = "ID de um histórico médico", 
@@ -45,10 +45,10 @@ public interface HistoricoMedicoControllerOpenApi {
 			responses = {
 					@ApiResponse(responseCode = "200"),
 					@ApiResponse(responseCode = "400", description = "ID do histórico médico inválido",
-						content = @Content(schema = @Schema(ref = "Problema"))
+						content = @Content(schema = @Schema(ref = "Problem"))
 					),
 					@ApiResponse(responseCode = "404", description = "Histórico médico não encontrado",
-							content = @Content(schema = @Schema(ref = "Problema")))
+							content = @Content(schema = @Schema(ref = "Problem")))
 	})
 	HistoricoMedicoModel atualizar(@Parameter(description = "ID de um histórico médico", 
 								   example = "1", required = true) Long id,
@@ -60,10 +60,10 @@ public interface HistoricoMedicoControllerOpenApi {
 			responses = {
 					@ApiResponse(responseCode = "204"),
 					@ApiResponse(responseCode = "400", description = "ID do histórico médico inválido",
-								content = @Content(schema = @Schema(ref = "Problema"))
+								content = @Content(schema = @Schema(ref = "Problem"))
 					),
 					@ApiResponse(responseCode = "404", description = "Histórico Médico não encontrado",
-							content = @Content(schema = @Schema(ref = "Problema"))
+							content = @Content(schema = @Schema(ref = "Problem"))
 					)
 	})
 	ResponseEntity<Void> remover(@Parameter(description = "ID de um históricom médico",

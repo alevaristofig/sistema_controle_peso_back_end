@@ -28,10 +28,10 @@ public interface PesoControllerOpenApi {
 			responses = {
 					@ApiResponse(responseCode = "200"),
 					@ApiResponse(responseCode = "400", description = "ID do peso inválido",
-									content = @Content(schema = @Schema(ref = "Problema"))
+									content = @Content(schema = @Schema(ref = "Problem"))
 							),
 					@ApiResponse(responseCode = "404", description = "Peso não encontrado",
-									content = @Content(schema = @Schema(ref = "Problema"))
+									content = @Content(schema = @Schema(ref = "Problem"))
 							)
 	})
 	PesoModel buscar(@Parameter(description = "ID de um peso", example = "1", required = true) Long id);
@@ -44,10 +44,10 @@ public interface PesoControllerOpenApi {
 			responses = {
 					@ApiResponse(responseCode = "200"),
 					@ApiResponse(responseCode = "400", description = "ID do Peso inválido",
-						content = @Content(schema = @Schema(ref = "Problema"))
+						content = @Content(schema = @Schema(ref = "Problem"))
 					),
 					@ApiResponse(responseCode = "404", description = "Peso não encontrado",
-							content = @Content(schema = @Schema(ref = "Problema")))
+							content = @Content(schema = @Schema(ref = "Problem")))
 	})
 	PesoModel atualizar(@Parameter(description = "ID de um Peso", example = "1", required = true) Long id,
 			@RequestBody(description = "Representação de um peso com dados atualizados", required = true) 
@@ -57,10 +57,10 @@ public interface PesoControllerOpenApi {
 			responses = {
 					@ApiResponse(responseCode = "204"),
 					@ApiResponse(responseCode = "400", description = "ID do peso inválido",
-								content = @Content(schema = @Schema(ref = "Problema"))
+								content = @Content(schema = @Schema(ref = "Problem"))
 					),
 					@ApiResponse(responseCode = "404", description = "Peso não encontrado",
-							content = @Content(schema = @Schema(ref = "Problema"))
+							content = @Content(schema = @Schema(ref = "Problem"))
 					)
 	})
 	ResponseEntity<Void> remover(@Parameter(description = "ID de um peso", example = "1", required = true) Long id);

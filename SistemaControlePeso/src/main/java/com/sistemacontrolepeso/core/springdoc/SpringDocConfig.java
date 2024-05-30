@@ -46,7 +46,7 @@ public class SpringDocConfig {
 						)
 				).externalDocs(new ExternalDocumentation()
 						.description("Sistema de Controle de Peso")
-						.url("https://sistemacontrolpeso.com.br")
+						.url("http://controlepeso.s3-website-us-east-1.amazonaws.com")
 				).tags(Arrays.asList(
 						new Tag().name("Pessoa").description("Gerencia as pessoas"),
 						new Tag().name("Peso").description("Gerencia os pesos"),
@@ -101,7 +101,7 @@ public class SpringDocConfig {
 		
 		Content content = new Content()
 				.addMediaType(APPLICATION_JSON_VALUE, 
-						new MediaType().schema(new Schema<Problem>().$ref("Problema")));
+						new MediaType().schema(new Schema<Problem>().$ref("Problem")));
 		
 		apiResponseMap.put(badRequestResponse, new ApiResponse()
                 .description("Requisição inválida")

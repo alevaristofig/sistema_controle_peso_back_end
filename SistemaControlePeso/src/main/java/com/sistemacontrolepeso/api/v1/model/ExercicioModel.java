@@ -28,5 +28,5 @@ public class ExercicioModel extends RepresentationModel<ExercicioModel> {
 	private OffsetDateTime dataCadastro;
 	
 	@Schema(example = "03/04/2024")
-	private OffsetDateTime dataAtualizar;
+	private OffsetDateTime dataAtualizacao;
 }

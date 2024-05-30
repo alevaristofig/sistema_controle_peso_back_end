@@ -29,7 +29,6 @@ import com.sistemacontrolepeso.domain.model.Pessoa;
 import com.sistemacontrolepeso.domain.repository.PessoaRepository;
 import com.sistemacontrolepeso.domain.service.CadastroPessoaService;
 
-@CrossOrigin(origins = "*")
 @RestController
 @RequestMapping(value = "v1/pessoas", produces = MediaType.APPLICATION_JSON_VALUE)
 public class PessoaController implements PessoaControllerOpenApi {

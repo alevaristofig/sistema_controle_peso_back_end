@@ -23,10 +23,10 @@ public interface AlimentoDietaControllerOpenApi {
 			responses = {
 					@ApiResponse(responseCode = "200"),
 					@ApiResponse(responseCode = "400", description = "ID do alimento/dieta inválido",
-									content = @Content(schema = @Schema(ref = "Problema"))
+									content = @Content(schema = @Schema(ref = "Problem"))
 							),
 					@ApiResponse(responseCode = "404", description = "Alimento/Dieta não encontrado",
-									content = @Content(schema = @Schema(ref = "Problema"))
+									content = @Content(schema = @Schema(ref = "Problem"))
 							)
 	})
 	List<AlimentoDietaModel> buscar(@Parameter(description = "ID de uma dieta", example = "1", required = true) Long id);
@@ -39,10 +39,10 @@ public interface AlimentoDietaControllerOpenApi {
 			responses = {
 					@ApiResponse(responseCode = "200"),
 					@ApiResponse(responseCode = "400", description = "ID do alimento/dieta inválido",
-						content = @Content(schema = @Schema(ref = "Problema"))
+						content = @Content(schema = @Schema(ref = "Problem"))
 					),
 					@ApiResponse(responseCode = "404", description = "Alimento/Dieta não encontrado",
-							content = @Content(schema = @Schema(ref = "Problema")))
+							content = @Content(schema = @Schema(ref = "Problem")))
 	})
 	AlimentoDietaModel atualizar(@Parameter(description = "ID de um alimento/dieta", example = "1", required = true) Long id,
 			 @RequestBody(description = "Representação de um alimento/dieta com dados atualizados", required = true)
@@ -52,10 +52,10 @@ public interface AlimentoDietaControllerOpenApi {
 			responses = {
 					@ApiResponse(responseCode = "204"),
 					@ApiResponse(responseCode = "400", description = "ID do alimento/dieta inválido",
-								content = @Content(schema = @Schema(ref = "Problema"))
+								content = @Content(schema = @Schema(ref = "Problem"))
 					),
 					@ApiResponse(responseCode = "404", description = "Alimento/Dieta não encontrado",
-							content = @Content(schema = @Schema(ref = "Problema"))
+							content = @Content(schema = @Schema(ref = "Problem"))
 					)
 	})
 	ResponseEntity<Void> remover(@Parameter(description = "ID de um alimento/dieta", example = "1", required = true) Long id);

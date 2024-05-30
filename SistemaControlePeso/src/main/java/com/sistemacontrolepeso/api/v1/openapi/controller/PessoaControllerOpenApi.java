@@ -23,10 +23,10 @@ public interface PessoaControllerOpenApi {
 			responses = {
 					@ApiResponse(responseCode = "200"),
 					@ApiResponse(responseCode = "400", description = "ID da pessoa inválida",
-									content = @Content(schema = @Schema(ref = "Problema"))
+									content = @Content(schema = @Schema(ref = "Problem"))
 							),
 					@ApiResponse(responseCode = "404", description = "Pessoa não encontrada",
-									content = @Content(schema = @Schema(ref = "Problema"))
+									content = @Content(schema = @Schema(ref = "Problem"))
 							)
 	})
 	PessoaModel buscar(@Parameter(description = "ID de uma pessoa", example = "1", required = true) Long id);
@@ -39,10 +39,10 @@ public interface PessoaControllerOpenApi {
 			responses = {
 					@ApiResponse(responseCode = "200"),
 					@ApiResponse(responseCode = "400", description = "ID da Pessoa inválida",
-						content = @Content(schema = @Schema(ref = "Problema"))
+						content = @Content(schema = @Schema(ref = "Problem"))
 					),
 					@ApiResponse(responseCode = "404", description = "Pessoa não encontrada",
-							content = @Content(schema = @Schema(ref = "Problema")))
+							content = @Content(schema = @Schema(ref = "Problem")))
 	})
 	PessoaModel atualizar(@Parameter(description = "ID de uma Pessoa", example = "1", required = true) Long id,
 			@RequestBody(description = "Representação de uma pessoa com dados atualizados", required = true) 
